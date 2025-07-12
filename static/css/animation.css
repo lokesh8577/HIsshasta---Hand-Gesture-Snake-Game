@@ -1,0 +1,555 @@
+.game-start {
+   display: none; /* Hidden by default */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);/* Semi-transparent black */
+    color: var(--text-color);
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+     border-radius: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10; /* Ensure it appears above other elements */
+}
+.game-over {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);/* Semi-transparent black */
+    color: var(--text-color);
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+     border-radius: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10; /* Ensure it appears above other elements */
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 30px;
+    background: transparent;
+     border-radius: 12px; 
+    backdrop-filter: blur(1px); 
+}
+.over-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 30px;
+    background: transparent;
+     border-radius: 12px; 
+    backdrop-filter: blur(1px); 
+}
+
+.over-content h2 {
+    color: var(--text-color);
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px var(--shadow);
+}
+
+.snake-text {
+    color: var(--tertiary-color);
+    position: relative;
+    display: inline-block;
+}
+
+.snake-text::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.snake-text:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+#start-btn {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-color), var(--tertiary-color));
+    color: var(--text-color);
+    border: none;
+    padding: 14px 36px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px var(--shadow);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin-left: 30%;
+    margin-top: 5%;
+    gap: 10px;
+}
+#restart-btn {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-color), var(--tertiary-color));
+    color: var(--text-color);
+    border: none;
+    padding: 14px 36px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px var(--shadow);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+    gap: 10px;
+}
+
+#start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow);
+}
+#restart-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+#start-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    transition: 0.5s;
+}
+#restart-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    transition: 0.5s;
+}
+
+#start-btn:hover::before {
+    left: 100%;
+}
+#restart-btn:hover::before {
+    left: 100%;
+}
+
+.snake-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+#start-btn:hover .snake-icon {
+    transform: rotate(360deg);
+}
+
+#restart-btn:hover .snake-icon {
+    transform: rotate(360deg);
+}
+
+/* Snake Animation */
+.snake-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+.snake-over-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Snake Path Animation */
+
+
+/* Generate snake segments */
+
+
+@keyframes pulse {
+    0% { transform: scale(0.8); opacity: 0.3; }
+    100% { transform: scale(1.2); opacity: 0.1; }
+}
+
+/* JavaScript will add this dynamically */
+
+
+
+.food {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--tertiary-color);
+    border-radius: 50%;
+    z-index: 1;
+    animation: foodGlow 2s infinite alternate;
+    box-shadow: 0 0 10px var(--tertiary-color);
+}
+
+@keyframes foodGlow {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.2); opacity: 1; }
+}
+
+
+
+ .snake-selection-body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Background Elements */
+        .snake-selection-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: snake-float-animation 15s infinite ease-in-out;
+        }
+
+        .snake-selection-bg-circle--primary {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-color);
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .snake-selection-bg-circle--tertiary {
+            width: 400px;
+            height: 400px;
+            background: var(--tertiary-color);
+            bottom: 10%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .snake-selection-bg-circle--accent {
+            width: 200px;
+            height: 200px;
+            background: var(--accent-color);
+            top: 60%;
+            left: 30%;
+            animation-delay: 4s;
+        }
+
+        @keyframes snake-float-animation {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-50px) translateX(50px);
+            }
+        }
+
+        /* Main Container */
+        .snake-selection-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Selection Box */
+        .snake-selection-box {
+            background: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .snake-selection-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent 45%,
+                var(--primary-color) 50%,
+                transparent 55%
+            );
+            opacity: 0.1;
+            animation: snake-shine-animation 6s infinite;
+            z-index: -1;
+        }
+
+        @keyframes snake-shine-animation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .snake-selection-box:hover {
+            transform: perspective(1000px) rotateX(5deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Title */
+        .snake-selection-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--tertiary-color);
+            text-shadow: 0 0 10px rgba(241, 196, 15, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .snake-selection-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+            border-radius: 3px;
+        }
+
+        /* Description */
+        .snake-selection-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+
+        /* Options Container */
+        .snake-selection-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Control Buttons */
+        .snake-selection-button {
+            background: rgba(40, 40, 40, 0.7);
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 220px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .snake-selection-button__icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .snake-selection-button:hover {
+            background: rgba(60, 60, 60, 0.7);
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .snake-selection-button:hover .snake-selection-button__icon {
+            transform: scale(1.1);
+            color: var(--accent-color);
+        }
+
+        /* Gesture Specific Button */
+        .snake-selection-button--gesture {
+            border-color: var(--tertiary-color);
+        }
+
+        .snake-selection-button--gesture:hover {
+            border-color: var(--accent-color);
+        }
+
+        .snake-selection-button--gesture::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(241, 196, 15, 0.1),
+                transparent
+            );
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .snake-selection-button--gesture:hover::before {
+            opacity: 1;
+            animation: snake-gesture-glow-animation 2s infinite;
+        }
+
+        @keyframes snake-gesture-glow-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Badge */
+        .snake-selection-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--tertiary-color);
+            color: #000;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            transform: rotate(15deg);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        /* Snake Decoration */
+        .snake-selection-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .snake-selection-decoration__segment {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: snake-move-animation 20s linear infinite;
+        }
+
+        .snake-selection-decoration__segment:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .snake-selection-decoration__segment:nth-child(2) {
+            top: 30%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .snake-selection-decoration__segment:nth-child(3) {
+            top: 70%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .snake-selection-decoration__segment:nth-child(4) {
+            top: 80%;
+            left: 70%;
+            animation-delay: 6s;
+        }
+
+        @keyframes snake-move-animation {
+            0% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(50px, 30px);
+            }
+            50% {
+                transform: translate(20px, 70px);
+            }
+            75% {
+                transform: translate(-40px, 40px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .snake-selection-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            .snake-selection-options {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .snake-selection-title {
+                font-size: 2.5rem;
+            }
+        }
+
+
+        

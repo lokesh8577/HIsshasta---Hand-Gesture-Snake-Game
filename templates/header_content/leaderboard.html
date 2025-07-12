@@ -1,46 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>snake</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/snake.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+    <title>Snake Game Leaderboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body{
+            background-color: var(--bg-color);
+        }
+.container {
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 90px;
+}
+.mode-selector h2::before {
+  content: "⚙️ ";
+}
+
+
+.mode-selector {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    align-items: left;
+    gap: 10px;
+    height: 100px;
+    width: 20%;
+
+}
+.mode-selector h2{
+    padding-left: 10px;
+    color: var(--tertiary-color);
+    margin-left: 10%;
+}
+
+.mode-btn {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: left;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    gap: 15px;
+    margin-left: 10%;
+    border: 2px solid var(--border-color);
+    
+}
+
+.mode-btn:hover {
+    background-color: var(--hover);
+}
+
+.mode-btn.active {
+    background-color: var(--primary-color);
+}
+
+.leaderboard-container {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 80%;
+}
+.leader_heading{
+    color: var(--primary-color);
+}
+.note_box{
+     background-color: var(--bg-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 20px;
+            border: 2px solid var(--border-color);
+}
+.note_box p{
+    margin-bottom: 0;
+    color: var(--tertiary-color);
+
+    }
+
+.leaderboard {
+    display: none;
+    padding: 20px;
+}
+
+.leaderboard.active {
+    display: block;
+}
+
+.leaderboard-header {
+    /* margin-left: 10%; */
+    display: flex;
+    flex-direction: row;
+
+}
+
+.leaderboard-header h2 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    gap: 10px;
+}
+
+.leaderboard-header-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 100px;
+    padding: 10px 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.leaderboard-content ol {
+    list-style-type: none;
+}
+
+.leaderboard-content li {
+    display: grid;
+    grid-template-columns: 80px 1fr 100px;
+    padding: 12px 15px;
+    align-items: center;
+}
+.score{
+    color: var(--tertiary-color);
+}
+.rank{
+    color: var(--primary-color);
+    }
+    .username{
+        color: var(--text-color);
+    }
+
+
+.leaderboard-footer {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.loading {
+    text-align: center;
+    color: var(--tertiary-color);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .mode-selector {
+        flex-direction: row;
+        margin-bottom: 20px;
+    }
+
+    .mode-btn {
+        flex: 1;
+        justify-content: center;
+    }
+}
+    </style>
+ 
 </head>
-
 <body>
-    <div id="selection-screen">
-         <div id="snake-engine"></div>
-    
-    <!-- Enhanced Quantum Field -->
-    <div class="quantum-field"></div>
-    
-    <!-- Centered Selection Box -->
-    <div class="selection-box">
-        <h2>Snake Game</h2>
-        <p>Select your control method:</p>
-        
-        <div class="control-options">
-            <button class="control-option" id="keyboard-btn">
-                <i class="fas fa-keyboard"></i>
-                Keyboard
-            </button>
-            
-            <button class="control-option" id="gesture-btn">
-                <i class="fas fa-hand-paper"></i>
-                Hand Gestures
-            </button>
-        </div>
-    </div>
-    </div>
-
-    <div id="game-content" class="hidden">
-
-        <!--header-->
-        <header class="main-header">
+ <header class="main-header">
             <div class="header-container">
                 <div class="logo-section">
                     <a class="header-logo" href="/">
@@ -153,124 +291,65 @@
             </div>
         </header>
 
-        <!--game container-->
-        <div class="main-container">
-            <div class="leaderboard">
-                <h2><i class="fas fa-trophy"></i> Leaderboard</h2>
-                <div class="mode-selector">
-                    <button class="mode-btn active" data-mode="keyboard">
-                        <i class="fas fa-keyboard"></i> Keyboard
-                    </button>
-                    <button class="mode-btn" data-mode="gesture">
-                        <i class="fas fa-hand-paper"></i> Gesture
-                    </button>
+<div class="container">
+        <div class="mode-selector">
+            <h2>Mode</h2>
+            <button class="mode-btn active" data-mode="keyboard">
+                <i class="fas fa-keyboard"></i> Keyboard Mode
+            </button>
+            <button class="mode-btn" data-mode="gesture">
+                <i class="fas fa-hand-paper"></i> Gesture Mode
+            </button>
+        </div>
+        
+        <div class="leaderboard-container">
+            <div>
+            <h1 class="leader_heading"><i class="fas fa-trophy"></i> Snake Game Leaderboard</h1>
+            </div>
+            <div class="note_box"><p>This leaderboard refresh at every 1 minute</p></div>
+            <div class="leaderboard active" id="keyboard-leaderboard">
+                <div class="leaderboard-header">
+                    <h2><i class="fas fa-keyboard"></i> Keyboard Mode Leaderboard</h2>
                 </div>
                 <div class="leaderboard-content">
-                    <div class="leaderboard-header">
+                    <div class="leaderboard-header-row">
                         <span class="rank-header">Rank</span>
-                        <span class="name-header" style="padding-left: 15px;">Player</span>
-                        <span class="score-header">Score</span>
+                        <span class="name-header">Player</span>
+                        <span class="score-header" style="margin-right: 100%;">Score</span>
                     </div>
-                    <ol id="leaderboard-list">
+                    <ol id="keyboard-leaderboard-list">
                         <li class="loading">Loading leaderboard...</li>
                     </ol>
                 </div>
-                <div class="leaderboard-footer" style="display: none;">
-                    <span id="leaderboard-status"></span>
+                <div class="leaderboard-footer" id="keyboard-leaderboard-footer">
+                    Showing top 50 players
                 </div>
             </div>
-
-            <div class="game-board-container">
-                <div class="game-board">
-                    <canvas id="game-canvas"></canvas>
-                    <div class="game-over" id="game-over">
-                        <div class="snake-over-container">
-                               
-                            </div>
-                             <div class="over-content">
-                                <h2>Game <span class="snake-text">Over</span> !</h2>
-                                <button id="restart-btn">
-                                <span>Play Again</span>
-                                  <i class="fa-brands fa-python snake-icon"></i>
-                                </button>
-                             </div>
-                             </div>
-                    <div id="game-start" class="game-start">
-                <div class="snake-container">
-                    <!-- Snake will be generated via CSS -->
+            
+            <div class="leaderboard" id="gesture-leaderboard">
+                <div class="leaderboard-header">
+                    <h2><i class="fas fa-hand-paper"></i> Gesture Mode Leaderboard</h2>
+                </div>
+                <div class="leaderboard-content">
+                    <div class="leaderboard-header-row">
+                        <span class="rank-header">Rank</span>
+                        <span class="name-header">Player</span>
+                        <span class="score-header" style="margin-right: 100%;">Score</span>
                     </div>
-                <div class="content">
-                    <h2>Welcome to the <span class="snake-text">Snake</span> Game</h2>
-                    <button id="start-btn">
-                            <span>Start Game</span>
-                    <i class="fa-brands fa-python snake-icon"></i>
-                </button>
-                 </div>
-             </div>
+                    <ol id="gesture-leaderboard-list">
+                        <li class="loading">Loading leaderboard...</li>
+                    </ol>
                 </div>
-
-            </div>
-
-
-            <div class="score_board">
-                <h2><i class="fas fa-star"></i> Score</h2>
-                <div id="score-display">0</div> <!-- Changed class to id -->
-                <div class="high_score">High Score: <span id="high-score-display">0</span></div> <!-- Added id -->
-            </div>
-
-
-            <div id="camera-section" class="camera hidden">
-                <h2><i class="fa-solid fa-camera"></i>Gesture</h2>
-                <div class="controls">
-                    <button id="startBtn" onclick="toggleCamera()">Start</button>
-                    <button id="stopBtn" onclick="toggleCamera()" disabled>Stop</button>
-                    <button id="processBtn" onclick="toggleProcessing()" disabled>Enable Processing</button>
-                </div>
-                <div class="camera-container">
-                    <img id="videoFeed" style="display: none;">
-                    <div id="cameraPlaceholder"></div>
-                </div>
-                <div class="status" id="statusText">Camera: Off | Processing: Off</div>
-            </div>
-
-
-
-            <div id="stats-history-section" class="stats-history">
-                <h2><i class="fa-solid fa-clock-rotate-left"></i> Points History</h2>
-                <div class="history-table-container">
-                    <table class="history-table">
-                        <thead>
-                            <tr>
-                                <th>SNo</th>
-                                <th>Score</th>
-                                <th>Time</th>
-                                <th><i class="fas fa-gamepad"></i> Mode</th>
-                            </tr>
-                        </thead>
-                        <tbody id="history-table-body">
-                            <!-- Scores will be inserted here -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="guide">
-                <h2><i class="fas fa-info-circle"></i> Guide</h2>
-                <ul>
-                    <li> to move</li>
-                    <li>Space to pause</li>
-                    <li>Eat apples to grow</li>
-                    <li>Don't hit walls!</li>
-                </ul>
-                <div class="gesture-display">
-                    <strong>Current Gesture:</strong> <span id="current-gesture">None</span>
+                <div class="leaderboard-footer" id="gesture-leaderboard-footer">
+                   
                 </div>
             </div>
         </div>
+    </div>
 
 
 
-        <!--footer-->
-        <footer>
+         <footer>
 
             <div class="leftright">
                 <div class="left">
@@ -333,25 +412,165 @@
                 </div>
             </div>
         </footer>
-    </div>
-
-    <!-- <script src="game.js"></script> -->
-       <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
+         <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
 <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
-<script src="{{ url_for('static', filename='js/snake.js') }}"></script>
-<script src="{{ url_for('static', filename='js/animation.js') }}"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
-    <script src="{{ url_for('static', filename='js/camera.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    
-
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyDmeALZ7huDbG2ya3Mh9gZ-04wOG-0wRbI",
+                authDomain: "hand-snake-game-f3768.firebaseapp.com",
+                databaseURL: "https://hand-snake-game-f3768.firebaseio.com",
+                projectId: "hand-snake-game-f3768",
+                storageBucket: "hand-snake-game-f3768.appspot.com",
+                messagingSenderId: "113807589798155426981",
+                appId: "1:633783160028:web:e55b0788d0348e89eeb819"
+            };
+            
+            // Initialize Firebase if not already initialized
+            if (!firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
+            }
+            
+            // Check if user is authenticated
+            let currentUserId = null;
+            let isAuthenticated = false;
+            
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    currentUserId = user.uid;
+                    isAuthenticated = true;
+                } else {
+                    currentUserId = null;
+                    isAuthenticated = false;
+                }
+                
+                // Load initial leaderboard (keyboard by default)
+                fetchLeaderboard('keyboard');
+            });
+            
+            // Mode selector functionality
+            const modeButtons = document.querySelectorAll('.mode-btn');
+            const leaderboards = document.querySelectorAll('.leaderboard');
+            
+            modeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const mode = this.dataset.mode;
+                    
+                    // Update active button
+                    modeButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show the selected leaderboard
+                    leaderboards.forEach(board => board.classList.remove('active'));
+                    document.getElementById(`${mode}-leaderboard`).classList.add('active');
+                    
+                    // Fetch data for the selected mode
+                    fetchLeaderboard(mode);
+                });
+            });
+            
+            // Function to render leaderboard entry
+            function renderLeaderboardEntry(entry, mode) {
+                const li = document.createElement('li');
+                li.className = 'leaderboard-entry';
+                li.dataset.userId = entry.userId;
+                
+                // Highlight current user
+                if (currentUserId && entry.userId === currentUserId) {
+                    li.classList.add('current-user');
+                }
+                
+                // Highlight active session
+                if (entry.in_session) {
+                    li.classList.add('highlighted');
+                }
+                
+                // Create avatar from first letter of username
+                const firstLetter = entry.username ? entry.username.charAt(0).toUpperCase() : '?';
+                
+                li.innerHTML = `
+                    <span class="rank">${entry.rank}.</span>
+                    <span class="username">
+                        ${entry.username || 'Anonymous'}
+                    </span>
+                    <span class="score">${entry.score || 0}</span>
+                `;
+                
+                return li;
+            }
+            
+            // Function to fetch leaderboard data
+            async function fetchLeaderboard(mode) {
+                const leaderboardList = document.getElementById(`${mode}-leaderboard-list`);
+                const footer = document.getElementById(`${mode}-leaderboard-footer`);
+                
+                if (!leaderboardList) return;
+                
+                try {
+                    leaderboardList.innerHTML = '<li class="loading">Loading leaderboard...</li>';
+                    
+                    const response = await fetch(`/api/leaderboard?mode=${mode}&limit=50`);
+                    
+                    if (!response.ok) {
+                        throw new Error(`Server returned ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    if (!Array.isArray(data)) {
+                        throw new Error('Invalid leaderboard data');
+                    }
+                    
+                    leaderboardList.innerHTML = '';
+                    
+                    if (data.length === 0) {
+                        const noScoresItem = document.createElement('li');
+                        noScoresItem.className = 'no-scores';
+                        noScoresItem.textContent = 'No scores yet. Be the first!';
+                        leaderboardList.appendChild(noScoresItem);
+                        return;
+                    }
+                    
+                    data.forEach((entry) => {
+                        const li = renderLeaderboardEntry(entry, mode);
+                        leaderboardList.appendChild(li);
+                    });
+                    
+                    // Update status message
+                    if (footer) {
+                        footer.textContent = `Showing top ${data.length} players`;
+                    }
+                } catch (error) {
+                    console.error(`Error fetching ${mode} leaderboard:`, error);
+                    leaderboardList.innerHTML = `
+                        <li class="error">
+                            <i class="fas fa-exclamation-circle"></i> Failed to load leaderboard: ${error.message}
+                            <button onclick="fetchLeaderboard('${mode}')" style="
+                                margin-top: 0.5rem;
+                                padding: 0.3rem 0.8rem;
+                                background: var(--primary-color);
+                                color: white;
+                                border: none;
+                                border-radius: 4px;
+                                cursor: pointer;
+                            ">
+                                <i class="fas fa-sync-alt"></i> Retry
+                            </button>
+                        </li>
+                    `;
+                }
+            }
+            
+            // Make the function available globally
+            window.fetchLeaderboard = fetchLeaderboard;
+            
+            // Refresh leaderboards every 30 seconds
+            setInterval(() => {
+                const activeMode = document.querySelector('.mode-btn.active').dataset.mode;
+                fetchLeaderboard(activeMode);
+            }, 30000);
+        });
+    </script>
 </body>
-
 </html>

@@ -1,0 +1,2983 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Selection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header/theme.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <header class="main-header">
+            <div class="header-container">
+                <div class="logo-section">
+                    <a class="header-logo" href="/">
+                       <div class="logo-icon">
+    <svg width="80px" height="80px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--fxemoji" preserveAspectRatio="xMidYMid meet">
+        <path fill="var(--text-color)" d="M50.816 119.114v16.199s-13.707-.831-13.707-16.199h13.707zm6.326 0c0 15.368 13.707 16.199 13.707 16.199v-16.199H57.142z"></path>
+        <path fill="var(--accent-color)" d="M78.389 142.269c-6.637-6.636-26.715-5.761-45.657 13.18a78.26 78.26 0 0 1-4.609 4.265a3.909 3.909 0 0 0-1.453.761c-.503.419-.819.423-1.097.39c-1.906-.221-4.706-2.768-8.321-7.569a33.585 33.585 0 0 0-.821-1.063a3.953 3.953 0 1 0-6.088 5.046c.141.17.339.438.592.773c2.251 2.989 4.808 6.045 7.701 8.13c-6.046 2.994-9.315 2.228-9.369 2.215c.093.024.14.044.14.044l-2.585 7.474c.369.127 1.618.498 3.666.498c4.974 0 14.653-2.189 27.835-15.371c16.398-16.4 31.993-15.661 34.474-13.18a3.954 3.954 0 1 0 5.592-5.593z"></path>
+        <path fill="var(--tertiary-color)" d="M492.435 364.927c-1.25-9.271-3.099-17.283-5.131-24.065c-2.012-6.786-4.055-12.379-5.879-16.824c-1.832-4.442-3.344-7.771-4.4-9.995l-1.63-3.352c-1.891-3.893-6.293-6.095-10.676-5.044c-5.062 1.214-8.181 6.302-6.967 11.364l.067.278l.797 3.32c.521 2.185 1.265 5.43 2.067 9.661c.797 4.229 1.692 9.436 2.285 15.533c.304 3.047.524 6.311.698 9.764c.129 3.456.157 7.106.002 10.918c-.334 7.615-1.314 15.893-3.548 24.322c-2.256 8.4-5.806 16.964-10.991 24.595c-2.595 3.804-5.569 7.38-8.931 10.464c-3.352 3.083-7.066 5.701-10.907 7.564c-3.829 1.882-7.806 2.934-11.33 3.113c-.443.037-.874.025-1.302.031c-.216.013-.422-.019-.632-.021c-.181-.014-.492 0-.516-.038a1.296 1.296 0 0 0-.245-.053l-1.166-.078l-.662-.044c-.255-.008.866-.001.333-.019l-.139-.029l-.553-.105a21.437 21.437 0 0 1-2.179-.63a24.396 24.396 0 0 1-2.143-.926c-2.837-1.407-5.663-3.69-8.131-6.836c-2.464-3.135-4.578-7.075-5.956-11.585c-1.39-4.501-2.109-9.527-2.073-14.828c.035-2.656.254-5.378.667-8.146a80.042 80.042 0 0 1 1.819-8.432c1.546-5.698 3.965-11.467 6.989-17.233a107.814 107.814 0 0 1 2.4-4.318c.425-.695.873-1.481 1.273-2.106l1.238-1.942l1.597-2.427l2.022-3.167c1.325-2.138 2.653-4.288 3.913-6.505c5.068-8.838 9.654-18.289 13.419-28.42c3.772-10.122 6.692-20.942 8.312-32.356c1.601-11.411 1.926-23.428.304-35.697c-1.63-12.245-5.191-24.746-11.347-36.652c-6.142-11.868-14.918-23.224-26.931-32.188c-5.992-4.465-12.795-8.3-20.295-11.069c-7.485-2.773-15.682-4.445-24.041-4.652c-8.353-.226-16.816 1.042-24.636 3.587c-7.83 2.535-15.015 6.278-21.239 10.679c-6.242 4.401-11.615 9.407-16.21 14.636c-4.621 5.233-8.474 10.693-11.834 16.201c-6.66 11.038-11.273 22.249-14.799 33.315c-3.514 11.079-5.91 22.051-7.648 32.89c-1.741 10.843-2.761 21.546-3.359 32.135c-.276 5.288-.484 10.56-.541 15.787c-.05 2.57-.04 5.439-.043 7.998l.032 3.614l.01 3.4c-.03 7.901-.737 15.503-2.112 22.565c-1.398 7.043-3.486 13.535-6.212 19.094c-2.721 5.562-6.034 10.188-9.647 13.669c-3.614 3.474-7.506 5.808-11.236 7.045c-3.733 1.247-7.267 1.388-10.16.786c-2.92-.61-5.158-1.863-7.071-3.716c-1.907-1.854-3.651-4.497-4.895-8.383c-1.251-3.846-1.908-8.835-1.729-14.423c.151-5.583 1.127-11.732 2.715-17.993a124.903 124.903 0 0 1 2.847-9.486c.545-1.59 1.127-3.181 1.728-4.771l.932-2.385l.878-2.136l2.383-5.533l2.597-6.16a467.92 467.92 0 0 0 4.859-12.25a488.85 488.85 0 0 0 8.494-24.225c5.146-16.027 9.338-31.799 12.549-47.301c3.183-15.506 5.417-30.729 6.516-45.672c1.09-14.941 1.067-29.61-.531-43.981c-1.608-14.346-4.816-28.483-10.44-41.781c-2.808-6.634-6.226-13.029-10.24-18.94c-4.005-5.912-8.606-11.318-13.529-15.986c-4.911-4.688-10.159-8.586-15.307-11.759a96.167 96.167 0 0 0-14.976-7.466c-9.056-3.558-16.813-5.187-23.03-6.167c-8.695-3.326-18.32-5.257-28.478-5.411c-39.33-.594-100.302 25.207-105.198 57.739a13.21 13.21 0 0 0-.108.973c-.741 9.696 7.341 17.818 17.065 17.746l40.555-.3c3.586-.027 5.18 4.489 2.374 6.721c-11.517 9.161-29.362 24.328-21.267 24.328c18.271 0 52.545-.13 64.971-.081c16.665.066 32.016-2.443 44.226-7.835c1.399 4.583 2.543 10.014 3.245 16.17c1.051 9.052 1.198 19.563.397 30.983c-.794 11.426-2.527 23.772-5.132 36.683c-2.583 12.916-6.019 26.421-10.321 40.2a418.21 418.21 0 0 1-7.102 20.823a398.928 398.928 0 0 1-4.047 10.464l-2.149 5.223l-2.466 5.9l-1.453 3.654l-1.305 3.465a232.471 232.471 0 0 0-2.469 7.096a193.745 193.745 0 0 0-4.258 14.911c-2.459 10.29-4.208 21.293-4.395 33.165c-.177 11.83 1.188 24.629 5.623 37.685c2.221 6.506 5.212 13.044 9.154 19.289c3.927 6.24 8.782 12.182 14.491 17.386a81.95 81.95 0 0 0 19.262 13.092c7.026 3.438 14.537 5.825 22.146 7.137c15.247 2.65 30.782.915 44.604-4.119c13.87-5.015 26.026-13.259 35.77-23.082c9.757-9.849 17.175-21.197 22.523-32.858c5.363-11.684 8.743-23.666 10.807-35.461c2.025-11.803 2.755-23.453 2.557-34.807l-.147-7.437c-.015-2.26-.049-4.213-.029-6.465c-.001-4.42.133-8.798.312-13.156c.4-8.699 1.14-17.278 2.383-25.541c1.231-8.262 2.928-16.242 5.181-23.604c2.239-7.356 5.064-14.098 8.309-19.596c3.228-5.488 6.9-9.622 10.057-11.876c1.577-1.162 2.995-1.851 4.242-2.292c1.255-.431 2.354-.609 3.515-.612c1.157.003 2.402.197 3.811.685c1.403.486 2.954 1.28 4.539 2.424c3.181 2.271 6.404 5.974 8.876 10.617c2.497 4.639 4.275 10.184 5.145 16.163c.468 2.982.669 6.096.711 9.26a80.513 80.513 0 0 1-.58 9.689c-.826 6.552-2.426 13.232-4.681 19.86c-2.264 6.627-5.212 13.187-8.66 19.572a182.042 182.042 0 0 1-2.654 4.771l-3.189 5.454l-2.027 3.633c-.677 1.236-1.235 2.348-1.852 3.527a164.769 164.769 0 0 0-3.41 7.115c-4.322 9.615-7.6 19.815-9.622 30.35a114.77 114.77 0 0 0-1.658 32.239a106.577 106.577 0 0 0 2.732 16.072c1.371 5.281 3.132 10.463 5.382 15.459c4.461 9.983 10.695 19.288 18.741 26.992c8.005 7.698 17.844 13.826 28.719 17.187a65.654 65.654 0 0 0 16.683 2.856l2.1.04l1.519.012l.662-.035l1.477-.077l2.389-.152c.853-.054 1.414-.141 2.106-.218c.661-.085 1.329-.150 1.977-.263c1.304-.206 2.601-.421 3.865-.7c10.18-2.129 18.958-6.377 26.371-11.405c7.44-5.043 13.537-10.974 18.558-17.185a96.612 96.612 0 0 0 12.11-19.215c6.265-13.01 9.154-25.88 10.355-37.538a132.802 132.802 0 0 0-.557-31.521z"></path>
+        <path fill="var(--border-color)" d="M118.602 70.08c6.423 0 11.63 5.207 11.63 11.63v14.296c0 6.423-5.207 11.63-11.63 11.63c-6.423 0-11.63-5.207-11.63-11.63V81.71c0-6.423 5.207-11.63 11.63-11.63z"></path>
+        <circle fill="var(--border-color)" cx="43.962" cy="106.054" r="3.427"></circle>
+    </svg>
+</div>
+                        <h1 class="logo-text">
+                            Snake
+                        </h1>
+                    </a>
+
+                    <div class="logo-adjacent-icons">
+                        <a class="settings-link" href="/setting">
+                            <i class="fas fa-cog"></i>
+                        </a>
+                        <a class="theme-link" href="/theme">
+                            <i class="fa-solid fa-palette"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <nav class="header-nav">
+                    <!-- <div class="nav-links">
+                    <a class="nav-link" href="#">
+                        <div class="nav-icon">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <span class="nav-tooltip">Keyboard</span>
+                    </a>
+                    <a class="nav-link" href="#">
+                        <div class="nav-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <span class="nav-tooltip">Code</span>
+                    </a>
+                    <a class="nav-link" href="/profile" id="profileLink">
+                <div class="nav-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <span class="nav-tooltip">Profile</span>
+            </a>
+
+            
+                </div> -->
+                    <div class="nav-links">
+                        <a class="nav-link" href="/leaderboard">
+                            <div class="nav-icon">
+                                <i class="fa-solid fa-crown"></i>
+                            </div>
+                            <span class="nav-tooltip">Leaderboard</span>
+                        </a>
+                        <a class="nav-link" href="/history">
+                            <div class="nav-icon">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </div>
+                            <span class="nav-tooltip">History</span>
+                        </a>
+                        <a class="nav-link" href="#">
+                            <div class="nav-icon">
+                                <i class="fa-solid fa-gamepad"></i>
+                            </div>
+                            <span class="nav-tooltip">Mode</span>
+                        </a>
+                        <div class="profile-container">
+                            {% if 'user' in session %}
+                            <!-- Logged in state -->
+                            <div class="profile-btn" id="profileBtn">
+                                <i class="fas fa-user"></i>
+                                <span class="username">{{ session['user']['username'] }}</span>
+                            </div>
+                            <div class="profile-window hidden" id="profileWindow">
+                                <div class="profile-content">
+                                    {% if 'user' in session %}
+                                    <p>Welcome, {{ session['user']['username'] }}!</p>
+                                    <p>Email: {{ session['user']['email'] }}</p>
+                                    {% endif %}
+                                    <button class="logout-btn" id="logoutBtn">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                    </button>
+                                </div>
+                            </div>
+                            {% else %}
+                            <!-- Logged out state -->
+                            <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink">
+                                <i class="fas fa-user"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="nav-actions">
+                        <button class="notification-btn">
+                            <div class="notification-icon">
+                                <i class="fas fa-bell"></i>
+                                <span class="notification-badge">3</span>
+                            </div>
+                        </button>
+                    </div>
+                </nav>
+
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars menu-icon"></i>
+                </button>
+            </div>
+        </header>
+
+    <div class="theme-container">
+        <header class="theme-header">
+            <h1><i class="fas fa-palette"></i> Theme Selection</h1>
+            <p>Choose your preferred color scheme</p>
+        </header>
+
+            <div class="theme-grid">
+                <!-- Default Dark Theme -->
+                <div class="theme-card" data-theme="default-dark">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #4a6fa5;"></div>
+                        <div class="color-swatch" style="background-color: #166088;"></div>
+                        <div class="color-swatch" style="background-color: #f1c40f;"></div>
+                        <div class="color-swatch" style="background-color: #4fc3f7;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>Midnight</h3>
+                        <button class="apply-btn" data-theme="default-dark">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="midnight-aura">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0f0521 0%, #2a1b3d 100%);">
+                        <div class="color-swatch" style="background-color: #6a5acd;"></div>
+                        <div class="color-swatch" style="background-color: #ff7f50;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #1e1035;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>midnight aura</h3>
+                        <button class="apply-btn" data-theme="midnight-aura">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="emerald-dream">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d2818 0%, #1b4332 100%);">
+                        <div class="color-swatch" style="background-color: #2ecc71;"></div>
+                        <div class="color-swatch" style="background-color: #f39c12;"></div>
+                        <div class="color-swatch" style="background-color: #1abc9c;"></div>
+                        <div class="color-swatch" style="background-color: #143422;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>emerald dream</h3>
+                        <button class="apply-btn" data-theme="emerald-dream">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="cosmic-twilight">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0327 0%, #2d0b42 100%);">
+                        <div class="color-swatch" style="background-color: #9b59b6;"></div>
+                        <div class="color-swatch" style="background-color: #e74c3c;"></div>
+                        <div class="color-swatch" style="background-color: #8e44ad;"></div>
+                        <div class="color-swatch" style="background-color: #240b36;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>cosmic twilight</h3>
+                        <button class="apply-btn" data-theme="cosmic-twilight">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="amber-glow">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1f1300 0%, #3a2700 100%);">
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ff1493;"></div>
+                        <div class="color-swatch" style="background-color: #ff6347;"></div>
+                        <div class="color-swatch" style="background-color: #2a1a00;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>amber glow</h3>
+                        <button class="apply-btn" data-theme="amber-glow">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="arctic-frost">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a26 0%, #00334d 100%);">
+                        <div class="color-swatch" style="background-color: #00bfff;"></div>
+                        <div class="color-swatch" style="background-color: #ff69b4;"></div>
+                        <div class="color-swatch" style="background-color: #87cefa;"></div>
+                        <div class="color-swatch" style="background-color: #002233;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>arctic frost</h3>
+                        <button class="apply-btn" data-theme="arctic-frost">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="crimson-tide">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #dc143c;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #ff6347;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>crimson tide</h3>
+                        <button class="apply-btn" data-theme="crimson-tide">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mystic-fog">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d021a 0%, #1a0335 100%);">
+                        <div class="color-swatch" style="background-color: #7f00ff;"></div>
+                        <div class="color-swatch" style="background-color: #00ffff;"></div>
+                        <div class="color-swatch" style="background-color: #9932cc;"></div>
+                        <div class="color-swatch" style="background-color: #140526;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mystic fog</h3>
+                        <button class="apply-btn" data-theme="mystic-fog">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="golden-hour">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1400 0%, #332800 100%);">
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #ff4500;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #261f00;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>golden hour</h3>
+                        <button class="apply-btn" data-theme="golden-hour">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="deep-abyss">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #00001a 0%, #000033 100%);">
+                        <div class="color-swatch" style="background-color: #000033;"></div>
+                        <div class="color-swatch" style="background-color: #00ffff;"></div>
+                        <div class="color-swatch" style="background-color: #000066;"></div>
+                        <div class="color-swatch" style="background-color: #000026;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>deep abyss</h3>
+                        <button class="apply-btn" data-theme="deep-abyss">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="ruby-night">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0009 0%, #330011 100%);">
+                        <div class="color-swatch" style="background-color: #e0115f;"></div>
+                        <div class="color-swatch" style="background-color: #00ff7f;"></div>
+                        <div class="color-swatch" style="background-color: #ff1493;"></div>
+                        <div class="color-swatch" style="background-color: #26000d;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>ruby night</h3>
+                        <button class="apply-btn" data-theme="ruby-night">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="electric-violet">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0f0021 0%, #1d0042 100%);">
+                        <div class="color-swatch" style="background-color: #8a2be2;"></div>
+                        <div class="color-swatch" style="background-color: #ff00ff;"></div>
+                        <div class="color-swatch" style="background-color: #9932cc;"></div>
+                        <div class="color-swatch" style="background-color: #160035;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>electric violet</h3>
+                        <button class="apply-btn" data-theme="electric-violet">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="sapphire-dusk">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #000d1a 0%, #001a33 100%);">
+                        <div class="color-swatch" style="background-color: #0f52ba;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #4682b4;"></div>
+                        <div class="color-swatch" style="background-color: #001326;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>sapphire dusk</h3>
+                        <button class="apply-btn" data-theme="sapphire-dusk">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="lime-zest">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #051a05 0%, #0a330a 100%);">
+                        <div class="color-swatch" style="background-color: #32cd32;"></div>
+                        <div class="color-swatch" style="background-color: #ff4500;"></div>
+                        <div class="color-swatch" style="background-color: #7cfc00;"></div>
+                        <div class="color-swatch" style="background-color: #072607;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>lime zest</h3>
+                        <button class="apply-btn" data-theme="lime-zest">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="peach-blossom">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a000a 0%, #330015 100%);">
+                        <div class="color-swatch" style="background-color: #ff69b4;"></div>
+                        <div class="color-swatch" style="background-color: #4169e1;"></div>
+                        <div class="color-swatch" style="background-color: #ffb6c1;"></div>
+                        <div class="color-swatch" style="background-color: #26000f;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>peach blossom</h3>
+                        <button class="apply-btn" data-theme="peach-blossom">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="teal-horizon">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a1a 0%, #003333 100%);">
+                        <div class="color-swatch" style="background-color: #008080;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #20b2aa;"></div>
+                        <div class="color-swatch" style="background-color: #002626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>teal horizon</h3>
+                        <button class="apply-btn" data-theme="teal-horizon">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="magenta-mist">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a001a 0%, #330033 100%);">
+                        <div class="color-swatch" style="background-color: #ff00ff;"></div>
+                        <div class="color-swatch" style="background-color: #00ffff;"></div>
+                        <div class="color-swatch" style="background-color: #dda0dd;"></div>
+                        <div class="color-swatch" style="background-color: #260026;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>magenta mist</h3>
+                        <button class="apply-btn" data-theme="magenta-mist">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="bronze-age">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0d00 0%, #331a00 100%);">
+                        <div class="color-swatch" style="background-color: #cd7f32;"></div>
+                        <div class="color-swatch" style="background-color: #a0522d;"></div>
+                        <div class="color-swatch" style="background-color: #d2691e;"></div>
+                        <div class="color-swatch" style="background-color: #261300;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>bronze age</h3>
+                        <button class="apply-btn" data-theme="bronze-age">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="platinum-shine">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);">
+                        <div class="color-swatch" style="background-color: #e5e4e2;"></div>
+                        <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background-color: #262626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>platinum shine</h3>
+                        <button class="apply-btn" data-theme="platinum-shine">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="jade-kingdom">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a0d 0%, #00331a 100%);">
+                        <div class="color-swatch" style="background-color: #00a86b;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #50c878;"></div>
+                        <div class="color-swatch" style="background-color: #002613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>jade kingdom</h3>
+                        <button class="apply-btn" data-theme="jade-kingdom">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="amethyst-cave">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d051a 0%, #1a0a35 100%);">
+                        <div class="color-swatch" style="background-color: #9966cc;"></div>
+                        <div class="color-swatch" style="background-color: #ff9933;"></div>
+                        <div class="color-swatch" style="background-color: #b19cd9;"></div>
+                        <div class="color-swatch" style="background-color: #140826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>amethyst cave</h3>
+                        <button class="apply-btn" data-theme="amethyst-cave">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="cobalt-storm">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #000d1a 0%, #001a33 100%);">
+                        <div class="color-swatch" style="background-color: #0047ab;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #1e90ff;"></div>
+                        <div class="color-swatch" style="background-color: #001326;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>cobalt storm</h3>
+                        <button class="apply-btn" data-theme="cobalt-storm">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="rose-quartz">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0a0a 0%, #331515 100%);">
+                        <div class="color-swatch" style="background-color: #f7cac9;"></div>
+                        <div class="color-swatch" style="background-color: #92a8d1;"></div>
+                        <div class="color-swatch" style="background-color: #f8b195;"></div>
+                        <div class="color-swatch" style="background-color: #261010;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>rose quartz</h3>
+                        <button class="apply-btn" data-theme="rose-quartz">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="obsidian-night">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #464646;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #696969;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>obsidian night</h3>
+                        <button class="apply-btn" data-theme="obsidian-night">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="lavender-dream">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #f5f0ff 0%, #e6ccff 100%);">
+                        <div class="color-swatch" style="background-color: #e6e6fa;"></div>
+                        <div class="color-swatch" style="background-color: #d8bfd8;"></div>
+                        <div class="color-swatch" style="background-color: #dda0dd;"></div>
+                        <div class="color-swatch" style="background-color: #ebd9ff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>lavender dream</h3>
+                        <button class="apply-btn" data-theme="lavender-dream">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mint-fresh">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffe6 0%, #ccffcc 100%);">
+                        <div class="color-swatch" style="background-color: #98ff98;"></div>
+                        <div class="color-swatch" style="background-color: #ffb347;"></div>
+                        <div class="color-swatch" style="background-color: #aaf0d1;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffd1;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mint fresh</h3>
+                        <button class="apply-btn" data-theme="mint-fresh">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="sunset-blaze">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0a00 0%, #331400 100%);">
+                        <div class="color-swatch" style="background-color: #ff4500;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ff6347;"></div>
+                        <div class="color-swatch" style="background-color: #261000;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>sunset blaze</h3>
+                        <button class="apply-btn" data-theme="sunset-blaze">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="tropical-lagoon">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffff 0%, #ccffff 100%);">
+                        <div class="color-swatch" style="background-color: #40e0d0;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c69;"></div>
+                        <div class="color-swatch" style="background-color: #48d1cc;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>tropical lagoon</h3>
+                        <button class="apply-btn" data-theme="tropical-lagoon">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="berry-burst">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0f0021 0%, #1d0042 100%);">
+                        <div class="color-swatch" style="background-color: #8a2be2;"></div>
+                        <div class="color-swatch" style="background-color: #ff69b4;"></div>
+                        <div class="color-swatch" style="background-color: #9932cc;"></div>
+                        <div class="color-swatch" style="background-color: #160035;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>berry burst</h3>
+                        <button class="apply-btn" data-theme="berry-burst">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="steel-blue">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #000d1a 0%, #001a33 100%);">
+                        <div class="color-swatch" style="background-color: #4682b4;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #5f9ea0;"></div>
+                        <div class="color-swatch" style="background-color: #001326;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>steel blue</h3>
+                        <button class="apply-btn" data-theme="steel-blue">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="honey-gold">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>honey gold</h3>
+                        <button class="apply-btn" data-theme="honey-gold">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="silver-moon">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);">
+                        <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background-color: #262626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>silver moon</h3>
+                        <button class="apply-btn" data-theme="silver-moon">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="emerald-city">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a0d 0%, #00331a 100%);">
+                        <div class="color-swatch" style="background-color: #50c878;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #3cb371;"></div>
+                        <div class="color-swatch" style="background-color: #002613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>emerald city</h3>
+                        <button class="apply-btn" data-theme="emerald-city">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="royal-purple">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d051a 0%, #1a0a35 100%);">
+                        <div class="color-swatch" style="background-color: #7851a9;"></div>
+                        <div class="color-swatch" style="background-color: #d4af37;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #140826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>royal purple</h3>
+                        <button class="apply-btn" data-theme="royal-purple">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="blood-orange">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0a00 0%, #331400 100%);">
+                        <div class="color-swatch" style="background-color: #ff5349;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ff6347;"></div>
+                        <div class="color-swatch" style="background-color: #261000;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>blood orange</h3>
+                        <button class="apply-btn" data-theme="blood-orange">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="deep-space">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #00051a 0%, #000a33 100%);">
+                        <div class="color-swatch" style="background-color: #4169e1;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #483d8b;"></div>
+                        <div class="color-swatch" style="background-color: #000826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>deep space</h3>
+                        <button class="apply-btn" data-theme="deep-space">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mocha-brown">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0d00 0%, #331a00 100%);">
+                        <div class="color-swatch" style="background-color: #a0522d;"></div>
+                        <div class="color-swatch" style="background-color: #d2b48c;"></div>
+                        <div class="color-swatch" style="background-color: #8b4513;"></div>
+                        <div class="color-swatch" style="background-color: #261300;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mocha brown</h3>
+                        <button class="apply-btn" data-theme="mocha-brown">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="peacock-blue">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a1d 0%, #00333a 100%);">
+                        <div class="color-swatch" style="background-color: #00a4b4;"></div>
+                        <div class="color-swatch" style="background-color: #ff7e00;"></div>
+                        <div class="color-swatch" style="background-color: #33a1c9;"></div>
+                        <div class="color-swatch" style="background-color: #00262b;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>peacock blue</h3>
+                        <button class="apply-btn" data-theme="peacock-blue">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="cherry-blossom">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #ffe6eb 0%, #ffccd5 100%);">
+                        <div class="color-swatch" style="background-color: #ffb7c5;"></div>
+                        <div class="color-swatch" style="background-color: #e75480;"></div>
+                        <div class="color-swatch" style="background-color: #ffccd5;"></div>
+                        <div class="color-swatch" style="background-color: #ffd9e0;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>cherry blossom</h3>
+                        <button class="apply-btn" data-theme="cherry-blossom">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="graphite-gray">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #414a4c;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>graphite gray</h3>
+                        <button class="apply-btn" data-theme="graphite-gray">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="lavender-haze">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d051a 0%, #1a0a35 100%);">
+                        <div class="color-swatch" style="background-color: #b57edc;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #d8bfd8;"></div>
+                        <div class="color-swatch" style="background-color: #140826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>lavender haze</h3>
+                        <button class="apply-btn" data-theme="lavender-haze">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mint-chocolate">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d1a0d 0%, #1a331a 100%);">
+                        <div class="color-swatch" style="background-color: #98ff98;"></div>
+                        <div class="color-swatch" style="background-color: #d2b48c;"></div>
+                        <div class="color-swatch" style="background-color: #aaf0d1;"></div>
+                        <div class="color-swatch" style="background-color: #132613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mint chocolate</h3>
+                        <button class="apply-btn" data-theme="mint-chocolate">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="sunflower-field">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffdb58;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>sunflower field</h3>
+                        <button class="apply-btn" data-theme="sunflower-field">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="tropical-sunset">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0000 0%, #330000 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b6b;"></div>
+                        <div class="color-swatch" style="background-color: #ffd166;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c8c;"></div>
+                        <div class="color-swatch" style="background-color: #260000;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>tropical sunset</h3>
+                        <button class="apply-btn" data-theme="tropical-sunset">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="berry-sorbet">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>berry sorbet</h3>
+                        <button class="apply-btn" data-theme="berry-sorbet">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="steel-gray">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #71797e;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>steel gray</h3>
+                        <button class="apply-btn" data-theme="steel-gray">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="honeycomb">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);">
+                        <div class="color-swatch" style="background-color: #d2b48c;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffebd9;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>honeycomb</h3>
+                        <button class="apply-btn" data-theme="honeycomb">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="silver-lining">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);">
+                        <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background-color: #262626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>silver lining</h3>
+                        <button class="apply-btn" data-theme="silver-lining">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="emerald-oasis">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a0d 0%, #00331a 100%);">
+                        <div class="color-swatch" style="background-color: #50c878;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #3cb371;"></div>
+                        <div class="color-swatch" style="background-color: #002613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>emerald oasis</h3>
+                        <button class="apply-btn" data-theme="emerald-oasis">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="royal-blue">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #00051a 0%, #000a33 100%);">
+                        <div class="color-swatch" style="background-color: #4169e1;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #1e90ff;"></div>
+                        <div class="color-swatch" style="background-color: #000826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>royal blue</h3>
+                        <button class="apply-btn" data-theme="royal-blue">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="blood-moon">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0009 0%, #330011 100%);">
+                        <div class="color-swatch" style="background-color: #e0115f;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ff1493;"></div>
+                        <div class="color-swatch" style="background-color: #26000d;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>blood moon</h3>
+                        <button class="apply-btn" data-theme="blood-moon">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="deep-sea">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #00051a 0%, #000a33 100%);">
+                        <div class="color-swatch" style="background-color: #0077be;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #1e90ff;"></div>
+                        <div class="color-swatch" style="background-color: #000826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>deep sea</h3>
+                        <button class="apply-btn" data-theme="deep-sea">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mocha-latte">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0d00 0%, #331a00 100%);">
+                        <div class="color-swatch" style="background-color: #a0522d;"></div>
+                        <div class="color-swatch" style="background-color: #d2b48c;"></div>
+                        <div class="color-swatch" style="background-color: #8b4513;"></div>
+                        <div class="color-swatch" style="background-color: #261300;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mocha latte</h3>
+                        <button class="apply-btn" data-theme="mocha-latte">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="peacock-plume">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a1d 0%, #00333a 100%);">
+                        <div class="color-swatch" style="background-color: #00a4b4;"></div>
+                        <div class="color-swatch" style="background-color: #ff7e00;"></div>
+                        <div class="color-swatch" style="background-color: #33a1c9;"></div>
+                        <div class="color-swatch" style="background-color: #00262b;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>peacock plume</h3>
+                        <button class="apply-btn" data-theme="peacock-plume">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="cherry-cola">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0009 0%, #330011 100%);">
+                        <div class="color-swatch" style="background-color: #e0115f;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ff1493;"></div>
+                        <div class="color-swatch" style="background-color: #26000d;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>cherry cola</h3>
+                        <button class="apply-btn" data-theme="cherry-cola">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="graphite-dark">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #414a4c;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>graphite dark</h3>
+                        <button class="apply-btn" data-theme="graphite-dark">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="lavender-twilight">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d051a 0%, #1a0a35 100%);">
+                        <div class="color-swatch" style="background-color: #b57edc;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #d8bfd8;"></div>
+                        <div class="color-swatch" style="background-color: #140826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>lavender twilight</h3>
+                        <button class="apply-btn" data-theme="lavender-twilight">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mint-julep">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffe6 0%, #ccffcc 100%);">
+                        <div class="color-swatch" style="background-color: #98ff98;"></div>
+                        <div class="color-swatch" style="background-color: #d2b48c;"></div>
+                        <div class="color-swatch" style="background-color: #aaf0d1;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffd1;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mint julep</h3>
+                        <button class="apply-btn" data-theme="mint-julep">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="sunflower-glow">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffdb58;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>sunflower glow</h3>
+                        <button class="apply-btn" data-theme="sunflower-glow">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="tropical-paradise">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffff 0%, #ccffff 100%);">
+                        <div class="color-swatch" style="background-color: #40e0d0;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c69;"></div>
+                        <div class="color-swatch" style="background-color: #48d1cc;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>tropical paradise</h3>
+                        <button class="apply-btn" data-theme="tropical-paradise">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="berry-delight">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>berry delight</h3>
+                        <button class="apply-btn" data-theme="berry-delight">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="steel-rain">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #71797e;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>steel rain</h3>
+                        <button class="apply-btn" data-theme="steel-rain">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="honey-drip">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>honey drip</h3>
+                        <button class="apply-btn" data-theme="honey-drip">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="silver-cloud">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);">
+                        <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background-color: #262626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>silver cloud</h3>
+                        <button class="apply-btn" data-theme="silver-cloud">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="emerald-forest">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a0d 0%, #00331a 100%);">
+                        <div class="color-swatch" style="background-color: #50c878;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #3cb371;"></div>
+                        <div class="color-swatch" style="background-color: #002613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>emerald forest</h3>
+                        <button class="apply-btn" data-theme="emerald-forest">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="royal-velvet">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d051a 0%, #1a0a35 100%);">
+                        <div class="color-swatch" style="background-color: #7851a9;"></div>
+                        <div class="color-swatch" style="background-color: #d4af37;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #140826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>royal velvet</h3>
+                        <button class="apply-btn" data-theme="royal-velvet">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="blood-ruby">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0009 0%, #330011 100%);">
+                        <div class="color-swatch" style="background-color: #e0115f;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ff1493;"></div>
+                        <div class="color-swatch" style="background-color: #26000d;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>blood ruby</h3>
+                        <button class="apply-btn" data-theme="blood-ruby">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="deep-void">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #000000;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #333333;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>deep void</h3>
+                        <button class="apply-btn" data-theme="deep-void">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mocha-cream">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);">
+                        <div class="color-swatch" style="background-color: #d2b48c;"></div>
+                        <div class="color-swatch" style="background-color: #a0522d;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffebd9;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mocha cream</h3>
+                        <button class="apply-btn" data-theme="mocha-cream">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="cherry-soda">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>cherry soda</h3>
+                        <button class="apply-btn" data-theme="cherry-soda">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="graphite-light">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6e6e6 0%, #cccccc 100%);">
+                        <div class="color-swatch" style="background-color: #71797e;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #d9d9d9;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>graphite light</h3>
+                        <button class="apply-btn" data-theme="graphite-light">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="lavender-mist">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #f5f0ff 0%, #e6ccff 100%);">
+                        <div class="color-swatch" style="background-color: #e6e6fa;"></div>
+                        <div class="color-swatch" style="background-color: #d8bfd8;"></div>
+                        <div class="color-swatch" style="background-color: #dda0dd;"></div>
+                        <div class="color-swatch" style="background-color: #ebd9ff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>lavender mist</h3>
+                        <button class="apply-btn" data-theme="lavender-mist">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mint-mojito">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffe6 0%, #ccffcc 100%);">
+                        <div class="color-swatch" style="background-color: #98ff98;"></div>
+                        <div class="color-swatch" style="background-color: #ffb347;"></div>
+                        <div class="color-swatch" style="background-color: #aaf0d1;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffd1;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mint mojito</h3>
+                        <button class="apply-btn" data-theme="mint-mojito">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="sunflower-ray">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffdb58;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>sunflower ray</h3>
+                        <button class="apply-btn" data-theme="sunflower-ray">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="tropical-breeze">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffff 0%, #ccffff 100%);">
+                        <div class="color-swatch" style="background-color: #40e0d0;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c69;"></div>
+                        <div class="color-swatch" style="background-color: #48d1cc;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>tropical breeze</h3>
+                        <button class="apply-btn" data-theme="tropical-breeze">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="berry-blast">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>berry blast</h3>
+                        <button class="apply-btn" data-theme="berry-blast">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="steel-fog">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #71797e;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>steel fog</h3>
+                        <button class="apply-btn" data-theme="steel-fog">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="honey-glaze">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>honey glaze</h3>
+                        <button class="apply-btn" data-theme="honey-glaze">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="silver-shadow">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);">
+                        <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background-color: #262626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>silver shadow</h3>
+                        <button class="apply-btn" data-theme="silver-shadow">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="emerald-garden">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a0d 0%, #00331a 100%);">
+                        <div class="color-swatch" style="background-color: #50c878;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #3cb371;"></div>
+                        <div class="color-swatch" style="background-color: #002613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>emerald garden</h3>
+                        <button class="apply-btn" data-theme="emerald-garden">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="royal-majesty">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d051a 0%, #1a0a35 100%);">
+                        <div class="color-swatch" style="background-color: #7851a9;"></div>
+                        <div class="color-swatch" style="background-color: #d4af37;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #140826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>royal majesty</h3>
+                        <button class="apply-btn" data-theme="royal-majesty">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="blood-crimson">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #dc143c;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #ff6347;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>blood crimson</h3>
+                        <button class="apply-btn" data-theme="blood-crimson">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="deep-myst">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #05001a 0%, #0a0033 100%);">
+                        <div class="color-swatch" style="background-color: #483d8b;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #6a5acd;"></div>
+                        <div class="color-swatch" style="background-color: #070026;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>deep myst</h3>
+                        <button class="apply-btn" data-theme="deep-myst">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mocha-frost">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);">
+                        <div class="color-swatch" style="background-color: #d2b48c;"></div>
+                        <div class="color-swatch" style="background-color: #a0522d;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffebd9;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mocha frost</h3>
+                        <button class="apply-btn" data-theme="mocha-frost">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="peacock-teal">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a1a 0%, #003333 100%);">
+                        <div class="color-swatch" style="background-color: #008080;"></div>
+                        <div class="color-swatch" style="background-color: #ff7e00;"></div>
+                        <div class="color-swatch" style="background-color: #20b2aa;"></div>
+                        <div class="color-swatch" style="background-color: #002626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>peacock teal</h3>
+                        <button class="apply-btn" data-theme="peacock-teal">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="cherry-ripe">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0009 0%, #330011 100%);">
+                        <div class="color-swatch" style="background-color: #e0115f;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ff1493;"></div>
+                        <div class="color-swatch" style="background-color: #26000d;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>cherry ripe</h3>
+                        <button class="apply-btn" data-theme="cherry-ripe">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="graphite-storm">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #414a4c;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>graphite storm</h3>
+                        <button class="apply-btn" data-theme="graphite-storm">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="lavender-dusk">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d051a 0%, #1a0a35 100%);">
+                        <div class="color-swatch" style="background-color: #b57edc;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #d8bfd8;"></div>
+                        <div class="color-swatch" style="background-color: #140826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>lavender dusk</h3>
+                        <button class="apply-btn" data-theme="lavender-dusk">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mint-frost">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffe6 0%, #ccffcc 100%);">
+                        <div class="color-swatch" style="background-color: #98ff98;"></div>
+                        <div class="color-swatch" style="background-color: #ffb347;"></div>
+                        <div class="color-swatch" style="background-color: #aaf0d1;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffd1;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mint frost</h3>
+                        <button class="apply-btn" data-theme="mint-frost">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="sunflower-sunset">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffdb58;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>sunflower sunset</h3>
+                        <button class="apply-btn" data-theme="sunflower-sunset">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="tropical-storm">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffff 0%, #ccffff 100%);">
+                        <div class="color-swatch" style="background-color: #40e0d0;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c69;"></div>
+                        <div class="color-swatch" style="background-color: #48d1cc;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>tropical storm</h3>
+                        <button class="apply-btn" data-theme="tropical-storm">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="berry-crush">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>berry crush</h3>
+                        <button class="apply-btn" data-theme="berry-crush">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="steel-thunder">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #71797e;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>steel thunder</h3>
+                        <button class="apply-btn" data-theme="steel-thunder">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="honey-sun">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>honey sun</h3>
+                        <button class="apply-btn" data-theme="honey-sun">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="silver-mist">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);">
+                        <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background-color: #262626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>silver mist</h3>
+                        <button class="apply-btn" data-theme="silver-mist">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="emerald-valley">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a0d 0%, #00331a 100%);">
+                        <div class="color-swatch" style="background-color: #50c878;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #3cb371;"></div>
+                        <div class="color-swatch" style="background-color: #002613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>emerald valley</h3>
+                        <button class="apply-btn" data-theme="emerald-valley">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="royal-crown">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d051a 0%, #1a0a35 100%);">
+                        <div class="color-swatch" style="background-color: #7851a9;"></div>
+                        <div class="color-swatch" style="background-color: #d4af37;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #140826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>royal crown</h3>
+                        <button class="apply-btn" data-theme="royal-crown">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="blood-rose">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0009 0%, #330011 100%);">
+                        <div class="color-swatch" style="background-color: #e0115f;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ff1493;"></div>
+                        <div class="color-swatch" style="background-color: #26000d;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>blood rose</h3>
+                        <button class="apply-btn" data-theme="blood-rose">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mocha-swirl">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);">
+                        <div class="color-swatch" style="background-color: #d2b48c;"></div>
+                        <div class="color-swatch" style="background-color: #a0522d;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffebd9;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mocha swirl</h3>
+                        <button class="apply-btn" data-theme="mocha-swirl">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="peacock-pride">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a1d 0%, #00333a 100%);">
+                        <div class="color-swatch" style="background-color: #00a4b4;"></div>
+                        <div class="color-swatch" style="background-color: #ff7e00;"></div>
+                        <div class="color-swatch" style="background-color: #33a1c9;"></div>
+                        <div class="color-swatch" style="background-color: #00262b;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>peacock pride</h3>
+                        <button class="apply-btn" data-theme="peacock-pride">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="cherry-charm">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>cherry charm</h3>
+                        <button class="apply-btn" data-theme="cherry-charm">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="graphite-smoke">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #414a4c;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>graphite smoke</h3>
+                        <button class="apply-btn" data-theme="graphite-smoke">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="lavender-whisper">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #f5f0ff 0%, #e6ccff 100%);">
+                        <div class="color-swatch" style="background-color: #e6e6fa;"></div>
+                        <div class="color-swatch" style="background-color: #d8bfd8;"></div>
+                        <div class="color-swatch" style="background-color: #dda0dd;"></div>
+                        <div class="color-swatch" style="background-color: #ebd9ff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>lavender whisper</h3>
+                        <button class="apply-btn" data-theme="lavender-whisper">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mint-breeze">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffe6 0%, #ccffcc 100%);">
+                        <div class="color-swatch" style="background-color: #98ff98;"></div>
+                        <div class="color-swatch" style="background-color: #ffb347;"></div>
+                        <div class="color-swatch" style="background-color: #aaf0d1;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffd1;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mint breeze</h3>
+                        <button class="apply-btn" data-theme="mint-breeze">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="sunflower-dream">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffdb58;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>sunflower dream</h3>
+                        <button class="apply-btn" data-theme="sunflower-dream">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="tropical-wave">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffff 0%, #ccffff 100%);">
+                        <div class="color-swatch" style="background-color: #40e0d0;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c69;"></div>
+                        <div class="color-swatch" style="background-color: #48d1cc;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>tropical wave</h3>
+                        <button class="apply-btn" data-theme="tropical-wave">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="berry-fizz">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>berry fizz</h3>
+                        <button class="apply-btn" data-theme="berry-fizz">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="steel-dawn">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #71797e;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>steel dawn</h3>
+                        <button class="apply-btn" data-theme="steel-dawn">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="honey-comb">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>honey comb</h3>
+                        <button class="apply-btn" data-theme="honey-comb">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="silver-frost">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);">
+                        <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background-color: #262626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>silver frost</h3>
+                        <button class="apply-btn" data-theme="silver-frost">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="emerald-spring">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a0d 0%, #00331a 100%);">
+                        <div class="color-swatch" style="background-color: #50c878;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #3cb371;"></div>
+                        <div class="color-swatch" style="background-color: #002613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>emerald spring</h3>
+                        <button class="apply-btn" data-theme="emerald-spring">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="royal-scepter">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d051a 0%, #1a0a35 100%);">
+                        <div class="color-swatch" style="background-color: #7851a9;"></div>
+                        <div class="color-swatch" style="background-color: #d4af37;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #140826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>royal scepter</h3>
+                        <button class="apply-btn" data-theme="royal-scepter">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="blood-velvet">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0000 0%, #330000 100%);">
+                        <div class="color-swatch" style="background-color: #800020;"></div>
+                        <div class="color-swatch" style="background-color: #d4af37;"></div>
+                        <div class="color-swatch" style="background-color: #a52a2a;"></div>
+                        <div class="color-swatch" style="background-color: #260000;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>blood velvet</h3>
+                        <button class="apply-btn" data-theme="blood-velvet">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="deep-echo">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #05001a 0%, #0a0033 100%);">
+                        <div class="color-swatch" style="background-color: #483d8b;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #6a5acd;"></div>
+                        <div class="color-swatch" style="background-color: #070026;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>deep echo</h3>
+                        <button class="apply-btn" data-theme="deep-echo">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mocha-magic">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);">
+                        <div class="color-swatch" style="background-color: #d2b48c;"></div>
+                        <div class="color-swatch" style="background-color: #a0522d;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffebd9;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mocha magic</h3>
+                        <button class="apply-btn" data-theme="mocha-magic">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="peacock-feather">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a1d 0%, #00333a 100%);">
+                        <div class="color-swatch" style="background-color: #00a4b4;"></div>
+                        <div class="color-swatch" style="background-color: #ff7e00;"></div>
+                        <div class="color-swatch" style="background-color: #33a1c9;"></div>
+                        <div class="color-swatch" style="background-color: #00262b;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>peacock feather</h3>
+                        <button class="apply-btn" data-theme="peacock-feather">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="cherry-kiss">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>cherry kiss</h3>
+                        <button class="apply-btn" data-theme="cherry-kiss">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="graphite-void">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #414a4c;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>graphite void</h3>
+                        <button class="apply-btn" data-theme="graphite-void">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="lavender-serenity">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #f5f0ff 0%, #e6ccff 100%);">
+                        <div class="color-swatch" style="background-color: #e6e6fa;"></div>
+                        <div class="color-swatch" style="background-color: #d8bfd8;"></div>
+                        <div class="color-swatch" style="background-color: #dda0dd;"></div>
+                        <div class="color-swatch" style="background-color: #ebd9ff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>lavender serenity</h3>
+                        <button class="apply-btn" data-theme="lavender-serenity">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mint-sparkle">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffe6 0%, #ccffcc 100%);">
+                        <div class="color-swatch" style="background-color: #98ff98;"></div>
+                        <div class="color-swatch" style="background-color: #ffb347;"></div>
+                        <div class="color-swatch" style="background-color: #aaf0d1;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffd1;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mint sparkle</h3>
+                        <button class="apply-btn" data-theme="mint-sparkle">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="sunflower-radiance">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffdb58;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>sunflower radiance</h3>
+                        <button class="apply-btn" data-theme="sunflower-radiance">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="tropical-vibe">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffff 0%, #ccffff 100%);">
+                        <div class="color-swatch" style="background-color: #40e0d0;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c69;"></div>
+                        <div class="color-swatch" style="background-color: #48d1cc;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>tropical vibe</h3>
+                        <button class="apply-btn" data-theme="tropical-vibe">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="berry-splash">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>berry splash</h3>
+                        <button class="apply-btn" data-theme="berry-splash">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="steel-horizon">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #71797e;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>steel horizon</h3>
+                        <button class="apply-btn" data-theme="steel-horizon">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="honey-drop">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>honey drop</h3>
+                        <button class="apply-btn" data-theme="honey-drop">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="silver-breeze">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);">
+                        <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background-color: #262626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>silver breeze</h3>
+                        <button class="apply-btn" data-theme="silver-breeze">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="emerald-rain">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a0d 0%, #00331a 100%);">
+                        <div class="color-swatch" style="background-color: #50c878;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #3cb371;"></div>
+                        <div class="color-swatch" style="background-color: #002613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>emerald rain</h3>
+                        <button class="apply-btn" data-theme="emerald-rain">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="royal-orb">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d051a 0%, #1a0a35 100%);">
+                        <div class="color-swatch" style="background-color: #7851a9;"></div>
+                        <div class="color-swatch" style="background-color: #d4af37;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #140826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>royal orb</h3>
+                        <button class="apply-btn" data-theme="royal-orb">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="blood-shadow">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0000 0%, #330000 100%);">
+                        <div class="color-swatch" style="background-color: #800020;"></div>
+                        <div class="color-swatch" style="background-color: #d4af37;"></div>
+                        <div class="color-swatch" style="background-color: #a52a2a;"></div>
+                        <div class="color-swatch" style="background-color: #260000;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>blood shadow</h3>
+                        <button class="apply-btn" data-theme="blood-shadow">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="deep-whisper">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #05001a 0%, #0a0033 100%);">
+                        <div class="color-swatch" style="background-color: #483d8b;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #6a5acd;"></div>
+                        <div class="color-swatch" style="background-color: #070026;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>deep whisper</h3>
+                        <button class="apply-btn" data-theme="deep-whisper">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mocha-bliss">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);">
+                        <div class="color-swatch" style="background-color: #d2b48c;"></div>
+                        <div class="color-swatch" style="background-color: #a0522d;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffebd9;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mocha bliss</h3>
+                        <button class="apply-btn" data-theme="mocha-bliss">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="peacock-splash">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a1d 0%, #00333a 100%);">
+                        <div class="color-swatch" style="background-color: #00a4b4;"></div>
+                        <div class="color-swatch" style="background-color: #ff7e00;"></div>
+                        <div class="color-swatch" style="background-color: #33a1c9;"></div>
+                        <div class="color-swatch" style="background-color: #00262b;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>peacock splash</h3>
+                        <button class="apply-btn" data-theme="peacock-splash">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="cherry-blush">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>cherry blush</h3>
+                        <button class="apply-btn" data-theme="cherry-blush">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="graphite-ash">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #414a4c;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>graphite ash</h3>
+                        <button class="apply-btn" data-theme="graphite-ash">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mint-fizz">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffe6 0%, #ccffcc 100%);">
+                        <div class="color-swatch" style="background-color: #98ff98;"></div>
+                        <div class="color-swatch" style="background-color: #ffb347;"></div>
+                        <div class="color-swatch" style="background-color: #aaf0d1;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffd1;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mint fizz</h3>
+                        <button class="apply-btn" data-theme="mint-fizz">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="sunflower-beams">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffdb58;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>sunflower beams</h3>
+                        <button class="apply-btn" data-theme="sunflower-beams">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="tropical-punch">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffff 0%, #ccffff 100%);">
+                        <div class="color-swatch" style="background-color: #40e0d0;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c69;"></div>
+                        <div class="color-swatch" style="background-color: #48d1cc;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>tropical punch</h3>
+                        <button class="apply-btn" data-theme="tropical-punch">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="berry-sunset">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>berry sunset</h3>
+                        <button class="apply-btn" data-theme="berry-sunset">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="steel-veil">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #71797e;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>steel veil</h3>
+                        <button class="apply-btn" data-theme="steel-veil">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="honey-amber">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>honey amber</h3>
+                        <button class="apply-btn" data-theme="honey-amber">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="silver-dust">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);">
+                        <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background-color: #262626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>silver dust</h3>
+                        <button class="apply-btn" data-theme="silver-dust">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="emerald-canopy">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a0d 0%, #00331a 100%);">
+                        <div class="color-swatch" style="background-color: #50c878;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #3cb371;"></div>
+                        <div class="color-swatch" style="background-color: #002613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>emerald canopy</h3>
+                        <button class="apply-btn" data-theme="emerald-canopy">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="royal-jewel">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0d051a 0%, #1a0a35 100%);">
+                        <div class="color-swatch" style="background-color: #7851a9;"></div>
+                        <div class="color-swatch" style="background-color: #d4af37;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #140826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>royal jewel</h3>
+                        <button class="apply-btn" data-theme="royal-jewel">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="blood-night">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0000 0%, #330000 100%);">
+                        <div class="color-swatch" style="background-color: #800020;"></div>
+                        <div class="color-swatch" style="background-color: #d4af37;"></div>
+                        <div class="color-swatch" style="background-color: #a52a2a;"></div>
+                        <div class="color-swatch" style="background-color: #260000;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>blood night</h3>
+                        <button class="apply-btn" data-theme="blood-night">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="deep-silence">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #05001a 0%, #0a0033 100%);">
+                        <div class="color-swatch" style="background-color: #483d8b;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #6a5acd;"></div>
+                        <div class="color-swatch" style="background-color: #070026;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>deep silence</h3>
+                        <button class="apply-btn" data-theme="deep-silence">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mocha-delight">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);">
+                        <div class="color-swatch" style="background-color: #d2b48c;"></div>
+                        <div class="color-swatch" style="background-color: #a0522d;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffebd9;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mocha delight</h3>
+                        <button class="apply-btn" data-theme="mocha-delight">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="peacock-glory">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a1d 0%, #00333a 100%);">
+                        <div class="color-swatch" style="background-color: #00a4b4;"></div>
+                        <div class="color-swatch" style="background-color: #ff7e00;"></div>
+                        <div class="color-swatch" style="background-color: #33a1c9;"></div>
+                        <div class="color-swatch" style="background-color: #00262b;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>peacock glory</h3>
+                        <button class="apply-btn" data-theme="peacock-glory">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="cherry-dawn">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>cherry dawn</h3>
+                        <button class="apply-btn" data-theme="cherry-dawn">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="graphite-ember">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #414a4c;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>graphite ember</h3>
+                        <button class="apply-btn" data-theme="graphite-ember">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="lavender-moon">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #f5f0ff 0%, #e6ccff 100%);">
+                        <div class="color-swatch" style="background-color: #e6e6fa;"></div>
+                        <div class="color-swatch" style="background-color: #d8bfd8;"></div>
+                        <div class="color-swatch" style="background-color: #dda0dd;"></div>
+                        <div class="color-swatch" style="background-color: #ebd9ff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>lavender moon</h3>
+                        <button class="apply-btn" data-theme="lavender-moon">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mint-zephyr">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffe6 0%, #ccffcc 100%);">
+                        <div class="color-swatch" style="background-color: #98ff98;"></div>
+                        <div class="color-swatch" style="background-color: #ffb347;"></div>
+                        <div class="color-swatch" style="background-color: #aaf0d1;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffd1;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mint zephyr</h3>
+                        <button class="apply-btn" data-theme="mint-zephyr">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="tropical-sun">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffff 0%, #ccffff 100%);">
+                        <div class="color-swatch" style="background-color: #40e0d0;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c69;"></div>
+                        <div class="color-swatch" style="background-color: #48d1cc;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>tropical sun</h3>
+                        <button class="apply-btn" data-theme="tropical-sun">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="berry-mist">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>berry mist</h3>
+                        <button class="apply-btn" data-theme="berry-mist">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="steel-iron">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #71797e;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>steel iron</h3>
+                        <button class="apply-btn" data-theme="steel-iron">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="honey-sunshine">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>honey sunshine</h3>
+                        <button class="apply-btn" data-theme="honey-sunshine">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="silver-mirror">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);">
+                        <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background-color: #262626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>silver mirror</h3>
+                        <button class="apply-btn" data-theme="silver-mirror">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="emerald-glade">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a0d 0%, #00331a 100%);">
+                        <div class="color-swatch" style="background-color: #50c878;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #3cb371;"></div>
+                        <div class="color-swatch" style="background-color: #002613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>emerald glade</h3>
+                        <button class="apply-btn" data-theme="emerald-glade">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="royal-sapphire">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #00051a 0%, #000a33 100%);">
+                        <div class="color-swatch" style="background-color: #4169e1;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #1e90ff;"></div>
+                        <div class="color-swatch" style="background-color: #000826;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>royal sapphire</h3>
+                        <button class="apply-btn" data-theme="royal-sapphire">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="deep-ocean">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #00001a 0%, #000033 100%);">
+                        <div class="color-swatch" style="background-color: #000080;"></div>
+                        <div class="color-swatch" style="background-color: #00ffff;"></div>
+                        <div class="color-swatch" style="background-color: #0000cd;"></div>
+                        <div class="color-swatch" style="background-color: #000026;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>deep ocean</h3>
+                        <button class="apply-btn" data-theme="deep-ocean">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mocha-caramel">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);">
+                        <div class="color-swatch" style="background-color: #d2b48c;"></div>
+                        <div class="color-swatch" style="background-color: #a0522d;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffebd9;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mocha caramel</h3>
+                        <button class="apply-btn" data-theme="mocha-caramel">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="peacock-majesty">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a1d 0%, #00333a 100%);">
+                        <div class="color-swatch" style="background-color: #00a4b4;"></div>
+                        <div class="color-swatch" style="background-color: #ff7e00;"></div>
+                        <div class="color-swatch" style="background-color: #33a1c9;"></div>
+                        <div class="color-swatch" style="background-color: #00262b;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>peacock majesty</h3>
+                        <button class="apply-btn" data-theme="peacock-majesty">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="cherry-rose">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>cherry rose</h3>
+                        <button class="apply-btn" data-theme="cherry-rose">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="graphite-night">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #414a4c;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>graphite night</h3>
+                        <button class="apply-btn" data-theme="graphite-night">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="lavender-sky">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #f5f0ff 0%, #e6ccff 100%);">
+                        <div class="color-swatch" style="background-color: #e6e6fa;"></div>
+                        <div class="color-swatch" style="background-color: #d8bfd8;"></div>
+                        <div class="color-swatch" style="background-color: #dda0dd;"></div>
+                        <div class="color-swatch" style="background-color: #ebd9ff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>lavender sky</h3>
+                        <button class="apply-btn" data-theme="lavender-sky">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mint-frosting">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffe6 0%, #ccffcc 100%);">
+                        <div class="color-swatch" style="background-color: #98ff98;"></div>
+                        <div class="color-swatch" style="background-color: #ffb347;"></div>
+                        <div class="color-swatch" style="background-color: #aaf0d1;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffd1;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mint frosting</h3>
+                        <button class="apply-btn" data-theme="mint-frosting">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="sunflower-burst">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffdb58;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>sunflower burst</h3>
+                        <button class="apply-btn" data-theme="sunflower-burst">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="tropical-rain">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffff 0%, #ccffff 100%);">
+                        <div class="color-swatch" style="background-color: #40e0d0;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c69;"></div>
+                        <div class="color-swatch" style="background-color: #48d1cc;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>tropical rain</h3>
+                        <button class="apply-btn" data-theme="tropical-rain">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="berry-sunrise">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>berry sunrise</h3>
+                        <button class="apply-btn" data-theme="berry-sunrise">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="steel-cloud">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #71797e;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>steel cloud</h3>
+                        <button class="apply-btn" data-theme="steel-cloud">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="honey-glow">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>honey glow</h3>
+                        <button class="apply-btn" data-theme="honey-glow">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="silver-gleam">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);">
+                        <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background-color: #262626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>silver gleam</h3>
+                        <button class="apply-btn" data-theme="silver-gleam">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="emerald-haven">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a0d 0%, #00331a 100%);">
+                        <div class="color-swatch" style="background-color: #50c878;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #3cb371;"></div>
+                        <div class="color-swatch" style="background-color: #002613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>emerald haven</h3>
+                        <button class="apply-btn" data-theme="emerald-haven">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="royal-emerald">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a0d 0%, #00331a 100%);">
+                        <div class="color-swatch" style="background-color: #50c878;"></div>
+                        <div class="color-swatch" style="background-color: #d4af37;"></div>
+                        <div class="color-swatch" style="background-color: #3cb371;"></div>
+                        <div class="color-swatch" style="background-color: #002613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>royal emerald</h3>
+                        <button class="apply-btn" data-theme="royal-emerald">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="blood-sunset">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0009 0%, #330011 100%);">
+                        <div class="color-swatch" style="background-color: #e0115f;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ff1493;"></div>
+                        <div class="color-swatch" style="background-color: #26000d;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>blood sunset</h3>
+                        <button class="apply-btn" data-theme="blood-sunset">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="deep-mystic">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #05001a 0%, #0a0033 100%);">
+                        <div class="color-swatch" style="background-color: #483d8b;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #6a5acd;"></div>
+                        <div class="color-swatch" style="background-color: #070026;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>deep mystic</h3>
+                        <button class="apply-btn" data-theme="deep-mystic">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mocha-vanilla">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);">
+                        <div class="color-swatch" style="background-color: #d2b48c;"></div>
+                        <div class="color-swatch" style="background-color: #a0522d;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffebd9;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mocha vanilla</h3>
+                        <button class="apply-btn" data-theme="mocha-vanilla">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="peacock-radiance">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a1d 0%, #00333a 100%);">
+                        <div class="color-swatch" style="background-color: #00a4b4;"></div>
+                        <div class="color-swatch" style="background-color: #ff7e00;"></div>
+                        <div class="color-swatch" style="background-color: #33a1c9;"></div>
+                        <div class="color-swatch" style="background-color: #00262b;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>peacock radiance</h3>
+                        <button class="apply-btn" data-theme="peacock-radiance">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="cherry-berry">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>cherry berry</h3>
+                        <button class="apply-btn" data-theme="cherry-berry">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="graphite-steel">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #414a4c;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>graphite steel</h3>
+                        <button class="apply-btn" data-theme="graphite-steel">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mint-ice">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffe6 0%, #ccffcc 100%);">
+                        <div class="color-swatch" style="background-color: #98ff98;"></div>
+                        <div class="color-swatch" style="background-color: #ffb347;"></div>
+                        <div class="color-swatch" style="background-color: #aaf0d1;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffd1;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mint ice</h3>
+                        <button class="apply-btn" data-theme="mint-ice">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="sunflower-light">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffdb58;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>sunflower light</h3>
+                        <button class="apply-btn" data-theme="sunflower-light">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="tropical-burst">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffff 0%, #ccffff 100%);">
+                        <div class="color-swatch" style="background-color: #40e0d0;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c69;"></div>
+                        <div class="color-swatch" style="background-color: #48d1cc;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>tropical burst</h3>
+                        <button class="apply-btn" data-theme="tropical-burst">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="berry-rose">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>berry rose</h3>
+                        <button class="apply-btn" data-theme="berry-rose">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="honey-sweet">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>honey sweet</h3>
+                        <button class="apply-btn" data-theme="honey-sweet">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="silver-glint">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);">
+                        <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background-color: #262626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>silver glint</h3>
+                        <button class="apply-btn" data-theme="silver-glint">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="emerald-peak">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a0d 0%, #00331a 100%);">
+                        <div class="color-swatch" style="background-color: #50c878;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #3cb371;"></div>
+                        <div class="color-swatch" style="background-color: #002613;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>emerald peak</h3>
+                        <button class="apply-btn" data-theme="emerald-peak">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="blood-dark">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0000 0%, #330000 100%);">
+                        <div class="color-swatch" style="background-color: #800020;"></div>
+                        <div class="color-swatch" style="background-color: #d4af37;"></div>
+                        <div class="color-swatch" style="background-color: #a52a2a;"></div>
+                        <div class="color-swatch" style="background-color: #260000;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>blood dark</h3>
+                        <button class="apply-btn" data-theme="blood-dark">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="deep-azure">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #00001a 0%, #000033 100%);">
+                        <div class="color-swatch" style="background-color: #000080;"></div>
+                        <div class="color-swatch" style="background-color: #00ffff;"></div>
+                        <div class="color-swatch" style="background-color: #0000cd;"></div>
+                        <div class="color-swatch" style="background-color: #000026;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>deep azure</h3>
+                        <button class="apply-btn" data-theme="deep-azure">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="peacock-splendor">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #001a1d 0%, #00333a 100%);">
+                        <div class="color-swatch" style="background-color: #00a4b4;"></div>
+                        <div class="color-swatch" style="background-color: #ff7e00;"></div>
+                        <div class="color-swatch" style="background-color: #33a1c9;"></div>
+                        <div class="color-swatch" style="background-color: #00262b;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>peacock splendor</h3>
+                        <button class="apply-btn" data-theme="peacock-splendor">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="cherry-bliss">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>cherry bliss</h3>
+                        <button class="apply-btn" data-theme="cherry-bliss">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="graphite-sliver">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #414a4c;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>graphite sliver</h3>
+                        <button class="apply-btn" data-theme="graphite-sliver">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="lavender-hush">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #f5f0ff 0%, #e6ccff 100%);">
+                        <div class="color-swatch" style="background-color: #e6e6fa;"></div>
+                        <div class="color-swatch" style="background-color: #d8bfd8;"></div>
+                        <div class="color-swatch" style="background-color: #dda0dd;"></div>
+                        <div class="color-swatch" style="background-color: #ebd9ff;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>lavender hush</h3>
+                        <button class="apply-btn" data-theme="lavender-hush">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="mint-chill">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #e6ffe6 0%, #ccffcc 100%);">
+                        <div class="color-swatch" style="background-color: #98ff98;"></div>
+                        <div class="color-swatch" style="background-color: #ffb347;"></div>
+                        <div class="color-swatch" style="background-color: #aaf0d1;"></div>
+                        <div class="color-swatch" style="background-color: #d1ffd1;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>mint chill</h3>
+                        <button class="apply-btn" data-theme="mint-chill">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="sunflower-spark">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffdb58;"></div>
+                        <div class="color-swatch" style="background-color: #ff8c00;"></div>
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>sunflower spark</h3>
+                        <button class="apply-btn" data-theme="sunflower-spark">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="berry-rush">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a0005 0%, #33000a 100%);">
+                        <div class="color-swatch" style="background-color: #ff6b8b;"></div>
+                        <div class="color-swatch" style="background-color: #9370db;"></div>
+                        <div class="color-swatch" style="background-color: #ff8da1;"></div>
+                        <div class="color-swatch" style="background-color: #260008;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>berry rush</h3>
+                        <button class="apply-btn" data-theme="berry-rush">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="steel-frost">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);">
+                        <div class="color-swatch" style="background-color: #71797e;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #708090;"></div>
+                        <div class="color-swatch" style="background-color: #121212;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>steel frost</h3>
+                        <button class="apply-btn" data-theme="steel-frost">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="honey-warm">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #fffae6 0%, #ffe6b3 100%);">
+                        <div class="color-swatch" style="background-color: #ffd700;"></div>
+                        <div class="color-swatch" style="background-color: #cd853f;"></div>
+                        <div class="color-swatch" style="background-color: #ffa500;"></div>
+                        <div class="color-swatch" style="background-color: #fff0cc;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>honey warm</h3>
+                        <button class="apply-btn" data-theme="honey-warm">Apply</button>
+                    </div>
+                </div>
+
+
+                <div class="theme-card" data-theme="silver-shine">
+                    <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);">
+                        <div class="color-swatch" style="background-color: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background-color: #a9a9a9;"></div>
+                        <div class="color-swatch" style="background-color: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background-color: #262626;"></div>
+                    </div>
+                    <div class="theme-info">
+                        <h3>silver shine</h3>
+                        <button class="apply-btn" data-theme="silver-shine">Apply</button>
+                    </div>
+                </div>
+
+
+        </div>
+
+        <div class="theme-actions">
+            <button id="reset-theme" class="reset-btn">
+                <i class="fas fa-undo"></i> Reset to Default
+            </button>
+        </div>
+    </div>
+    <footer>
+
+        <div class="leftright">
+            <div class="left">
+                <a class="textButton" id="contactPopupButton" href="/contact">
+                    <i class="fas fa-fw fa-envelope"></i>
+                    <div class="text">Contact</div>
+                </a>
+                <a id="supportMeButton" class="textButton" href="/feedback">
+                    <i class="fa-solid fa-comment"></i>
+                    <div class="text">Feedback</div>
+                </a>
+                <a href="https://github.com/lokesh8577" class="textButton" target="_blank" rel="noreferrer noopener">
+                    <i class="fas fa-fw fa-code"></i>
+                    <div class="text">Github</div>
+                </a>
+                <a href="https://www.linkedin.com/in/lokesh-prajapat-354756279/" class="textButton" target="_blank"
+                    rel="noreferrer noopener">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <div class="text">Linkedin</div>
+                </a>
+                <a href="https://x.com/Lokesh85772" class="textButton" target="_blank" rel="noreferrer noopener">
+                    <i class="fa-brands fa-twitter"></i>
+                    <div class="text">Twitter</div>
+                </a>
+                <a href="https://www.instagram.com/lokesh_prajapat_m5_cs/" class="textButton" target="_blank"
+                    rel="noreferrer noopener">
+                    <i class="fa-brands fa-instagram"></i>
+                    <div class="text">Instagram</div>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61575659804732" class="textButton" target="_blank"
+                    rel="noreferrer noopener">
+                    <i class="fa-brands fa-facebook"></i>
+                    <div class="text">Facebook</div>
+                </a>
+                <a href="/terms" class="textButton" target="_blank" rel="noreferrer noopener">
+                    <i class="fas fa-fw fa-file-contract"></i>
+                    <div class="text">Terms</div>
+                </a>
+                <a href="/security" class="textButton" target="_blank" rel="noreferrer noopener">
+                    <i class="fas fa-fw fa-shield-alt"></i>
+                    <div class="text">Security</div>
+                </a>
+                <a href="/privacy" class="textButton" target="_blank" rel="noreferrer noopener">
+                    <i class="fas fa-fw fa-lock"></i>
+                    <div class="text">Privacy</div>
+                </a>
+            </div>
+            <div class="right">
+                <button class="current-theme textButton" aria-label="Shift-click to toggle custom theme">
+                    <div class="icon">
+                        <i class="fas fa-star favIndicator"></i>
+                        <i class="fas fa-fw fa-palette"></i>
+                    </div>
+                </button>
+                <button class="currentVersion textButton">
+                    <i class="fas fa-fw fa-code-branch"></i>
+                    <div class="text">v1.0.1</div>
+                    <key id="newVersionIndicator" class="hidden">new</key>
+                </button>
+            </div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</body>
+
+</html>

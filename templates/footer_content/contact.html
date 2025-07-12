@@ -2,45 +2,303 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>snake</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/snake.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>contact</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    .modern-contact-section {
+      background: var(--bg-color);
+      color: var(--text-color);
+      padding-top: 100px;
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .contact-content {
+      max-width: 1200px;
+      z-index: 1;
+      margin: 0 auto;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      color: var(--primary-color);
+    }
+
+
+    .highlight {
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-color);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 6rem;
+    }
+
+    .modern-contact-form {
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+      gap: 2rem;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 2rem;
+      z-index: 1;
+    }
+
+    .form-group {
+      position: relative;
+      flex: 1;
+      z-index: 1;
+    }
+
+    .form-group.floating {
+      padding-top: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--primary-color);
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-group label {
+      position: absolute;
+      top: 2rem;
+      left: 0;
+      color: var(--primary-color);
+      pointer-events: none;
+      transition: all 0.3s;
+    }
+
+    .form-group .underline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      transition: width 0.4s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+    }
+
+    .form-group input:focus+label,
+    .form-group textarea:focus+label,
+    .form-group input:not(:placeholder-shown)+label,
+    .form-group textarea:not(:placeholder-shown)+label {
+      top: 0;
+      font-size: 0.9rem;
+      color: var(--primary-color);
+    }
+
+    .form-group input:focus~.underline,
+    .form-group textarea:focus~.underline {
+      width: 100%;
+    }
+
+    .glowing-btn {
+      position: relative;
+      background: var(--bg-color);
+      color: var(--text-color);
+      border: 2px solid var(--primary-color);
+      padding: 1.2rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      overflow: hidden;
+      align-self: flex-start;
+      z-index: 1;
+    }
+
+    .glowing-btn span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .glowing-btn .glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-color);
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: 1;
+    }
+
+    .glowing-btn:hover .glow {
+      opacity: 1;
+    }
+
+    .glowing-btn:hover {
+      transform: translateY(-3px);
+      background: var(--accent-color);
+    }
+
+    .quick-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      margin-left: 30%;
+
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .icon-circle {
+      width: 60px;
+      height: 60px;
+      background: black;
+      border: 2px solid var(--border-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+
+    .contact-method:hover .icon-circle {
+      background: var(--primary-color);
+      color: var(--text-color);
+      transform: scale(1.1);
+    }
+
+    .contact-info h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .contact-info a {
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-info a:hover {
+      color: var(--accent-color);
+    }
+
+    .social-links h3 {
+      margin-bottom: 1.5rem;
+      color: var(--text-color);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    .social-icon {
+      width: 45px;
+      height: 45px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+
+    .social-icon:hover {
+      background: var(--primary-color);
+      transform: translateY(-5px);
+      color: var(--text-color);
+      box-shadow: 0 5px 15px var(--border-color);
+    }
+
+    @media (max-width: 992px) {
+      .contact-body {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .quick-contact {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2.5rem;
+      }
+
+      .form-row {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
-    <div id="selection-screen">
-         <div id="snake-engine"></div>
-    
-    <!-- Enhanced Quantum Field -->
-    <div class="quantum-field"></div>
-    
-    <!-- Centered Selection Box -->
-    <div class="selection-box">
-        <h2>Snake Game</h2>
-        <p>Select your control method:</p>
-        
-        <div class="control-options">
-            <button class="control-option" id="keyboard-btn">
-                <i class="fas fa-keyboard"></i>
-                Keyboard
-            </button>
-            
-            <button class="control-option" id="gesture-btn">
-                <i class="fas fa-hand-paper"></i>
-                Hand Gestures
-            </button>
-        </div>
-    </div>
-    </div>
-
-    <div id="game-content" class="hidden">
-
-        <!--header-->
-        <header class="main-header">
+   <header class="main-header">
             <div class="header-container">
                 <div class="logo-section">
                     <a class="header-logo" href="/">
@@ -152,125 +410,86 @@
                 </button>
             </div>
         </header>
+  <section id="contact" class="modern-contact-section">
+    <div class="contact-content">
+      <div class="contact-header">
+        <h2 data-aos="zoom-in" data-aos-duration="1000" class="section-title-contact">Let's <span
+            class="ds-skills-highlighted">Connect</span></h2>
+        <p data-aos="zoom-in" data-aos-duration="1000" class="section-subtitle">Get in touch for collaborations or just
+          to say hello</p>
+      </div>
 
-        <!--game container-->
-        <div class="main-container">
-            <div class="leaderboard">
-                <h2><i class="fas fa-trophy"></i> Leaderboard</h2>
-                <div class="mode-selector">
-                    <button class="mode-btn active" data-mode="keyboard">
-                        <i class="fas fa-keyboard"></i> Keyboard
-                    </button>
-                    <button class="mode-btn" data-mode="gesture">
-                        <i class="fas fa-hand-paper"></i> Gesture
-                    </button>
-                </div>
-                <div class="leaderboard-content">
-                    <div class="leaderboard-header">
-                        <span class="rank-header">Rank</span>
-                        <span class="name-header" style="padding-left: 15px;">Player</span>
-                        <span class="score-header">Score</span>
-                    </div>
-                    <ol id="leaderboard-list">
-                        <li class="loading">Loading leaderboard...</li>
-                    </ol>
-                </div>
-                <div class="leaderboard-footer" style="display: none;">
-                    <span id="leaderboard-status"></span>
-                </div>
+      <div class="contact-body">
+        <!-- Left Side: Contact Form -->
+        <form class="modern-contact-form" action="https://formspree.io/f/xjkynvee" method="POST">
+          <div class="form-row">
+            <div data-aos="fade-up" data-aos-delay="500" class="form-group floating">
+              <input type="text" id="modern-name" name="name" required>
+              <label for="modern-name">Your Name</label>
+              <div class="underline"></div>
             </div>
-
-            <div class="game-board-container">
-                <div class="game-board">
-                    <canvas id="game-canvas"></canvas>
-                    <div class="game-over" id="game-over">
-                        <div class="snake-over-container">
-                               
-                            </div>
-                             <div class="over-content">
-                                <h2>Game <span class="snake-text">Over</span> !</h2>
-                                <button id="restart-btn">
-                                <span>Play Again</span>
-                                  <i class="fa-brands fa-python snake-icon"></i>
-                                </button>
-                             </div>
-                             </div>
-                    <div id="game-start" class="game-start">
-                <div class="snake-container">
-                    <!-- Snake will be generated via CSS -->
-                    </div>
-                <div class="content">
-                    <h2>Welcome to the <span class="snake-text">Snake</span> Game</h2>
-                    <button id="start-btn">
-                            <span>Start Game</span>
-                    <i class="fa-brands fa-python snake-icon"></i>
-                </button>
-                 </div>
-             </div>
-                </div>
-
+            <div data-aos="fade-up" data-aos-delay="600" class="form-group floating">
+              <input type="email" id="modern-email" name="email" required>
+              <label for="modern-email">Your Email</label>
+              <div class="underline"></div>
             </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="700" class="form-group floating">
+            <textarea id="modern-message" name="message" rows="4" required></textarea>
+            <label for="modern-message">Your Message</label>
+            <div class="underline"></div>
+          </div>
+          <input type="hidden" name="_subject" value="New contact form submission">
+          <input type="hidden" name="_replyto" value="">
+          <button data-aos="fade-up" data-aos-delay="800" type="submit" class="glowing-btn">
+            <span>Send Message</span>
+            <div class="glow"></div>
+          </button>
+        </form>
 
-
-            <div class="score_board">
-                <h2><i class="fas fa-star"></i> Score</h2>
-                <div id="score-display">0</div> <!-- Changed class to id -->
-                <div class="high_score">High Score: <span id="high-score-display">0</span></div> <!-- Added id -->
+        <!-- Right Side: Quick Contact -->
+        <div class="quick-contact">
+          <div data-aos="fade-up" data-aos-delay="1000" class="contact-method">
+            <div class="icon-circle">
+              <i class="fas fa-envelope"></i>
             </div>
-
-
-            <div id="camera-section" class="camera hidden">
-                <h2><i class="fa-solid fa-camera"></i>Gesture</h2>
-                <div class="controls">
-                    <button id="startBtn" onclick="toggleCamera()">Start</button>
-                    <button id="stopBtn" onclick="toggleCamera()" disabled>Stop</button>
-                    <button id="processBtn" onclick="toggleProcessing()" disabled>Enable Processing</button>
-                </div>
-                <div class="camera-container">
-                    <img id="videoFeed" style="display: none;">
-                    <div id="cameraPlaceholder"></div>
-                </div>
-                <div class="status" id="statusText">Camera: Off | Processing: Off</div>
+            <div data-aos="fade-up" data-aos-delay="1100" class="contact-info">
+              <h3>Email Me</h3>
+              <a href="mailto:lokeshprajapat338577@gmail.com">lokeshprajapat338577@gmail.com</a>
             </div>
-
-
-
-            <div id="stats-history-section" class="stats-history">
-                <h2><i class="fa-solid fa-clock-rotate-left"></i> Points History</h2>
-                <div class="history-table-container">
-                    <table class="history-table">
-                        <thead>
-                            <tr>
-                                <th>SNo</th>
-                                <th>Score</th>
-                                <th>Time</th>
-                                <th><i class="fas fa-gamepad"></i> Mode</th>
-                            </tr>
-                        </thead>
-                        <tbody id="history-table-body">
-                            <!-- Scores will be inserted here -->
-                        </tbody>
-                    </table>
-                </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="1200" class="contact-method">
+            <div class="icon-circle">
+              <i class="fab fa-linkedin-in"></i>
             </div>
-            <div class="guide">
-                <h2><i class="fas fa-info-circle"></i> Guide</h2>
-                <ul>
-                    <li> to move</li>
-                    <li>Space to pause</li>
-                    <li>Eat apples to grow</li>
-                    <li>Don't hit walls!</li>
-                </ul>
-                <div class="gesture-display">
-                    <strong>Current Gesture:</strong> <span id="current-gesture">None</span>
-                </div>
+            <div data-aos="fade-up" data-aos-delay="1300" class="contact-info">
+              <h3>Linkedin</h3>
+              <a href="https://www.linkedin.com/in/lokesh-prajapat-354756279/">lokesh-prajapat-354756279</a>
             </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="1300" class="social-links">
+            <h3>Follow Me</h3>
+            <div class="social-icons">
+              <a href="https://github.com/lokesh8577" class="social-icon" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://x.com/Lokesh85772?t=zM2hMRARuzT73Ft-VrcZSw&s=09" class="social-icon"
+                aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://www.instagram.com/lokesh_prajapat_m5_cs/" class="social-icon" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+
+  </section>
 
 
-
-        <!--footer-->
-        <footer>
+  <footer>
 
             <div class="leftright">
                 <div class="left">
@@ -333,25 +552,20 @@
                 </div>
             </div>
         </footer>
-    </div>
 
-    <!-- <script src="game.js"></script> -->
+
        <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
 <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
-<script src="{{ url_for('static', filename='js/snake.js') }}"></script>
-<script src="{{ url_for('static', filename='js/animation.js') }}"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
-    <script src="{{ url_for('static', filename='js/camera.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    
-
-    </div>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js"
+    integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+"
+    crossorigin="anonymous"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 
 </html>

@@ -97,15 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Footer button handlers
-    document.querySelectorAll('.textButton').forEach(button => {
-        button.addEventListener('click', function () {
-            if (this.id === 'contactPopupButton') {
-                alert('Contact popup would open');
-            } else if (this.id === 'supportMeButton') {
-                alert('Support dialog would open');
-            }
-        });
-    });
+  
 
     // Mobile command line button
     const commandLineMobileButton = document.getElementById('commandLineMobileButton');
@@ -155,3 +147,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize profile dropdown
     setupProfileDropdown();
 });
+
+
+

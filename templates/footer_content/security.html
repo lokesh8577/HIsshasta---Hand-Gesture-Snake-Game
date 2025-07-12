@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Policy - Snake Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer/security.css') }}">
+         <link rel="stylesheet" href="{{ url_for('static', filename='css/footer/privacy.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <header class="terms-header">
+ <span><i class="fas fa-camera" style="color: var(--accent-color);padding-right: 5px;"></i>Snake <span style="color: var(--accent-color);padding-left: 0px;">Security Policy</span></span>
+        </header>
+        
+        <main class="security-content">
+            <p>We take the security and integrity of Snake Game very seriously. If you have found a vulnerability, please report it ASAP so we can quickly remediate the issue.</p>
+            <div class="toc">
+                <h2>Table of Contents</h2>
+                <ul>
+                    <li><a href="#disclosure">How to Disclose a Vulnerability</a></li>
+                    <li><a href="#guidelines">Submission Guidelines</a></li>
+                </ul>
+            </div>
+            
+            <section id="disclosure" class="section">
+                <h2>How to Disclose a Vulnerability</h2>
+                <p>For vulnerabilities that impact the confidentiality, integrity, and availability of Snake Game services, please send your disclosure via <a href="mailto:security@snakegame.com">email</a>.</p>
+                
+                <p>For non-security related platform bugs, follow the <a href="/bug-report">bug submission guidelines</a>.</p>
+                
+                <div class="important-note">
+                    <p>Include as much detail as possible to ensure reproducibility. At a minimum, vulnerability disclosures should include:</p>
+                </div>
+                
+                <ul>
+                    <li>Vulnerability Description</li>
+                    <li>Proof of Concept</li>
+                    <li>Impact Assessment</li>
+                    <li>Screenshots or Proof</li>
+                    <li>Steps to Reproduce</li>
+                    <li>Suggested Fix (if possible)</li>
+                </ul>
+            </section>
+            
+            <section id="guidelines" class="section">
+                <h2>Submission Guidelines</h2>
+                <div class="important-note">
+                    <p>Do not engage in activities that might cause a denial of service condition, create significant strains on critical resources, or negatively impact users of the site outside of test accounts.</p>
+                </div>
+                
+                <h3>Allowed Testing</h3>
+                <p>You may test for vulnerabilities on your own accounts or test accounts you create. Testing should not:</p>
+                <ul>
+                    <li>Violate any laws or regulations</li>
+                    <li>Disrupt or degrade our services</li>
+                    <li>Access or modify data without authorization</li>
+                    <li>Use automated scanning tools that generate significant traffic</li>
+                    <li>Perform social engineering or phishing against our staff or users</li>
+                </ul>
+                
+                <h3>What We Promise</h3>
+                <p>When working with security researchers acting in good faith, we will:</p>
+                <ul>
+                    <li>Acknowledge receipt of your report within 3 business days</li>
+                    <li>Provide regular updates on our progress in addressing the vulnerability</li>
+                    <li>Work to remediate valid vulnerabilities in a timely manner</li>
+                    <li>Recognize your contribution if you are the first to report a unique vulnerability (unless you prefer to remain anonymous)</li>
+                </ul>
+                
+                <h3>Safe Harbor</h3>
+                <p>We consider security research conducted in accordance with this policy to be:</p>
+                <ul>
+                    <li>Authorized in view of any applicable anti-hacking laws</li>
+                    <li>Exempt from our Terms of Service restrictions</li>
+                    <li>Lawful, helpful to the overall security of the internet, and conducted in good faith</li>
+                </ul>
+                
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <span><strong>Security Team:</strong> <a href="mailto:security@snakegame.com">security@snakegame.com</a></span>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer-note">
+            <p>We appreciate your help in keeping Snake Game secure for all users.</p>
+        </footer>
+    </div>
+
+
+          <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
+<script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</body>
+</html>
