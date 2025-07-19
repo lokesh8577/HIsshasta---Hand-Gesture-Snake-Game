@@ -187,10 +187,10 @@
         }
         
         @media (max-width: 768px) {
+            
             .container {
                 padding: 1rem;
             }
-            
             .privacy-content {
                 padding: 1.5rem;
             }
@@ -209,3 +209,131 @@
                 text-align: center;
             }
         }
+
+
+
+        /* Ultra-Mobile Design (under 500px) */
+@media (max-width: 500px) {
+    .terms-header {
+        padding: 20px 15px;
+        height: auto;
+    }
+
+    .terms-header span {
+        font-size: 1.5rem;
+        padding-left: 0;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .privacy-content {
+        padding: 1.2rem;
+        border-radius: 12px;
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+        margin: 0.5rem 0 1.5rem;
+    }
+
+    .toc {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        background: var(--card-bg);
+        border-left: 3px solid var(--accent-color);
+    }
+
+    .toc h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .toc ol {
+        columns: 1;
+    }
+
+    .toc li {
+        padding: 0.6rem 0;
+        font-size: 0.95rem;
+        border-bottom: 1px dotted var(--border-color);
+    }
+
+    .section {
+        margin-bottom: 1.8rem;
+        padding-bottom: 1.2rem;
+    }
+
+    .section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        padding-left: 10px;
+    }
+
+    .section h2::before {
+        width: 3px;
+    }
+
+    .section h3 {
+        font-size: 1.1rem;
+        margin: 1.2rem 0 0.7rem;
+    }
+
+    .section p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 0.8rem;
+    }
+
+    .highlight {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.9rem;
+    }
+
+    .warning-box {
+        padding: 1rem;
+        margin: 1.2rem 0;
+        font-size: 0.9rem;
+    }
+
+    .warning-box::before {
+        top: 0.8rem;
+        left: 0.8rem;
+        font-size: 1.2rem;
+    }
+
+    .data-table {
+        font-size: 0.85rem;
+    }
+
+    .data-table th, 
+    .data-table td {
+        padding: 0.6rem;
+        min-width: 100px;
+    }
+
+    .contact-info {
+        padding: 1.2rem;
+        margin-top: 2rem;
+    }
+
+    .contact-method {
+        font-size: 0.95rem;
+    }
+
+    /* Micro-interactions */
+    .toc a:active {
+        color: var(--accent-color);
+        transform: translateX(3px);
+    }
+
+    /* Space optimization */
+    ul, ol {
+        padding-left: 1.2rem;
+    }
+
+    li {
+        margin-bottom: 0.4rem;
+    }
+}

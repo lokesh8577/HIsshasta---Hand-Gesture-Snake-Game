@@ -26,14 +26,50 @@ body {
     min-height: 100vh;
     padding: 20px;
 }
+/* snake.css */
+#snake-engine {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.snake-segment {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-color);
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+.snake-head {
+    width: 24px;
+    height: 24px;
+    background: var(--tertiary-color);
+    box-shadow: 0 0 15px var(--tertiary-color);
+    z-index: 2;
+}
+
+/* Ensure forms are above snake */
+.auth-container{
+    position: relative;
+    background: transparent;
+}
+
 
 .auth-container {
     display: flex;
-    background-color: var(--bg-color);
-    box-shadow: var(--shadow);
+    background: transparent;
     width: 100%;
     overflow: hidden;
-    position: relative;
     width: 100%;
 }
 
@@ -66,14 +102,15 @@ form {
 
 form h1 {
     text-align: left;
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 25px;
+    margin-bottom: 5px;
     color: var(--accent-color);
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
+    margin-top: 15px;
 }
 input {
     background-color: var(--bg-color);
@@ -106,7 +143,7 @@ button[type="submit"] {
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 button[type="submit"]:hover {
@@ -165,6 +202,25 @@ button[type="submit"]:hover {
     cursor: pointer;
 }
 
+.success-message {
+        color: var(--primary-color);
+        font-size: 0.9rem;
+        margin: 10px 0;
+        padding: 10px;
+        background-color: transparent;
+        border-radius: 4px;
+        display: none;
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+    }
+    
+    .error-message {
+        color: var(--tertiary-color);
+        font-size: 0.8rem;
+        margin-top: 5px;
+        display: none;
+    }
+
 /* Responsive */
 @media (max-width: 768px) {
     .auth-container {
@@ -179,7 +235,41 @@ button[type="submit"]:hover {
     </style>
 </head>
 <body>
- <header class="main-header">
+      {% if login_error %}
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          document.getElementById('loginErrorMessage').textContent = '{{ login_error }}';
+          document.getElementById('loginErrorMessage').style.display = 'block';
+          document.getElementById('loginEmail').value = '{{ login_email|default("") }}';
+          showLoginForm();
+      });
+  </script>
+  {% endif %}
+
+  {% if signup_error %}
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          document.getElementById('signupErrorMessage').textContent = '{{ signup_error }}';
+          document.getElementById('signupErrorMessage').style.display = 'block';
+          document.getElementById('signupEmail').value = '{{ signup_email|default("") }}';
+          document.getElementById('signupUsername').value = '{{ signup_username|default("") }}';
+          showSignupForm();
+      });
+  </script>
+  {% endif %}
+
+  {% if login_success %}
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          document.getElementById('loginSuccessMessage').textContent = '{{ login_success }}';
+          document.getElementById('loginSuccessMessage').style.display = 'block';
+          document.getElementById('loginEmail').value = '{{ login_email|default("") }}';
+          showLoginForm();
+      });
+  </script>
+  {% endif %}
+      <div id="snake-engine"></div>
+<header class="main-header">
             <div class="header-container">
                 <div class="logo-section">
                     <a class="header-logo" href="/">
@@ -193,7 +283,7 @@ button[type="submit"]:hover {
     </svg>
 </div>
                         <h1 class="logo-text">
-                            Snake
+                            HissHasta
                         </h1>
                     </a>
 
@@ -208,28 +298,7 @@ button[type="submit"]:hover {
                 </div>
 
                 <nav class="header-nav">
-                    <!-- <div class="nav-links">
-                    <a class="nav-link" href="#">
-                        <div class="nav-icon">
-                            <i class="fas fa-keyboard"></i>
-                        </div>
-                        <span class="nav-tooltip">Keyboard</span>
-                    </a>
-                    <a class="nav-link" href="#">
-                        <div class="nav-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <span class="nav-tooltip">Code</span>
-                    </a>
-                    <a class="nav-link" href="/profile" id="profileLink">
-                <div class="nav-icon">
-                    <i class="fas fa-user"></i>
-                </div>
-                <span class="nav-tooltip">Profile</span>
-            </a>
-
-            
-                </div> -->
+               
                     <div class="nav-links">
                         <a class="nav-link" href="/leaderboard">
                             <div class="nav-icon">
@@ -249,12 +318,19 @@ button[type="submit"]:hover {
                             </div>
                             <span class="nav-tooltip">Mode</span>
                         </a>
+                        <div class="nav-actions">
+                       <button class="notification-btn">
+    <div class="notification-icon">
+        <i class="fas fa-bell"></i>
+    </div>
+</button>
+                    </div>
                         <div class="profile-container">
                             {% if 'user' in session %}
                             <!-- Logged in state -->
                             <div class="profile-btn" id="profileBtn">
                                 <i class="fas fa-user"></i>
-                                <span class="username">{{ session['user']['username'] }}</span>
+                                <span class="username" style="cursor: default;">{{ session['user']['username'] }}</span>
                             </div>
                             <div class="profile-window hidden" id="profileWindow">
                                 <div class="profile-content">
@@ -269,21 +345,14 @@ button[type="submit"]:hover {
                             </div>
                             {% else %}
                             <!-- Logged out state -->
-                            <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink">
+                            <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink" style="cursor: default;">
                                 <i class="fas fa-user"></i>
                             </a>
                             {% endif %}
                         </div>
                     </div>
 
-                    <div class="nav-actions">
-                        <button class="notification-btn">
-                            <div class="notification-icon">
-                                <i class="fas fa-bell"></i>
-                                <span class="notification-badge">3</span>
-                            </div>
-                        </button>
-                    </div>
+                    
                 </nav>
 
                 <button class="mobile-menu-btn" aria-label="Toggle menu">
@@ -293,60 +362,60 @@ button[type="submit"]:hover {
         </header>
 
 
+      
 <div class="auth-container">
     <!-- Signup Form -->
     <div class="auth-form">
-        <form id="signupForm" method="POST" action="/signup">
+        <form id="signupForm" method="POST" action="{{ url_for('signup') }}">
             <h1>Create Account</h1>
             
             <div class="form-group">
-                <input type="text" id="signupUsername" name="username" placeholder="Choose a username" required>
-                <div class="error-message" id="signupUsernameError"></div>
-            </div>
-            
-            <div class="form-group">
-                <input type="email" id="signupEmail" name="email" placeholder="Enter your email" required>
-                <div class="error-message" id="signupEmailError"></div>
-            </div>
-            
-            <div class="form-group">
-                <input type="password" id="signupPassword" name="password" placeholder="Create a password" required>
-                <div class="error-message" id="signupPasswordError"></div>
-            </div>
-            
-            <div class="form-group">
-                <input type="password" id="confirmPassword" name="confirm_password" placeholder="Repeat your password" required>
-                <div class="error-message" id="confirmPasswordError"></div>
-            </div>
-            
+    <input type="text" id="signupUsername" name="username" placeholder="Choose a username" required>
+    <div class="error-message" id="signupUsernameError"></div>
+</div>
+
+<div class="form-group">
+    <input type="email" id="signupEmail" name="email" placeholder="Enter your email" required>
+    <div class="error-message" id="signupEmailError"></div>
+</div>
+
+<div class="form-group">
+    <input type="password" id="signupPassword" name="password" placeholder="Create a password" required>
+    <div class="error-message" id="signupPasswordError"></div>
+</div>
+
+<div class="form-group">
+    <input type="password" id="confirmPassword" name="confirm_password" placeholder="Repeat your password" required>
+    <div class="error-message" id="confirmPasswordError"></div>
+</div>
+
+<div class="success-message" id="signupSuccessMessage"></div>
+<div class="error-message" id="signupErrorMessage"></div>
             <button type="submit" class="submit-btn">Sign Up</button>
         </form>
+       
     </div>
 
      <!-- Login Form -->
     <div class="auth-form">
-        <form id="loginForm" method="POST" action="/login" style="margin-top: 10%;">
-            <h1>Login</h1>
-            
-            <div class="form-group">
-                <input type="email" id="loginEmail" name="email" placeholder="Enter your email" required>
-                <div class="error-message" id="loginEmailError"></div>
-            </div>
-            
-            <div class="form-group">
-                <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
-                <div class="error-message" id="loginPasswordError"></div>
-            </div>
-            
-            <div class="form-options">
-                <div class="remember-me">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Remember me</label>
-                </div>
-            </div>
-            
-            <button type="submit" class="submit-btn">Sign in</button>
-        </form>
+        <form id="loginForm" method="POST" action="{{ url_for('login') }}" style="margin-top: 10%;">
+           <h1>Login</h1>
+    <div class="form-group">
+        <input type="email" id="loginEmail" name="email" placeholder="Enter your email" required>
+        <div class="error-message" id="loginEmailError"></div>
+    </div>
+    
+    <div class="form-group">
+        <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+        <div class="error-message" id="loginPasswordError"></div>
+    </div>
+    
+    <div class="success-message" id="loginSuccessMessage"></div>
+    <div class="error-message" id="loginErrorMessage"></div>
+    
+    <button type="submit" class="submit-btn">Login</button>
+</form>
+        
     </div>
 
 </div>
@@ -416,120 +485,276 @@ button[type="submit"]:hover {
             </div>
         </footer>
 
+ <div class="notification-popup">
+    <div class="popup-header">
+        <h3>Notification</h3>
+        <button class="close-popup">&times;</button>
+    </div>
+    
+    <div class="improvement-list">
+            <div class="improvement">
+                <div class="improvement-title">Gesture Recognition Engine
+                    <span class="version-badge">v2.3.1</span>
+                </div>
+                <div class="improvement-details">
+                    Improved hand tracking accuracy by 22% through better keypoint detection. Reduced false positives during rapid movements by implementing temporal smoothing.
+                </div>
+                <div class="improvement-date">July 12, 2025</div>
+            </div>
+            
+            <div class="improvement">
+                <div class="improvement-title">Input Latency Optimization</div>
+                <div class="improvement-details">
+                    Reduced end-to-end latency by 40ms (from 85ms to 45ms) by optimizing the render pipeline and implementing predictive motion modeling.
+                </div>
+                <div class="improvement-date">July 10, 2025</div>
+            </div>
+            
+            <div class="improvement">
+                <div class="improvement-title">Collision Detection System</div>
+                <div class="improvement-details">
+                    Fixed edge cases in self-collision detection that occurred during quick 180° turns. New algorithm uses continuous collision detection for more accurate results.
+                </div>
+                <div class="improvement-date">July 8, 2025</div>
+            </div>
+            
+          
+        </div>
+</div>
+<div class="popup-overlay"></div>
+
+            <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const snakeEngine = document.getElementById('snake-engine');
+            if (!snakeEngine) return;
+            
+            const segments = [];
+            const segmentCount = 14; // Reduced for better performance
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            
+            // Create snake segments
+            function createSnake() {
+                for (let i = 0; i < segmentCount; i++) {
+                    const segment = document.createElement('div');
+                    segment.className = 'snake-segment';
+                    if (i === 0) segment.classList.add('snake-head');
+                    snakeEngine.appendChild(segment);
+                    segments.push({
+                        element: segment,
+                        x: mouseX,
+                        y: mouseY,
+                        tx: mouseX,
+                        ty: mouseY
+                    });
+                }
+            }
+            
+            // Animate snake with smooth following
+            function animateSnake() {
+                const speed = 0.13;
+                const spacing = 15;
+                
+                // Head follows mouse
+                segments[0].tx = mouseX;
+                segments[0].ty = mouseY;
+                
+                segments.forEach((seg, i) => {
+                    if (i > 0) {
+                        const prev = segments[i-1];
+                        const angle = Math.atan2(prev.y - seg.y, prev.x - seg.x);
+                        seg.tx = prev.x - Math.cos(angle) * spacing;
+                        seg.ty = prev.y - Math.sin(angle) * spacing;
+                    }
+                    
+                    seg.x += (seg.tx - seg.x) * speed;
+                    seg.y += (seg.ty - seg.y) * speed;
+                    
+                    seg.element.style.left = `${seg.x}px`;
+                    seg.element.style.top = `${seg.y}px`;
+                    
+                    // Rotate head
+                    if (i === 0) {
+                        const nextSeg = segments[1];
+                        const rotation = Math.atan2(nextSeg.y - seg.y, nextSeg.x - seg.x) * 180 / Math.PI;
+                        seg.element.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+                    }
+                });
+                
+                requestAnimationFrame(animateSnake);
+            }
+            
+            // Track mouse movement
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+            
+            // Initialize
+            createSnake();
+            animateSnake();
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                mouseX = Math.max(0, Math.min(mouseX, window.innerWidth));
+                mouseY = Math.max(0, Math.min(mouseY, window.innerHeight));
+            });
+        });
+    </script>
+<script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+
+
 
        <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
 <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
 
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-            const showSignup = document.getElementById('showSignup');
-            const showLogin = document.getElementById('showLogin');
-
-            // Toggle between login and signup forms
-            showSignup.addEventListener('click', function(e) {
-                e.preventDefault();
-                loginForm.classList.remove('active-form');
-                loginForm.classList.add('hidden-form');
-                signupForm.classList.remove('hidden-form');
-                signupForm.classList.add('active-form');
-            });
-
-            showLogin.addEventListener('click', function(e) {
-                e.preventDefault();
-                signupForm.classList.remove('active-form');
-                signupForm.classList.add('hidden-form');
-                loginForm.classList.remove('hidden-form');
-                loginForm.classList.add('active-form');
-            });
-
-            // Handle login form submission
-            loginForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                const formData = new FormData(loginForm);
-                const email = formData.get('email');
-                const password = formData.get('password');
-                
-                try {
-                    const response = await fetch('/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
-                    });
-                    
-                    if (response.redirected) {
-                        window.location.href = response.url; // Redirect to home after successful login
-                    } else {
-                        const error = await response.text();
-                        document.getElementById('loginPasswordError').textContent = 'Invalid email or password';
-                        document.getElementById('loginPasswordError').style.display = 'block';
-                    }
-                } catch (error) {
-                    console.error('Login error:', error);
-                    document.getElementById('loginPasswordError').textContent = 'An error occurred during login';
-                    document.getElementById('loginPasswordError').style.display = 'block';
-                }
-            });
-
-            // Handle signup form submission
-            signupForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                const formData = new FormData(signupForm);
-                const username = formData.get('username');
-                const email = formData.get('email');
-                const password = formData.get('password');
-                const confirmPassword = formData.get('confirm_password');
-                
-                // Reset error messages
-                document.querySelectorAll('.error-message').forEach(el => {
-                    el.style.display = 'none';
-                });
-                
-                // Validate password match
-                if (password !== confirmPassword) {
-                    document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
-                    document.getElementById('confirmPasswordError').style.display = 'block';
-                    return;
-                }
-                
-                try {
-                    const response = await fetch('/signup', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: `username=${encodeURIComponent(username)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
-                    });
-                    
-                    if (response.ok) {
-                        // After successful signup, show login form
-                        signupForm.classList.remove('active-form');
-                        signupForm.classList.add('hidden-form');
-                        loginForm.classList.remove('hidden-form');
-                        loginForm.classList.add('active-form');
-                        signupForm.reset();
-                        
-                        // Show success message
-                        document.getElementById('loginPasswordError').textContent = 'Signup successful! Please login.';
-                        document.getElementById('loginPasswordError').style.color = '#4CAF50';
-                        document.getElementById('loginPasswordError').style.display = 'block';
-                    } else {
-                        const error = await response.text();
-                        document.getElementById('signupPasswordError').textContent = error;
-                        document.getElementById('signupPasswordError').style.display = 'block';
-                    }
-                } catch (error) {
-                    console.error('Signup error:', error);
-                    document.getElementById('signupPasswordError').textContent = 'An error occurred during signup';
-                    document.getElementById('signupPasswordError').style.display = 'block';
-                }
-            });
+      // Handle login form submission
+loginForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    
+    // Reset all messages
+    document.getElementById('loginSuccessMessage').style.display = 'none';
+    document.getElementById('loginErrorMessage').style.display = 'none';
+    document.getElementById('loginEmailError').style.display = 'none';
+    document.getElementById('loginPasswordError').style.display = 'none';
+    
+    try {
+        const response = await fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
         });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            // Show field-specific error
+            if (data.field === 'email') {
+                document.getElementById('loginEmailError').textContent = data.message;
+                document.getElementById('loginEmailError').style.display = 'block';
+            } 
+            else if (data.field === 'password') {
+                document.getElementById('loginPasswordError').textContent = data.message;
+                document.getElementById('loginPasswordError').style.display = 'block';
+            }
+            else {
+                // Show general error
+                document.getElementById('loginErrorMessage').textContent = data.message;
+                document.getElementById('loginErrorMessage').style.display = 'block';
+            }
+            return;
+        }
+        
+        // Show success message
+        document.getElementById('loginSuccessMessage').textContent = data.message || 'Login successful!';
+        document.getElementById('loginSuccessMessage').style.display = 'block';
+        
+        // Redirect after 1.5 seconds
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 1500);
+        
+    } catch (error) {
+        console.error('Login error:', error);
+        document.getElementById('loginErrorMessage').textContent = 'An error occurred during login';
+        document.getElementById('loginErrorMessage').style.display = 'block';
+    }
+});
+// Handle signup form submission
+signupForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('signupUsername').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const password = document.getElementById('signupPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    
+    // Reset all error messages
+    document.getElementById('signupSuccessMessage').style.display = 'none';
+    document.getElementById('signupErrorMessage').style.display = 'none';
+    document.querySelectorAll('.error-message').forEach(el => {
+        el.style.display = 'none';
+    });
+    
+    // Validate password match
+    if (password !== confirmPassword) {
+        document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+        document.getElementById('confirmPasswordError').style.display = 'block';
+        return;
+    }
+    
+    // Validate password length
+    if (password.length < 6) {
+        document.getElementById('signupPasswordError').textContent = 'Password must be at least 6 characters';
+        document.getElementById('signupPasswordError').style.display = 'block';
+        return;
+    }
+    
+    // Validate username
+    if (username.length < 3) {
+        document.getElementById('signupUsernameError').textContent = 'Username must be at least 3 characters';
+        document.getElementById('signupUsernameError').style.display = 'block';
+        return;
+    }
+    
+    try {
+        const response = await fetch('/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: `username=${encodeURIComponent(username)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            // Show field-specific error
+            if (data.field && data.field !== 'general') {
+                const errorField = document.getElementById(`signup${data.field.charAt(0).toUpperCase() + data.field.slice(1)}Error`);
+                if (errorField) {
+                    errorField.textContent = data.message;
+                    errorField.style.display = 'block';
+                }
+            } else {
+                // Show general error
+                const errorMsg = document.getElementById('signupErrorMessage');
+                errorMsg.textContent = data.message;
+                errorMsg.style.display = 'block';
+            }
+            return;
+        }
+        
+        // Show success message
+        const successMsg = document.getElementById('signupSuccessMessage');
+        successMsg.textContent = data.message || 'Account created successfully!';
+        successMsg.style.display = 'block';
+        
+        // Clear form and switch to login after delay
+        setTimeout(() => {
+            signupForm.reset();
+            showLoginForm();
+            document.getElementById('loginEmail').value = email;
+            document.getElementById('loginSuccessMessage').textContent = 'Account created successfully! Please login.';
+            document.getElementById('loginSuccessMessage').style.display = 'block';
+        }, 1500);
+        
+    } catch (error) {
+        console.error('Signup error:', error);
+        const errorMsg = document.getElementById('signupErrorMessage');
+        errorMsg.textContent = 'An error occurred during signup. Please try again.';
+        errorMsg.style.display = 'block';
+    }
+});
     </script>
 </body>
 </html>

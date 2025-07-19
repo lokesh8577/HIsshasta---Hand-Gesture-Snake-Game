@@ -1,14 +1,3 @@
-// Notification button functionality
-const notifBtn = document.getElementById('notificationButton');
-const notifBadge = document.getElementById('notifBadge');
-if (notifBtn && notifBadge) {
-  notifBtn.addEventListener('click', () => {
-    // Simulate clearing notifications
-    notifBadge.style.display = 'none';
-    alert('Notifications cleared!');
-  });
-}
-
 // Main navigation functionality
 document.addEventListener('DOMContentLoaded', function () {
     // Select elements
@@ -17,7 +6,64 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuIcon = document.querySelector('.menu-icon');
     const body = document.body;
     const navLinks = document.querySelectorAll('.nav-link');
-    const notificationBtn = document.querySelector('.notification-btn');
+const notificationBtn = document.querySelector('.notification-btn');
+    const notificationPopup = document.querySelector('.notification-popup');
+    const closePopup = document.querySelector('.close-popup');
+    const popupOverlay = document.querySelector('.popup-overlay');
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    // Toggle popup
+    function togglePopup() {
+        notificationPopup.classList.toggle('active');
+        popupOverlay.classList.toggle('active');
+        document.body.style.overflow = notificationPopup.classList.contains('active') ? 'hidden' : '';
+    }
+
+    // Open popup when notification button is clicked
+    if (notificationBtn) {
+        notificationBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            togglePopup();
+        });
+    }
+
+    // Close popup
+    if (closePopup) {
+        closePopup.addEventListener('click', togglePopup);
+    }
+
+    if (popupOverlay) {
+        popupOverlay.addEventListener('click', togglePopup);
+    }
+
+    // Tab switching functionality
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+            
+            // Update active tab
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Update active content
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                if (content.id === tabId) {
+                    content.classList.add('active');
+                }
+            });
+        });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!notificationPopup.contains(e.target) && e.target !== notificationBtn) {
+            if (notificationPopup.classList.contains('active')) {
+                togglePopup();
+            }
+        }
+    });    
 
     // Toggle menu function
     function toggleMenu() {
@@ -89,13 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Notification button
-    if (notificationBtn) {
-        notificationBtn.addEventListener('click', function () {
-            alert('You have 3 new notifications!');
-        });
-    }
-
+ 
     // Footer button handlers
   
 
@@ -150,3 +190,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+function handleResize() {
+    initCanvas();
+    
+    // Adjust mobile controls position if needed
+    if (window.innerWidth <= 768) {
+        const mobileControls = document.getElementById('mobile-controls');
+        if (mobileControls && currentControlMode === 'keyboard') {
+            mobileControls.classList.remove('hidden');
+        }
+    }
+}
+
+window.addEventListener('resize', handleResize);

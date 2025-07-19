@@ -277,55 +277,303 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .snake-history-title {
-                font-size: 2rem;
-            }
+        /* Tablet Responsive (768px - 1024px) */
+@media (max-width: 1024px) {
+    .snake-history-container {
+        margin-top: 60px;
+        padding-top: 60px;
+    }
 
-            .snake-history-controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
+    .snake-history-title {
+        font-size: 2.2rem;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
 
-            .snake-filter-group {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-            }
+    .snake-history-controls {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
 
-            .snake-stats-container {
-                grid-template-columns: 1fr 1fr;
-            }
+    .snake-filter-group {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
 
-            .snake-table-header, 
-            .snake-table-data {
-                padding: 10px 12px;
-            }
+    .snake-btn-group {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
 
-            .snake-stat-value {
-                font-size: 1.8rem;
-            }
-        }
+    .snake-history-select, 
+    .snake-history-input {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 15px;
+        border-radius: 8px;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    }
 
-        @media (max-width: 480px) {
-            .snake-stats-container {
-                grid-template-columns: 1fr;
-            }
+    .snake-history-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+        font-size: 15px;
+        border-radius: 8px;
+    }
 
-            .snake-stat-card {
-                padding: 12px;
-            }
+    .snake-stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 20px;
+        border-radius: 12px;
+    }
 
-            .snake-history-table {
-                display: block;
-                overflow-x: auto;
-            }
-        }
+    .snake-stat-card {
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .snake-stat-value {
+        font-size: 2.2rem;
+    }
+
+    .snake-table-container {
+        border-radius: 12px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .snake-history-table {
+        margin-left: 0;
+        min-width: 600px;
+    }
+
+    .snake-table-header {
+        padding: 16px 12px;
+        font-size: 15px;
+        position: sticky;
+        left: 0;
+    }
+
+    .snake-table-data {
+        padding: 14px 12px;
+        font-size: 14px;
+    }
+
+    .snake-table-row:hover .snake-table-data {
+        background-color: transparent;
+    }
+}
+
+/* Mobile Responsive (480px - 767px) */
+@media (max-width: 767px) {
+    .snake-history-container {
+                margin-top: 60px;
+
+        padding-top: 40px;
+    }
+
+    .snake-history-title {
+        font-size: 1.9rem;
+        margin-bottom: 20px;
+    }
+
+    .snake-history-controls {
+        padding: 16px;
+        border-radius: 10px;
+    }
+
+    .snake-filter-group {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .snake-btn-group {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .snake-history-select, 
+    .snake-history-input {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .snake-history-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .snake-stats-container {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    .snake-stat-card {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .snake-stat-value {
+        font-size: 2rem;
+    }
+
+    .snake-stat-label {
+        font-size: 0.9rem;
+    }
+
+    .snake-table-header {
+        padding: 14px 10px;
+        font-size: 14px;
+    }
+
+    .snake-table-data {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+    .snake-no-history, 
+    .snake-loading {
+        padding: 40px 20px;
+    }
+
+    .snake-no-history-icon {
+        font-size: 1.8rem;
+    }
+}
+
+/* Small Mobile (up to 479px) */
+@media (max-width: 479px) {
+    .snake-history-container {
+        margin: 0 15px;
+                margin-top: 60px;
+
+        padding-top: 30px;
+    }
+
+    .snake-history-title {
+        font-size: 1.7rem;
+        gap: 6px;
+    }
+
+    .snake-history-title i {
+        font-size: 1.5rem;
+    }
+
+    .snake-history-controls {
+        padding: 14px;
+        border-radius: 8px;
+    }
+
+    .snake-history-select, 
+    .snake-history-input {
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+
+    .snake-history-btn {
+        padding: 9px;
+        font-size: 13px;
+    }
+
+    .snake-stat-card {
+        padding: 14px;
+    }
+
+    .snake-stat-value {
+        font-size: 1.8rem;
+    }
+
+    .snake-table-header {
+        padding: 12px 8px;
+        font-size: 13px;
+    }
+
+    .snake-table-data {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+
+    /* Touch optimizations */
+    .snake-history-btn {
+        min-height: 44px; /* Minimum touch target size */
+    }
+
+    .snake-table-row {
+        transition: transform 0.2s ease;
+    }
+
+    .snake-table-row:active {
+        transform: scale(0.98);
+    }
+
+    /* Better scroll for tables */
+    .snake-table-container {
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .snake-table-container::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Animation Enhancements */
+@media (max-width: 1024px) {
+    .snake-stat-card {
+        transition: all 0.3s ease;
+    }
+
+    .snake-stat-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .snake-history-btn {
+        transition: all 0.2s ease;
+    }
+
+    .snake-history-btn:active {
+        transform: scale(0.96);
+    }
+}
+
+/* Dark mode adjustments for mobile */
+@media (max-width: 1024px) {
+    .snake-history-controls,
+    .snake-stat-card,
+    .snake-table-container {
+        background-color: var(--card-bg-color);
+        border: 1px solid var(--card-border-color);
+    }
+
+    .snake-history-select, 
+    .snake-history-input {
+        background-color: var(--input-bg-color);
+        color: var(--text-color);
+        border-color: var(--input-border-color);
+    }
+
+    .snake-table-header {
+        background-color: var(--table-header-bg);
+    }
+}
     </style>
 </head>
 <body>
- <header class="main-header">
+  <header class="main-header">
             <div class="header-container">
                 <div class="logo-section">
                     <a class="header-logo" href="/">
@@ -339,7 +587,7 @@
     </svg>
 </div>
                         <h1 class="logo-text">
-                            Snake
+                            HissHasta
                         </h1>
                     </a>
 
@@ -354,28 +602,7 @@
                 </div>
 
                 <nav class="header-nav">
-                    <!-- <div class="nav-links">
-                    <a class="nav-link" href="#">
-                        <div class="nav-icon">
-                            <i class="fas fa-keyboard"></i>
-                        </div>
-                        <span class="nav-tooltip">Keyboard</span>
-                    </a>
-                    <a class="nav-link" href="#">
-                        <div class="nav-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <span class="nav-tooltip">Code</span>
-                    </a>
-                    <a class="nav-link" href="/profile" id="profileLink">
-                <div class="nav-icon">
-                    <i class="fas fa-user"></i>
-                </div>
-                <span class="nav-tooltip">Profile</span>
-            </a>
-
-            
-                </div> -->
+               
                     <div class="nav-links">
                         <a class="nav-link" href="/leaderboard">
                             <div class="nav-icon">
@@ -395,12 +622,19 @@
                             </div>
                             <span class="nav-tooltip">Mode</span>
                         </a>
+                        <div class="nav-actions">
+                       <button class="notification-btn">
+    <div class="notification-icon">
+        <i class="fas fa-bell"></i>
+    </div>
+</button>
+                    </div>
                         <div class="profile-container">
                             {% if 'user' in session %}
                             <!-- Logged in state -->
                             <div class="profile-btn" id="profileBtn">
                                 <i class="fas fa-user"></i>
-                                <span class="username">{{ session['user']['username'] }}</span>
+                                <span class="username" style="cursor: default;">{{ session['user']['username'] }}</span>
                             </div>
                             <div class="profile-window hidden" id="profileWindow">
                                 <div class="profile-content">
@@ -415,21 +649,14 @@
                             </div>
                             {% else %}
                             <!-- Logged out state -->
-                            <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink">
+                            <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink" style="cursor: default;margin-top: 5px;">
                                 <i class="fas fa-user"></i>
                             </a>
                             {% endif %}
                         </div>
                     </div>
 
-                    <div class="nav-actions">
-                        <button class="notification-btn">
-                            <div class="notification-icon">
-                                <i class="fas fa-bell"></i>
-                                <span class="notification-badge">3</span>
-                            </div>
-                        </button>
-                    </div>
+                    
                 </nav>
 
                 <button class="mobile-menu-btn" aria-label="Toggle menu">
@@ -503,7 +730,7 @@
             </table>
         </div>
     </div>
-    <footer>
+  <footer>
 
             <div class="leftright">
                 <div class="left">
@@ -552,12 +779,7 @@
                     </a>
                 </div>
                 <div class="right">
-                    <button class="current-theme textButton" aria-label="Shift-click to toggle custom theme">
-                        <div class="icon">
-                            <i class="fas fa-star favIndicator"></i>
-                            <i class="fas fa-fw fa-palette"></i>
-                        </div>
-                    </button>
+                   
                     <button class="currentVersion textButton">
                         <i class="fas fa-fw fa-code-branch"></i>
                         <div class="text">v1.0.1</div>
@@ -566,8 +788,47 @@
                 </div>
             </div>
         </footer>
+         <div class="notification-popup">
+    <div class="popup-header">
+        <h3>Notification</h3>
+        <button class="close-popup">&times;</button>
+    </div>
+    
+    <div class="improvement-list">
+            <div class="improvement">
+                <div class="improvement-title">Gesture Recognition Engine
+                    <span class="version-badge">v2.3.1</span>
+                </div>
+                <div class="improvement-details">
+                    Improved hand tracking accuracy by 22% through better keypoint detection. Reduced false positives during rapid movements by implementing temporal smoothing.
+                </div>
+                <div class="improvement-date">July 12, 2025</div>
+            </div>
+            
+            <div class="improvement">
+                <div class="improvement-title">Input Latency Optimization</div>
+                <div class="improvement-details">
+                    Reduced end-to-end latency by 40ms (from 85ms to 45ms) by optimizing the render pipeline and implementing predictive motion modeling.
+                </div>
+                <div class="improvement-date">July 10, 2025</div>
+            </div>
+            
+            <div class="improvement">
+                <div class="improvement-title">Collision Detection System</div>
+                <div class="improvement-details">
+                    Fixed edge cases in self-collision detection that occurred during quick 180° turns. New algorithm uses continuous collision detection for more accurate results.
+                </div>
+                <div class="improvement-date">July 8, 2025</div>
+            </div>
+            
+          
+        </div>
+</div>
+<div class="popup-overlay"></div>
    <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
 <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+<script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+
     <script>
         // Game history manager
         class SnakeGameHistory {
@@ -625,32 +886,32 @@
                 });
             }
             
-            loadHistory() {
-                // Show loading state
-                this.historyTableBody.innerHTML = `
-                    <tr class="snake-table-row">
-                        <td colspan="4" class="snake-loading">
-                            <i class="fas fa-spinner snake-loading-icon"></i><br>
-                            Loading game history...
-                        </td>
-                    </tr>
-                `;
-                
-                // Get history from localStorage
-                const history = localStorage.getItem('snakeGameHistory');
-                this.historyData = history ? JSON.parse(history) : [];
-                
-                // If no data, create some mock data for demonstration
-                if (this.historyData.length === 0) {
-                    this.historyData = this.generateMockData();
-                }
-                
-                // Sort by date (newest first)
-                this.historyData.sort((a, b) => new Date(b.date) - new Date(a.date));
-                
-                this.filterAndRenderHistory();
-            }
             
+// In the SnakeGameHistory class in history.html
+// In the SnakeGameHistory class in history.html
+loadHistory() {
+    // Show loading state
+    this.historyTableBody.innerHTML = `
+        <tr class="snake-table-row">
+            <td colspan="4" class="snake-loading">
+                <i class="fas fa-spinner snake-loading-icon"></i><br>
+                Loading game history...
+            </td>
+        </tr>
+    `;
+    
+    // Get ALL history from localStorage (no limit)
+    const history = localStorage.getItem('snakeGameHistory');
+    this.historyData = history ? JSON.parse(history) : [];
+    
+    // Sort by date (newest first)
+    this.historyData.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    this.filterAndRenderHistory();
+}
+
+
+
             generateMockData() {
                 const modes = ['keyboard', 'gesture'];
                 const mockData = [];
@@ -731,46 +992,58 @@
                        date1.getMonth() === date2.getMonth();
             }
             
-            renderHistoryTable() {
-                if (this.filteredData.length === 0) {
-                    this.historyTableBody.innerHTML = `
-                        <tr class="snake-table-row">
-                            <td colspan="4" class="snake-no-history">
-                                <i class="fas fa-history snake-no-history-icon"></i><br>
-                                No game history found
-                            </td>
-                        </tr>
-                    `;
-                    return;
-                }
-                
-                this.historyTableBody.innerHTML = '';
-                
-                this.filteredData.forEach((item, index) => {
-                    const row = document.createElement('tr');
-                    row.className = 'snake-table-row';
-                    
-                    // Format date
-                    const dateObj = new Date(item.date);
-                    const formattedDate = dateObj.toLocaleDateString() + ' ' + dateObj.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                    
-                    // Determine score class
-                    const scoreClass = item.score > 300 ? 'snake-high-score' : item.score < 100 ? 'snake-low-score' : '';
-                    
-                    row.innerHTML = `
-                        <td class="snake-table-data">${index + 1}</td>
-                        <td class="snake-table-data snake-score-cell ${scoreClass}">${item.score}</td>
-                        <td class="snake-table-data snake-date-cell">${formattedDate}</td>
-                        <td class="snake-table-data">
-                            <i class="fas ${item.mode === 'gesture' ? 'fa-hand-paper snake-gesture-mode' : 'fa-keyboard snake-keyboard-mode'} snake-mode-icon"></i>
-                            ${item.mode === 'gesture' ? 'Gesture' : 'Keyboard'}
-                        </td>
-                    `;
-                    
-                    this.historyTableBody.appendChild(row);
-                });
-            }
-            
+            // In the renderHistoryTable method of SnakeGameHistory class
+// In the renderHistoryTable method of SnakeGameHistory class
+renderHistoryTable() {
+    if (this.filteredData.length === 0) {
+        this.historyTableBody.innerHTML = `
+            <tr class="snake-table-row">
+                <td colspan="4" class="snake-no-history">
+                    <i class="fas fa-history snake-no-history-icon"></i><br>
+                    No game history found
+                </td>
+            </tr>
+        `;
+        return;
+    }
+    
+    this.historyTableBody.innerHTML = '';
+    
+    this.filteredData.forEach((item, index) => {
+        const row = document.createElement('tr');
+        row.className = 'snake-table-row';
+        
+        // Fix date formatting - handle both Date objects and strings
+        let formattedDate;
+        try {
+            const dateObj = item.date instanceof Date ? item.date : new Date(item.date);
+            formattedDate = dateObj.toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        } catch (e) {
+            formattedDate = 'Unknown date';
+        }
+        
+        // Determine score class
+        const scoreClass = item.score > 300 ? 'snake-high-score' : item.score < 100 ? 'snake-low-score' : '';
+        
+        row.innerHTML = `
+            <td class="snake-table-data">${index + 1}</td>
+            <td class="snake-table-data snake-score-cell ${scoreClass}">${item.score}</td>
+            <td class="snake-table-data snake-date-cell">${formattedDate}</td>
+            <td class="snake-table-data">
+                <i class="fas ${item.mode === 'gesture' ? 'fa-hand-paper snake-gesture-mode' : 'fa-keyboard snake-keyboard-mode'} snake-mode-icon"></i>
+                ${item.mode === 'gesture' ? 'Gesture' : 'Keyboard'}
+            </td>
+        `;
+        
+        this.historyTableBody.appendChild(row);
+    });
+}
             updateStats() {
                 if (this.filteredData.length === 0) {
                     this.totalGamesElement.textContent = '0';
@@ -803,6 +1076,20 @@
         document.addEventListener('DOMContentLoaded', () => {
             const gameHistory = new SnakeGameHistory();
         });
+
+        // Listen for history updates from other tabs
+window.addEventListener('historyUpdated', (e) => {
+    this.historyData = e.detail.history;
+    this.filterAndRenderHistory();
+});
+
+// Also listen for storage changes
+window.addEventListener('storage', (e) => {
+    if (e.key === 'snakeGameHistory') {
+        this.historyData = JSON.parse(e.newValue);
+        this.filterAndRenderHistory();
+    }
+});
     </script>
 </body>
 </html>

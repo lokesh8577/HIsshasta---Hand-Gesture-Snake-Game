@@ -259,46 +259,299 @@
       box-shadow: 0 5px 15px var(--border-color);
     }
 
-    @media (max-width: 992px) {
-      .contact-body {
+   /* Tablet Responsive (768px - 1024px) */
+@media (max-width: 1024px) {
+    .modern-contact-section {
+        padding-top: 80px;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .contact-content {
+        padding: 0 30px;
+    }
+
+    .contact-header {
+        margin-bottom: 3rem;
+    }
+
+    .contact-body {
         grid-template-columns: 1fr;
         gap: 3rem;
-      }
+        margin-bottom: 4rem;
+    }
 
-      .quick-contact {
+    .quick-contact {
+        margin-left: 0;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
-      }
+        gap: 2rem;
     }
 
-    @media (max-width: 768px) {
-      .section-title {
-        font-size: 2.5rem;
-      }
+    .contact-method {
+        flex: 1 1 45%;
+        min-width: 250px;
+    }
 
-      .form-row {
+    .social-links {
+        width: 100%;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .form-row {
         flex-direction: column;
         gap: 2rem;
-      }
-
-      .footer-content {
-        flex-direction: column;
-        gap: 1.5rem;
-        text-align: center;
-      }
-
-      .footer-links {
-        flex-direction: column;
-        gap: 1rem;
-      }
     }
+
+    .glowing-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Mobile Responsive (480px - 767px) */
+@media (max-width: 767px) {
+    .modern-contact-section {
+        padding-top: 70px;
+                margin-top: 60px;
+
+    }
+
+    .contact-content {
+        padding: 0 20px;
+    }
+
+    .section-title-contact {
+        font-size: 2.2rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .contact-method {
+        flex: 1 1 100%;
+    }
+
+    .icon-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .contact-info h3 {
+        font-size: 1rem;
+    }
+
+    .contact-info a {
+        font-size: 0.9rem;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .modern-contact-form {
+        gap: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.9rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .glowing-btn {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Small Mobile (up to 479px) */
+@media (max-width: 479px) {
+    .modern-contact-section {
+        padding-top: 60px;
+        margin-top: 60px;
+    }
+
+    .contact-content {
+        padding: 0 15px;
+    }
+
+    .section-title-contact {
+        font-size: 1.8rem;
+    }
+
+    .contact-header {
+        margin-bottom: 2rem;
+    }
+
+    .icon-circle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .contact-info a {
+        word-break: break-all;
+    }
+
+    .social-links h3 {
+        margin-bottom: 1rem;
+    }
+
+    /* Form input enhancements for mobile */
+    .form-group.floating {
+        padding-top: 1.2rem;
+    }
+
+    .form-group input {
+        padding: 0.8rem 0;
+    }
+
+    .form-group textarea {
+        min-height: 100px;
+    }
+
+    .form-group input:focus+label,
+    .form-group textarea:focus+label,
+    .form-group input:not(:placeholder-shown)+label,
+    .form-group textarea:not(:placeholder-shown)+label {
+        top: -0.2rem;
+        font-size: 0.8rem;
+    }
+
+    /* Button touch target optimization */
+    .glowing-btn {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+    .form-success-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    
+    .form-success-container.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .success-message-box {
+      background: var(--bg-color);
+      padding: 3rem;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 500px;
+      border: 2px solid var(--primary-color);
+      transform: translateY(20px);
+      transition: transform 0.5s ease;
+    }
+    
+    .form-success-container.show .success-message-box {
+      transform: translateY(0);
+    }
+    
+    .success-icon {
+      font-size: 4rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+    }
+    
+    .success-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    
+    .success-text {
+      margin-bottom: 2rem;
+      color: var(--text-color);
+    }
+    
+    .success-button {
+      background: var(--primary-color);
+      color: var(--text-color);
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    
+    .success-button:hover {
+      background: var(--tertiary-color);
+      transform: translateY(-3px);
+    }
+
+
+/* Animation optimizations for mobile */
+@media (max-width: 1024px) {
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .contact-method:hover .icon-circle {
+        transform: none;
+    }
+
+    .social-icon:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+/* Dark mode adjustments */
+@media (max-width: 1024px) {
+    .modern-contact-section {
+        background: var(--bg-color);
+    }
+
+    .icon-circle {
+        background: var(--card-bg-color);
+        border-color: var(--border-color);
+    }
+
+    .social-icon {
+        background: var(--card-bg-color);
+        border-color: var(--border-color);
+    }
+}
 
   </style>
 </head>
 
 <body>
-   <header class="main-header">
+  <header class="main-header">
             <div class="header-container">
                 <div class="logo-section">
                     <a class="header-logo" href="/">
@@ -312,7 +565,7 @@
     </svg>
 </div>
                         <h1 class="logo-text">
-                            Snake
+                            HissHasta
                         </h1>
                     </a>
 
@@ -327,28 +580,7 @@
                 </div>
 
                 <nav class="header-nav">
-                    <!-- <div class="nav-links">
-                    <a class="nav-link" href="#">
-                        <div class="nav-icon">
-                            <i class="fas fa-keyboard"></i>
-                        </div>
-                        <span class="nav-tooltip">Keyboard</span>
-                    </a>
-                    <a class="nav-link" href="#">
-                        <div class="nav-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <span class="nav-tooltip">Code</span>
-                    </a>
-                    <a class="nav-link" href="/profile" id="profileLink">
-                <div class="nav-icon">
-                    <i class="fas fa-user"></i>
-                </div>
-                <span class="nav-tooltip">Profile</span>
-            </a>
-
-            
-                </div> -->
+               
                     <div class="nav-links">
                         <a class="nav-link" href="/leaderboard">
                             <div class="nav-icon">
@@ -368,12 +600,19 @@
                             </div>
                             <span class="nav-tooltip">Mode</span>
                         </a>
+                        <div class="nav-actions">
+                       <button class="notification-btn">
+    <div class="notification-icon">
+        <i class="fas fa-bell"></i>
+    </div>
+</button>
+                    </div>
                         <div class="profile-container">
                             {% if 'user' in session %}
                             <!-- Logged in state -->
                             <div class="profile-btn" id="profileBtn">
                                 <i class="fas fa-user"></i>
-                                <span class="username">{{ session['user']['username'] }}</span>
+                                <span class="username" style="cursor: default;">{{ session['user']['username'] }}</span>
                             </div>
                             <div class="profile-window hidden" id="profileWindow">
                                 <div class="profile-content">
@@ -388,21 +627,14 @@
                             </div>
                             {% else %}
                             <!-- Logged out state -->
-                            <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink">
+                            <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink" style="cursor: default;">
                                 <i class="fas fa-user"></i>
                             </a>
                             {% endif %}
                         </div>
                     </div>
 
-                    <div class="nav-actions">
-                        <button class="notification-btn">
-                            <div class="notification-icon">
-                                <i class="fas fa-bell"></i>
-                                <span class="notification-badge">3</span>
-                            </div>
-                        </button>
-                    </div>
+                    
                 </nav>
 
                 <button class="mobile-menu-btn" aria-label="Toggle menu">
@@ -420,32 +652,49 @@
       </div>
 
       <div class="contact-body">
-        <!-- Left Side: Contact Form -->
-        <form class="modern-contact-form" action="https://formspree.io/f/xjkynvee" method="POST">
+        <!-- Updated Form with proper FormSubmit configuration -->
+        <form id="contactForm" class="modern-contact-form" action="https://formsubmit.co/lokeshprajapat338577@gmail.com" method="POST">
+          <!-- FormSubmit Configuration -->
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_subject" value="New Contact from HissHasta User">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://yourdomain.com/thank-you"> <!-- Add your thank you page URL -->
+          <input type="text" name="_honey" style="display:none">
+          
+          <!-- Form fields -->
           <div class="form-row">
-            <div data-aos="fade-up" data-aos-delay="500" class="form-group floating">
+            <div  data-aos="fade-up"  data-aos-delay="500" class="form-group floating">
               <input type="text" id="modern-name" name="name" required>
               <label for="modern-name">Your Name</label>
               <div class="underline"></div>
             </div>
-            <div data-aos="fade-up" data-aos-delay="600" class="form-group floating">
+            <div data-aos="fade-up"  data-aos-delay="600" class="form-group floating">
               <input type="email" id="modern-email" name="email" required>
               <label for="modern-email">Your Email</label>
               <div class="underline"></div>
             </div>
           </div>
-          <div data-aos="fade-up" data-aos-delay="700" class="form-group floating">
+          <div data-aos="fade-up"  data-aos-delay="700" class="form-group floating">
             <textarea id="modern-message" name="message" rows="4" required></textarea>
             <label for="modern-message">Your Message</label>
             <div class="underline"></div>
           </div>
-          <input type="hidden" name="_subject" value="New contact form submission">
-          <input type="hidden" name="_replyto" value="">
-          <button data-aos="fade-up" data-aos-delay="800" type="submit" class="glowing-btn">
+          
+          <button data-aos="fade-up"  data-aos-delay="800" type="submit" class="glowing-btn">
             <span>Send Message</span>
             <div class="glow"></div>
           </button>
         </form>
+
+        <!-- Success Message Container -->
+        <div id="successMessage" class="form-success-container">
+          <div class="success-message-box">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h2 class="success-title">Thank You!</h2>
+            <p class="success-text">Your message has been sent successfully. We'll get back to you soon.</p>
+            <button class="success-button">Close</button>
+          </div>
+        </div>
 
         <!-- Right Side: Quick Contact -->
         <div class="quick-contact">
@@ -552,11 +801,112 @@
                 </div>
             </div>
         </footer>
+ <div class="notification-popup">
+    <div class="popup-header">
+        <h3>Notification</h3>
+        <button class="close-popup">&times;</button>
+    </div>
+    
+    <div class="improvement-list">
+            <div class="improvement">
+                <div class="improvement-title">Gesture Recognition Engine
+                    <span class="version-badge">v2.3.1</span>
+                </div>
+                <div class="improvement-details">
+                    Improved hand tracking accuracy by 22% through better keypoint detection. Reduced false positives during rapid movements by implementing temporal smoothing.
+                </div>
+                <div class="improvement-date">July 12, 2025</div>
+            </div>
+            
+            <div class="improvement">
+                <div class="improvement-title">Input Latency Optimization</div>
+                <div class="improvement-details">
+                    Reduced end-to-end latency by 40ms (from 85ms to 45ms) by optimizing the render pipeline and implementing predictive motion modeling.
+                </div>
+                <div class="improvement-date">July 10, 2025</div>
+            </div>
+            
+            <div class="improvement">
+                <div class="improvement-title">Collision Detection System</div>
+                <div class="improvement-details">
+                    Fixed edge cases in self-collision detection that occurred during quick 180° turns. New algorithm uses continuous collision detection for more accurate results.
+                </div>
+                <div class="improvement-date">July 8, 2025</div>
+            </div>
+            
+          
+        </div>
+</div>
+<div class="popup-overlay"></div>
 
 
-       <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
 <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+ <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('contactForm');
+      const successMessage = document.getElementById('successMessage');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const closeBtn = document.querySelector('.success-button');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Sending... <i class="fas fa-spinner fa-spin"></i></span><div class="glow"></div>';
+        
+        // Submit form data to FormSubmit
+        const formData = new FormData(form);
+        
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          
+          // Hide form and show success message
+          form.style.display = 'none';
+          successMessage.classList.add('show');
+          
+          // Reset form after submission
+          setTimeout(() => {
+            form.style.display = 'block';
+            form.reset();
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Send Message</span><div class="glow"></div>';
+          }, 5000);
+        })
+        .catch(error => {
+          console.error('Error submitting form:', error);
+          
+          // Show error message to user
+          alert('There was an error sending your message. Please try again later.');
+          
+          // Reset button state
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>Send Message</span><div class="glow"></div>';
+        });
+      });
+
+      // Close success message button
+      closeBtn.addEventListener('click', function() {
+        successMessage.classList.remove('show');
+        form.style.display = 'block';
+        window.location.href = '/';
+
+
+      });
+    });
+  </script>
+
+  <!-- Your existing scripts remain unchanged -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script>
@@ -567,5 +917,4 @@
     AOS.init();
   </script>
 </body>
-
 </html>

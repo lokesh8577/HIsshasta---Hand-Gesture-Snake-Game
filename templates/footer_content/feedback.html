@@ -391,7 +391,7 @@
     </style>
 </head>
 <body>
-           <header class="main-header">
+     <header class="main-header">
             <div class="header-container">
                 <div class="logo-section">
                     <a class="header-logo" href="/">
@@ -405,7 +405,7 @@
     </svg>
 </div>
                         <h1 class="logo-text">
-                            Snake
+                            HissHasta
                         </h1>
                     </a>
 
@@ -420,28 +420,7 @@
                 </div>
 
                 <nav class="header-nav">
-                    <!-- <div class="nav-links">
-                    <a class="nav-link" href="#">
-                        <div class="nav-icon">
-                            <i class="fas fa-keyboard"></i>
-                        </div>
-                        <span class="nav-tooltip">Keyboard</span>
-                    </a>
-                    <a class="nav-link" href="#">
-                        <div class="nav-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <span class="nav-tooltip">Code</span>
-                    </a>
-                    <a class="nav-link" href="/profile" id="profileLink">
-                <div class="nav-icon">
-                    <i class="fas fa-user"></i>
-                </div>
-                <span class="nav-tooltip">Profile</span>
-            </a>
-
-            
-                </div> -->
+               
                     <div class="nav-links">
                         <a class="nav-link" href="/leaderboard">
                             <div class="nav-icon">
@@ -461,12 +440,19 @@
                             </div>
                             <span class="nav-tooltip">Mode</span>
                         </a>
+                        <div class="nav-actions">
+                       <button class="notification-btn">
+    <div class="notification-icon">
+        <i class="fas fa-bell"></i>
+    </div>
+</button>
+                    </div>
                         <div class="profile-container">
                             {% if 'user' in session %}
                             <!-- Logged in state -->
                             <div class="profile-btn" id="profileBtn">
                                 <i class="fas fa-user"></i>
-                                <span class="username">{{ session['user']['username'] }}</span>
+                                <span class="username" style="cursor: default;">{{ session['user']['username'] }}</span>
                             </div>
                             <div class="profile-window hidden" id="profileWindow">
                                 <div class="profile-content">
@@ -481,21 +467,14 @@
                             </div>
                             {% else %}
                             <!-- Logged out state -->
-                            <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink">
+                            <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink" style="cursor: default;">
                                 <i class="fas fa-user"></i>
                             </a>
                             {% endif %}
                         </div>
                     </div>
 
-                    <div class="nav-actions">
-                        <button class="notification-btn">
-                            <div class="notification-icon">
-                                <i class="fas fa-bell"></i>
-                                <span class="notification-badge">3</span>
-                            </div>
-                        </button>
-                    </div>
+                    
                 </nav>
 
                 <button class="mobile-menu-btn" aria-label="Toggle menu">
@@ -505,262 +484,270 @@
         </header>
 
         <!-- Enhanced Feedback Form -->
-        <div class="feedback-container">
-            <!-- Illustration Side -->
-            <div class="feedback-illustration">
-                <i class="fas fa-comment-dots illustration-icon"></i>
-                <h2 class="illustration-title">We Value Your Feedback</h2>
-                <p class="illustration-text">Your insights help us improve the Snake Game experience for everyone</p>
-                <div class="emoji-feedback">
-                    <span class="emoji-option">😊</span>
-                    <span class="emoji-option">😍</span>
-                    <span class="emoji-option">😐</span>
-                    <span class="emoji-option">😕</span>
-                    <span class="emoji-option">😞</span>
-                </div>
-            </div>
-            
-            <!-- Form Side -->
-            <div class="feedback-form-container">
-                <!-- Progress Steps -->
-                <div class="form-progress">
-                    <div class="progress-step active" data-step="1">1</div>
-                    <div class="progress-step" data-step="2">2</div>
-                    <div class="progress-step" data-step="3">3</div>
-                    <div class="progress-step" data-step="4">4</div>
-                </div>
-                
-                <!-- Multi-step Form -->
-                <form id="enhancedFeedbackForm">
-                    <!-- Section 1: Basic Info -->
-                    <div class="form-section active" data-section="1">
-                        <h3 class="section-title">Tell Us About Yourself</h3>
-                        
-                        <div class="form-group">
-                            <label for="userName" class="form-label">Your Name (Optional)</label>
-                            <input type="text" id="userName" class="form-control" placeholder="John Doe">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="userEmail" class="form-label">Email (For follow-up)</label>
-                            <input type="email" id="userEmail" class="form-control" placeholder="your@email.com">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">How often do you play?</label>
-                            <select class="form-control">
-                                <option value="">Select frequency</option>
-                                <option value="daily">Daily</option>
-                                <option value="weekly">Weekly</option>
-                                <option value="monthly">Monthly</option>
-                                <option value="first-time">First time</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-primary next-section" data-next="2">
-                                <i class="fas fa-arrow-right btn-icon"></i> Continue
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Section 2: Game Experience -->
-                    <div class="form-section" data-section="2">
-                        <h3 class="section-title">Game Experience</h3>
-                        
-                        <div class="form-group">
-                            <label class="form-label">How would you rate the hand gesture controls?</label>
-                            <div class="rating-container">
-                                <label class="rating-option">
-                                    <input type="radio" name="gestureRating" value="5" class="rating-input">
-                                    <span class="rating-label">5</span>
-                                    <span class="rating-text">Excellent</span>
-                                </label>
-                                <label class="rating-option">
-                                    <input type="radio" name="gestureRating" value="4" class="rating-input">
-                                    <span class="rating-label">4</span>
-                                    <span class="rating-text">Good</span>
-                                </label>
-                                <label class="rating-option">
-                                    <input type="radio" name="gestureRating" value="3" class="rating-input">
-                                    <span class="rating-label">3</span>
-                                    <span class="rating-text">Okay</span>
-                                </label>
-                                <label class="rating-option">
-                                    <input type="radio" name="gestureRating" value="2" class="rating-input">
-                                    <span class="rating-label">2</span>
-                                    <span class="rating-text">Poor</span>
-                                </label>
-                                <label class="rating-option">
-                                    <input type="radio" name="gestureRating" value="1" class="rating-input">
-                                    <span class="rating-label">1</span>
-                                    <span class="rating-text">Terrible</span>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="gestureFeedback" class="form-label">What can we improve about the gesture controls?</label>
-                            <textarea id="gestureFeedback" class="form-control" placeholder="Your suggestions..."></textarea>
-                        </div>
-                        
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-outline prev-section" data-prev="1">
-                                <i class="fas fa-arrow-left btn-icon"></i> Back
-                            </button>
-                            <button type="button" class="btn btn-primary next-section" data-next="3">
-                                <i class="fas fa-arrow-right btn-icon"></i> Continue
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Section 3: Visual Design -->
-                    <div class="form-section" data-section="3">
-                        <h3 class="section-title">Visual Design</h3>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Rate the game's visual appeal</label>
-                            <div class="rating-container">
-                                <label class="rating-option">
-                                    <input type="radio" name="visualRating" value="5" class="rating-input">
-                                    <span class="rating-label">5</span>
-                                    <span class="rating-text">Stunning</span>
-                                </label>
-                                <label class="rating-option">
-                                    <input type="radio" name="visualRating" value="4" class="rating-input">
-                                    <span class="rating-label">4</span>
-                                    <span class="rating-text">Good</span>
-                                </label>
-                                <label class="rating-option">
-                                    <input type="radio" name="visualRating" value="3" class="rating-input">
-                                    <span class="rating-label">3</span>
-                                    <span class="rating-text">Average</span>
-                                </label>
-                                <label class="rating-option">
-                                    <input type="radio" name="visualRating" value="2" class="rating-input">
-                                    <span class="rating-label">2</span>
-                                    <span class="rating-text">Plain</span>
-                                </label>
-                                <label class="rating-option">
-                                    <input type="radio" name="visualRating" value="1" class="rating-input">
-                                    <span class="rating-label">1</span>
-                                    <span class="rating-text">Unappealing</span>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Which aspects need improvement?</label>
-                            <div class="checkbox-group">
-                                <label class="checkbox-option">
-                                    <input type="checkbox" class="checkbox-input" value="colors">
-                                    Color scheme
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" class="checkbox-input" value="animations">
-                                    Animations
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" class="checkbox-input" value="ui-layout">
-                                    UI Layout
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" class="checkbox-input" value="snake-design">
-                                    Snake design
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" class="checkbox-input" value="background">
-                                    Background
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" class="checkbox-input" value="effects">
-                                    Special effects
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="designFeedback" class="form-label">Specific design suggestions</label>
-                            <textarea id="designFeedback" class="form-control" placeholder="What would make the game look better?"></textarea>
-                        </div>
-                        
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-outline prev-section" data-prev="2">
-                                <i class="fas fa-arrow-left btn-icon"></i> Back
-                            </button>
-                            <button type="button" class="btn btn-primary next-section" data-next="4">
-                                <i class="fas fa-arrow-right btn-icon"></i> Continue
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Section 4: Final Thoughts -->
-                    <div class="form-section" data-section="4">
-                        <h3 class="section-title">Final Thoughts</h3>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Did you encounter any bugs?</label>
-                            <div class="checkbox-group">
-                                <label class="checkbox-option">
-                                    <input type="checkbox" class="checkbox-input" value="gesture-bugs">
-                                    Gesture recognition issues
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" class="checkbox-input" value="collision-bugs">
-                                    Collision detection
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" class="checkbox-input" value="performance">
-                                    Performance lag
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" class="checkbox-input" value="scoring">
-                                    Scoring problems
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" class="checkbox-input" value="other-bugs">
-                                    Other technical issues
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="bugDetails" class="form-label">Describe the bugs you encountered</label>
-                            <textarea id="bugDetails" class="form-control" placeholder="When did it happen? What were you doing?"></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="featureRequests" class="form-label">What features would you like to see added?</label>
-                            <textarea id="featureRequests" class="form-control" placeholder="New game modes, power-ups, customization options, etc."></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="finalFeedback" class="form-label">Any other comments?</label>
-                            <textarea id="finalFeedback" class="form-control" placeholder="We'd love to hear your overall thoughts!"></textarea>
-                        </div>
-                        
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-outline prev-section" data-prev="3">
-                                <i class="fas fa-arrow-left btn-icon"></i> Back
-                            </button>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-paper-plane btn-icon"></i> Submit Feedback
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                
-                <!-- Thank You Message -->
-                <div class="thank-you-container" id="thankYouMessage">
-                    <i class="fas fa-check-circle thank-you-icon"></i>
-                    <h2 class="thank-you-title">Thank You!</h2>
-                    <p class="thank-you-text">Your feedback has been successfully submitted. We truly appreciate you taking the time to help us improve the Snake Game experience.</p>
-                    <button class="btn btn-primary" onclick="window.location.href='/'">
-                        <i class="fas fa-home btn-icon"></i> Back to Game
-                    </button>
-                </div>
+            <div class="feedback-container">
+        <!-- Illustration Side (unchanged) -->
+        <div class="feedback-illustration">
+            <i class="fas fa-comment-dots illustration-icon"></i>
+            <h2 class="illustration-title">We Value Your Feedback</h2>
+            <p class="illustration-text">Your insights help us improve the Snake Game experience for everyone</p>
+            <div class="emoji-feedback">
+                <span class="emoji-option">😊</span>
+                <span class="emoji-option">😍</span>
+                <span class="emoji-option">😐</span>
+                <span class="emoji-option">😕</span>
+                <span class="emoji-option">😞</span>
             </div>
         </div>
+        
+        <!-- Form Side with FormSubmit Integration -->
+        <div class="feedback-form-container">
+            <!-- Progress Steps -->
+            <div class="form-progress">
+                <div class="progress-step active" data-step="1">1</div>
+                <div class="progress-step" data-step="2">2</div>
+                <div class="progress-step" data-step="3">3</div>
+                <div class="progress-step" data-step="4">4</div>
+            </div>
+            
+            <!-- Form with ALL fields properly named -->
+            <form id="enhancedFeedbackForm" action="https://formsubmit.co/luckyprajapatr3377@gmail.com" method="POST">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="New Snake Game Feedback!">
+                <input type="hidden" name="_template" value="table">
+                <input type="text" name="_honey" style="display:none">
+                <input type="hidden" name="_autoresponse" value="Thank you for your feedback!">
+                <input type="hidden" name="_next" value="YOUR_SUCCESS_URL"> <!-- Optional -->
+
+                <!-- Section 1: Basic Info -->
+                <div class="form-section active" data-section="1">
+                    <h3 class="section-title">Tell Us About Yourself</h3>
+                    
+                    <div class="form-group">
+                        <label for="userName" class="form-label">Your Name (Optional)</label>
+                        <input type="text" id="userName" name="Name" class="form-control" placeholder="John Doe">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userEmail" class="form-label">Email (For follow-up)</label>
+                        <input type="email" id="userEmail" name="Email" class="form-control" placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">How often do you play?</label>
+                        <select class="form-control" name="Play Frequency">
+                            <option value="">Select frequency</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="first-time">First time</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-primary next-section" data-next="2">
+                            <i class="fas fa-arrow-right btn-icon"></i> Continue
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Section 2: Game Experience -->
+                <div class="form-section" data-section="2">
+                    <h3 class="section-title">Game Experience</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">How would you rate the hand gesture controls?</label>
+                        <div class="rating-container">
+                            <label class="rating-option">
+                                <input type="radio" name="Gesture Rating" value="5" class="rating-input">
+                                <span class="rating-label">5</span>
+                                <span class="rating-text">Excellent</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="Gesture Rating" value="4" class="rating-input">
+                                <span class="rating-label">4</span>
+                                <span class="rating-text">Good</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="Gesture Rating" value="3" class="rating-input">
+                                <span class="rating-label">3</span>
+                                <span class="rating-text">Okay</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="Gesture Rating" value="2" class="rating-input">
+                                <span class="rating-label">2</span>
+                                <span class="rating-text">Poor</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="Gesture Rating" value="1" class="rating-input">
+                                <span class="rating-label">1</span>
+                                <span class="rating-text">Terrible</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gestureFeedback" class="form-label">What can we improve about the gesture controls?</label>
+                        <textarea id="gestureFeedback" name="Gesture Feedback" class="form-control" placeholder="Your suggestions..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline prev-section" data-prev="1">
+                            <i class="fas fa-arrow-left btn-icon"></i> Back
+                        </button>
+                        <button type="button" class="btn btn-primary next-section" data-next="3">
+                            <i class="fas fa-arrow-right btn-icon"></i> Continue
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Section 3: Visual Design -->
+                <div class="form-section" data-section="3">
+                    <h3 class="section-title">Visual Design</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Rate the game's visual appeal</label>
+                        <div class="rating-container">
+                            <label class="rating-option">
+                                <input type="radio" name="Visual Rating" value="5" class="rating-input">
+                                <span class="rating-label">5</span>
+                                <span class="rating-text">Stunning</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="Visual Rating" value="4" class="rating-input">
+                                <span class="rating-label">4</span>
+                                <span class="rating-text">Good</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="Visual Rating" value="3" class="rating-input">
+                                <span class="rating-label">3</span>
+                                <span class="rating-text">Average</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="Visual Rating" value="2" class="rating-input">
+                                <span class="rating-label">2</span>
+                                <span class="rating-text">Plain</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="Visual Rating" value="1" class="rating-input">
+                                <span class="rating-label">1</span>
+                                <span class="rating-text">Unappealing</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Which aspects need improvement?</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="Improvement Areas[]" value="Color scheme" class="checkbox-input">
+                                Color scheme
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="Improvement Areas[]" value="Animations" class="checkbox-input">
+                                Animations
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="Improvement Areas[]" value="UI Layout" class="checkbox-input">
+                                UI Layout
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="Improvement Areas[]" value="Snake design" class="checkbox-input">
+                                Snake design
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="Improvement Areas[]" value="Background" class="checkbox-input">
+                                Background
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="Improvement Areas[]" value="Special effects" class="checkbox-input">
+                                Special effects
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="designFeedback" class="form-label">Specific design suggestions</label>
+                        <textarea id="designFeedback" name="Design Suggestions" class="form-control" placeholder="What would make the game look better?"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline prev-section" data-prev="2">
+                            <i class="fas fa-arrow-left btn-icon"></i> Back
+                        </button>
+                        <button type="button" class="btn btn-primary next-section" data-next="4">
+                            <i class="fas fa-arrow-right btn-icon"></i> Continue
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Section 4: Final Thoughts -->
+                <div class="form-section" data-section="4">
+                    <h3 class="section-title">Final Thoughts</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Did you encounter any bugs?</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="Bugs Found[]" value="Gesture recognition" class="checkbox-input">
+                                Gesture recognition issues
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="Bugs Found[]" value="Collision detection" class="checkbox-input">
+                                Collision detection
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="Bugs Found[]" value="Performance" class="checkbox-input">
+                                Performance lag
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="Bugs Found[]" value="Scoring" class="checkbox-input">
+                                Scoring problems
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="Bugs Found[]" value="Other" class="checkbox-input">
+                                Other technical issues
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bugDetails" class="form-label">Describe the bugs you encountered</label>
+                        <textarea id="bugDetails" name="Bug Details" class="form-control" placeholder="When did it happen? What were you doing?"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="featureRequests" class="form-label">What features would you like to see added?</label>
+                        <textarea id="featureRequests" name="Feature Requests" class="form-control" placeholder="New game modes, power-ups, customization options, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="finalFeedback" class="form-label">Any other comments?</label>
+                        <textarea id="finalFeedback" name="Additional Comments" class="form-control" placeholder="We'd love to hear your overall thoughts!"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline prev-section" data-prev="3">
+                            <i class="fas fa-arrow-left btn-icon"></i> Back
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane btn-icon"></i> Submit Feedback
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <!-- Thank You Message -->
+            <div class="thank-you-container" id="thankYouMessage">
+                <i class="fas fa-check-circle thank-you-icon"></i>
+                <h2 class="thank-you-title">Thank You!</h2>
+                <p class="thank-you-text">Your feedback has been successfully submitted.</p>
+                <button class="btn btn-primary" onclick="window.location.href='/'">
+                    <i class="fas fa-home btn-icon"></i> Back to Game
+                </button>
+            </div>
+        </div>
+    </div>
 
         <footer>
 
@@ -826,13 +813,51 @@
             </div>
         </footer>
 
+         <div class="notification-popup">
+    <div class="popup-header">
+        <h3>Notification</h3>
+        <button class="close-popup">&times;</button>
+    </div>
+    
+    <div class="improvement-list">
+            <div class="improvement">
+                <div class="improvement-title">Gesture Recognition Engine
+                    <span class="version-badge">v2.3.1</span>
+                </div>
+                <div class="improvement-details">
+                    Improved hand tracking accuracy by 22% through better keypoint detection. Reduced false positives during rapid movements by implementing temporal smoothing.
+                </div>
+                <div class="improvement-date">July 12, 2025</div>
+            </div>
+            
+            <div class="improvement">
+                <div class="improvement-title">Input Latency Optimization</div>
+                <div class="improvement-details">
+                    Reduced end-to-end latency by 40ms (from 85ms to 45ms) by optimizing the render pipeline and implementing predictive motion modeling.
+                </div>
+                <div class="improvement-date">July 10, 2025</div>
+            </div>
+            
+            <div class="improvement">
+                <div class="improvement-title">Collision Detection System</div>
+                <div class="improvement-details">
+                    Fixed edge cases in self-collision detection that occurred during quick 180° turns. New algorithm uses continuous collision detection for more accurate results.
+                </div>
+                <div class="improvement-date">July 8, 2025</div>
+            </div>
+            
+          
+        </div>
+</div>
+<div class="popup-overlay"></div>
 
               <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
 <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
 
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Form navigation
+              document.addEventListener('DOMContentLoaded', function() {
+            // Form navigation (unchanged)
             const nextButtons = document.querySelectorAll('.next-section');
             const prevButtons = document.querySelectorAll('.prev-section');
             const formSections = document.querySelectorAll('.form-section');
@@ -841,7 +866,7 @@
             const thankYouMessage = document.getElementById('thankYouMessage');
             const form = document.getElementById('enhancedFeedbackForm');
             
-            // Emoji feedback selection
+            // Emoji feedback selection (unchanged)
             emojiOptions.forEach(emoji => {
                 emoji.addEventListener('click', function() {
                     emojiOptions.forEach(e => e.classList.remove('active'));
@@ -849,25 +874,22 @@
                 });
             });
             
-            // Next button click handler
+            // Next button click handler (unchanged)
             nextButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const currentSection = document.querySelector('.form-section.active');
                     const nextSectionNum = this.getAttribute('data-next');
                     const nextSection = document.querySelector(`.form-section[data-section="${nextSectionNum}"]`);
                     
-                    // Validate current section before proceeding
                     if (validateSection(currentSection)) {
                         currentSection.classList.remove('active');
                         nextSection.classList.add('active');
-                        
-                        // Update progress steps
                         updateProgress(nextSectionNum);
                     }
                 });
             });
             
-            // Previous button click handler
+            // Previous button click handler (unchanged)
             prevButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const currentSection = document.querySelector('.form-section.active');
@@ -876,45 +898,39 @@
                     
                     currentSection.classList.remove('active');
                     prevSection.classList.add('active');
-                    
-                    // Update progress steps
                     updateProgress(prevSectionNum);
                 });
             });
             
-            // Form submission
+            // Form submission handler (modified for FormSubmit)
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Here you would typically send the form data to your server
-                // For demonstration, we'll just show the thank you message
-                
-                // Hide form
-                form.style.display = 'none';
-                
                 // Show thank you message
+                form.style.display = 'none';
                 thankYouMessage.classList.add('show');
                 
-                // In a real implementation, you would send the data to your server
-                /*
+                // Submit form data to FormSubmit
                 const formData = new FormData(form);
-                fetch('/submit-feedback', {
+                fetch(form.action, {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
                 })
-                .then(response => response.json())
-                .then(data => {
-                    form.style.display = 'none';
-                    thankYouMessage.classList.add('show');
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    console.log('Form submitted successfully');
                 })
                 .catch(error => {
-                    console.error('Error:', error);
-                    alert('There was an error submitting your feedback. Please try again.');
+                    console.error('Error submitting form:', error);
                 });
-                */
             });
             
-            // Helper function to validate section
+
+            
+            // Helper functions (unchanged)
             function validateSection(section) {
                 let isValid = true;
                 const requiredInputs = section.querySelectorAll('[required]');
@@ -923,33 +939,22 @@
                     if (!input.value.trim()) {
                         input.style.borderColor = 'var(--danger-color)';
                         isValid = false;
-                        
-                        // Reset border color on input
                         input.addEventListener('input', function() {
                             this.style.borderColor = '#ddd';
                         });
                     }
                 });
                 
-                if (!isValid) {
-                    alert('Please fill in all required fields before continuing.');
-                }
-                
+                if (!isValid) alert('Please fill in all required fields before continuing.');
                 return isValid;
             }
             
-            // Helper function to update progress steps
             function updateProgress(currentStep) {
                 progressSteps.forEach(step => {
                     const stepNum = parseInt(step.getAttribute('data-step'));
-                    
                     step.classList.remove('active', 'completed');
-                    
-                    if (stepNum < currentStep) {
-                        step.classList.add('completed');
-                    } else if (stepNum == currentStep) {
-                        step.classList.add('active');
-                    }
+                    if (stepNum < currentStep) step.classList.add('completed');
+                    else if (stepNum == currentStep) step.classList.add('active');
                 });
             }
         });

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,288 +11,377 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        body{
+        body {
             background-color: var(--bg-color);
         }
-.container {
-    background-color: var(--bg-color);
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 90px;
-}
-.mode-selector h2::before {
-  content: "⚙️ ";
-}
+
+        .container {
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 90px;
+        }
+
+        .mode-selector h2::before {
+            content: "⚙️ ";
+        }
 
 
-.mode-selector {
-    display: flex;
-    flex-direction: column;
-    position: sticky;
-    align-items: left;
-    gap: 10px;
-    height: 100px;
-    width: 20%;
+        .mode-selector {
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            align-items: left;
+            gap: 10px;
+            height: 100px;
+            width: 20%;
+            margin-top: 10px;
 
-}
-.mode-selector h2{
-    padding-left: 10px;
-    color: var(--tertiary-color);
-    margin-left: 10%;
-}
+        }
 
-.mode-btn {
-    background-color: var(--bg-color);
-    color: var(--primary-color);
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 1rem;
-    text-align: left;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    width: 80%;
-    gap: 15px;
-    margin-left: 10%;
-    border: 2px solid var(--border-color);
-    
-}
+        .mode-selector h2 {
+            padding-left: 10%;
+            color: var(--tertiary-color);
+        }
 
-.mode-btn:hover {
-    background-color: var(--hover);
-}
+        .mode-btn {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: left;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            width: 80%;
+            gap: 15px;
+            margin-left: 10%;
+            border: 2px solid var(--border-color);
 
-.mode-btn.active {
-    background-color: var(--primary-color);
-}
+        }
 
-.leaderboard-container {
-    background-color: var(--bg-color);
-    border-radius: 8px;
-    overflow: hidden;
-    width: 80%;
-}
-.leader_heading{
-    color: var(--primary-color);
-}
-.note_box{
-     background-color: var(--bg-color);
+        .mode-btn:hover {
+            background-color: var(--hover);
+        }
+
+        .mode-btn.active {
+            background-color: var(--primary-color);
+        }
+
+        .leaderboard-container {
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            overflow: hidden;
+            width: 80%;
+        }
+
+        .leader_heading {
+            color: var(--primary-color);
+        }
+
+        .note_box {
+            background-color: var(--bg-color);
             padding: 1rem;
             margin: 1.5rem 0;
             border-radius: 20px;
             border: 2px solid var(--border-color);
-}
-.note_box p{
-    margin-bottom: 0;
-    color: var(--tertiary-color);
+        }
 
-    }
+        .note_box p {
+            margin-bottom: 0;
+            color: var(--tertiary-color);
 
-.leaderboard {
-    display: none;
-    padding: 20px;
-}
+        }
 
-.leaderboard.active {
-    display: block;
-}
+        .leaderboard_page {
+            display: none;
+            padding: 20px;
+        }
 
-.leaderboard-header {
-    /* margin-left: 10%; */
-    display: flex;
-    flex-direction: row;
+        .leaderboard_page.active {
+            display: block;
+        }
 
-}
+        .leaderboard-header {
+            /* margin-left: 10%; */
+            display: flex;
+            flex-direction: row;
 
-.leaderboard-header h2 {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    gap: 10px;
-}
+        }
 
-.leaderboard-header-row {
-    display: grid;
-    grid-template-columns: 80px 1fr 100px;
-    padding: 10px 15px;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    color: var(--text-color);
-}
+        .leaderboard-header h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            gap: 10px;
+        }
 
-.leaderboard-content ol {
-    list-style-type: none;
-}
+        .leaderboard-header-row {
+            display: grid;
+            grid-template-columns: 80px 1fr 100px;
+            padding: 10px 15px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
 
-.leaderboard-content li {
-    display: grid;
-    grid-template-columns: 80px 1fr 100px;
-    padding: 12px 15px;
-    align-items: center;
-}
-.score{
-    color: var(--tertiary-color);
-}
-.rank{
-    color: var(--primary-color);
-    }
-    .username{
-        color: var(--text-color);
-    }
+        .leaderboard-content ol {
+            list-style-type: none;
+        }
+
+        .leaderboard-content li {
+            display: grid;
+            grid-template-columns: 80px 1fr 100px;
+            padding: 12px 15px;
+            align-items: center;
+        }
+
+        .score {
+            color: var(--tertiary-color);
+        }
+
+        .rank {
+            color: var(--primary-color);
+        }
+
+        .username {
+            color: var(--text-color);
+        }
 
 
-.leaderboard-footer {
-    margin-top: 20px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border-color);
-    text-align: center;
-    color: var(--primary-color);
-    font-size: 0.9rem;
-}
+        .leaderboard-footer {
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
 
-.loading {
-    text-align: center;
-    color: var(--tertiary-color);
-    font-style: italic;
-}
+        .loading {
+            text-align: center;
+            color: var(--tertiary-color);
+            font-style: italic;
+        }
 
-@media (max-width: 768px) {
-    .container {
-        grid-template-columns: 1fr;
-    }
-    
-    .mode-selector {
-        flex-direction: row;
-        margin-bottom: 20px;
-    }
 
-    .mode-btn {
-        flex: 1;
-        justify-content: center;
-    }
-}
+
+        /* Mobile (0-500px) */
+        @media (max-width: 500px) {
+            .container {
+                flex-direction: column;
+                margin-top: 90px;
+                gap: 0;
+            }
+
+            .mode-selector {
+                width: 100%;
+                flex-direction: row;
+                height: auto;
+                gap: 10px;
+                padding: 0 10px;
+            }
+
+            .mode-selector h2::before {
+                margin-left: 1px;
+            }
+
+            .mode-selector h2 {
+                font-size: 1.7rem;
+                padding-left: 0px;
+            }
+
+            .mode-btn {
+                width: 50%;
+                margin: 0;
+                padding: 8px 5px;
+                font-size: 0.9rem;
+                justify-content: center;
+            }
+
+            .leaderboard-container {
+                margin-top: 3%;
+                width: 100%;
+                padding: 0 10px;
+            }
+
+
+            .leader_heading {
+                font-size: 1.4rem;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .leaderboard-header{
+                text-align: center;
+            }
+
+            .score-header{
+                margin-left: 50%;
+            }
+            .score{
+                margin-left: 50%;
+            }
+            .note_box {
+                margin: 10px 0;
+                padding: 10px;
+            }
+
+        }
+
+        /* Tablets (501-768px) */
+        @media (min-width: 501px) and (max-width: 768px) {
+            .container {
+                margin-top: 90px;
+                gap: 15px;
+            }
+
+            .mode-selector {
+                width: 30%;
+            }
+
+            .mode-btn {
+                width: 100%;
+                padding: 10px;
+                font-size: 0.95rem;
+            }
+
+            .leaderboard-container {
+                width: 70%;
+            }
+
+            .leaderboard-header-row,
+            .leaderboard-content li {
+                grid-template-columns: 60px 1fr 80px;
+            }
+        }
+
+        /* Large Tablets (769-1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .mode-selector {
+                width: 25%;
+            }
+
+            .leaderboard-container {
+                width: 75%;
+            }
+
+            .mode-btn {
+                padding: 12px;
+            }
+        }
     </style>
- 
+
 </head>
+
 <body>
- <header class="main-header">
-            <div class="header-container">
-                <div class="logo-section">
-                    <a class="header-logo" href="/">
-                       <div class="logo-icon">
-    <svg width="80px" height="80px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--fxemoji" preserveAspectRatio="xMidYMid meet">
-        <path fill="var(--text-color)" d="M50.816 119.114v16.199s-13.707-.831-13.707-16.199h13.707zm6.326 0c0 15.368 13.707 16.199 13.707 16.199v-16.199H57.142z"></path>
-        <path fill="var(--accent-color)" d="M78.389 142.269c-6.637-6.636-26.715-5.761-45.657 13.18a78.26 78.26 0 0 1-4.609 4.265a3.909 3.909 0 0 0-1.453.761c-.503.419-.819.423-1.097.39c-1.906-.221-4.706-2.768-8.321-7.569a33.585 33.585 0 0 0-.821-1.063a3.953 3.953 0 1 0-6.088 5.046c.141.17.339.438.592.773c2.251 2.989 4.808 6.045 7.701 8.13c-6.046 2.994-9.315 2.228-9.369 2.215c.093.024.14.044.14.044l-2.585 7.474c.369.127 1.618.498 3.666.498c4.974 0 14.653-2.189 27.835-15.371c16.398-16.4 31.993-15.661 34.474-13.18a3.954 3.954 0 1 0 5.592-5.593z"></path>
-        <path fill="var(--tertiary-color)" d="M492.435 364.927c-1.25-9.271-3.099-17.283-5.131-24.065c-2.012-6.786-4.055-12.379-5.879-16.824c-1.832-4.442-3.344-7.771-4.4-9.995l-1.63-3.352c-1.891-3.893-6.293-6.095-10.676-5.044c-5.062 1.214-8.181 6.302-6.967 11.364l.067.278l.797 3.32c.521 2.185 1.265 5.43 2.067 9.661c.797 4.229 1.692 9.436 2.285 15.533c.304 3.047.524 6.311.698 9.764c.129 3.456.157 7.106.002 10.918c-.334 7.615-1.314 15.893-3.548 24.322c-2.256 8.4-5.806 16.964-10.991 24.595c-2.595 3.804-5.569 7.38-8.931 10.464c-3.352 3.083-7.066 5.701-10.907 7.564c-3.829 1.882-7.806 2.934-11.33 3.113c-.443.037-.874.025-1.302.031c-.216.013-.422-.019-.632-.021c-.181-.014-.492 0-.516-.038a1.296 1.296 0 0 0-.245-.053l-1.166-.078l-.662-.044c-.255-.008.866-.001.333-.019l-.139-.029l-.553-.105a21.437 21.437 0 0 1-2.179-.63a24.396 24.396 0 0 1-2.143-.926c-2.837-1.407-5.663-3.69-8.131-6.836c-2.464-3.135-4.578-7.075-5.956-11.585c-1.39-4.501-2.109-9.527-2.073-14.828c.035-2.656.254-5.378.667-8.146a80.042 80.042 0 0 1 1.819-8.432c1.546-5.698 3.965-11.467 6.989-17.233a107.814 107.814 0 0 1 2.4-4.318c.425-.695.873-1.481 1.273-2.106l1.238-1.942l1.597-2.427l2.022-3.167c1.325-2.138 2.653-4.288 3.913-6.505c5.068-8.838 9.654-18.289 13.419-28.42c3.772-10.122 6.692-20.942 8.312-32.356c1.601-11.411 1.926-23.428.304-35.697c-1.63-12.245-5.191-24.746-11.347-36.652c-6.142-11.868-14.918-23.224-26.931-32.188c-5.992-4.465-12.795-8.3-20.295-11.069c-7.485-2.773-15.682-4.445-24.041-4.652c-8.353-.226-16.816 1.042-24.636 3.587c-7.83 2.535-15.015 6.278-21.239 10.679c-6.242 4.401-11.615 9.407-16.21 14.636c-4.621 5.233-8.474 10.693-11.834 16.201c-6.66 11.038-11.273 22.249-14.799 33.315c-3.514 11.079-5.91 22.051-7.648 32.89c-1.741 10.843-2.761 21.546-3.359 32.135c-.276 5.288-.484 10.56-.541 15.787c-.05 2.57-.04 5.439-.043 7.998l.032 3.614l.01 3.4c-.03 7.901-.737 15.503-2.112 22.565c-1.398 7.043-3.486 13.535-6.212 19.094c-2.721 5.562-6.034 10.188-9.647 13.669c-3.614 3.474-7.506 5.808-11.236 7.045c-3.733 1.247-7.267 1.388-10.16.786c-2.92-.61-5.158-1.863-7.071-3.716c-1.907-1.854-3.651-4.497-4.895-8.383c-1.251-3.846-1.908-8.835-1.729-14.423c.151-5.583 1.127-11.732 2.715-17.993a124.903 124.903 0 0 1 2.847-9.486c.545-1.59 1.127-3.181 1.728-4.771l.932-2.385l.878-2.136l2.383-5.533l2.597-6.16a467.92 467.92 0 0 0 4.859-12.25a488.85 488.85 0 0 0 8.494-24.225c5.146-16.027 9.338-31.799 12.549-47.301c3.183-15.506 5.417-30.729 6.516-45.672c1.09-14.941 1.067-29.61-.531-43.981c-1.608-14.346-4.816-28.483-10.44-41.781c-2.808-6.634-6.226-13.029-10.24-18.94c-4.005-5.912-8.606-11.318-13.529-15.986c-4.911-4.688-10.159-8.586-15.307-11.759a96.167 96.167 0 0 0-14.976-7.466c-9.056-3.558-16.813-5.187-23.03-6.167c-8.695-3.326-18.32-5.257-28.478-5.411c-39.33-.594-100.302 25.207-105.198 57.739a13.21 13.21 0 0 0-.108.973c-.741 9.696 7.341 17.818 17.065 17.746l40.555-.3c3.586-.027 5.18 4.489 2.374 6.721c-11.517 9.161-29.362 24.328-21.267 24.328c18.271 0 52.545-.13 64.971-.081c16.665.066 32.016-2.443 44.226-7.835c1.399 4.583 2.543 10.014 3.245 16.17c1.051 9.052 1.198 19.563.397 30.983c-.794 11.426-2.527 23.772-5.132 36.683c-2.583 12.916-6.019 26.421-10.321 40.2a418.21 418.21 0 0 1-7.102 20.823a398.928 398.928 0 0 1-4.047 10.464l-2.149 5.223l-2.466 5.9l-1.453 3.654l-1.305 3.465a232.471 232.471 0 0 0-2.469 7.096a193.745 193.745 0 0 0-4.258 14.911c-2.459 10.29-4.208 21.293-4.395 33.165c-.177 11.83 1.188 24.629 5.623 37.685c2.221 6.506 5.212 13.044 9.154 19.289c3.927 6.24 8.782 12.182 14.491 17.386a81.95 81.95 0 0 0 19.262 13.092c7.026 3.438 14.537 5.825 22.146 7.137c15.247 2.65 30.782.915 44.604-4.119c13.87-5.015 26.026-13.259 35.77-23.082c9.757-9.849 17.175-21.197 22.523-32.858c5.363-11.684 8.743-23.666 10.807-35.461c2.025-11.803 2.755-23.453 2.557-34.807l-.147-7.437c-.015-2.26-.049-4.213-.029-6.465c-.001-4.42.133-8.798.312-13.156c.4-8.699 1.14-17.278 2.383-25.541c1.231-8.262 2.928-16.242 5.181-23.604c2.239-7.356 5.064-14.098 8.309-19.596c3.228-5.488 6.9-9.622 10.057-11.876c1.577-1.162 2.995-1.851 4.242-2.292c1.255-.431 2.354-.609 3.515-.612c1.157.003 2.402.197 3.811.685c1.403.486 2.954 1.28 4.539 2.424c3.181 2.271 6.404 5.974 8.876 10.617c2.497 4.639 4.275 10.184 5.145 16.163c.468 2.982.669 6.096.711 9.26a80.513 80.513 0 0 1-.58 9.689c-.826 6.552-2.426 13.232-4.681 19.86c-2.264 6.627-5.212 13.187-8.66 19.572a182.042 182.042 0 0 1-2.654 4.771l-3.189 5.454l-2.027 3.633c-.677 1.236-1.235 2.348-1.852 3.527a164.769 164.769 0 0 0-3.41 7.115c-4.322 9.615-7.6 19.815-9.622 30.35a114.77 114.77 0 0 0-1.658 32.239a106.577 106.577 0 0 0 2.732 16.072c1.371 5.281 3.132 10.463 5.382 15.459c4.461 9.983 10.695 19.288 18.741 26.992c8.005 7.698 17.844 13.826 28.719 17.187a65.654 65.654 0 0 0 16.683 2.856l2.1.04l1.519.012l.662-.035l1.477-.077l2.389-.152c.853-.054 1.414-.141 2.106-.218c.661-.085 1.329-.150 1.977-.263c1.304-.206 2.601-.421 3.865-.7c10.18-2.129 18.958-6.377 26.371-11.405c7.44-5.043 13.537-10.974 18.558-17.185a96.612 96.612 0 0 0 12.11-19.215c6.265-13.01 9.154-25.88 10.355-37.538a132.802 132.802 0 0 0-.557-31.521z"></path>
-        <path fill="var(--border-color)" d="M118.602 70.08c6.423 0 11.63 5.207 11.63 11.63v14.296c0 6.423-5.207 11.63-11.63 11.63c-6.423 0-11.63-5.207-11.63-11.63V81.71c0-6.423 5.207-11.63 11.63-11.63z"></path>
-        <circle fill="var(--border-color)" cx="43.962" cy="106.054" r="3.427"></circle>
-    </svg>
-</div>
-                        <h1 class="logo-text">
-                            Snake
-                        </h1>
-                    </a>
-
-                    <div class="logo-adjacent-icons">
-                        <a class="settings-link" href="/setting">
-                            <i class="fas fa-cog"></i>
-                        </a>
-                        <a class="theme-link" href="/theme">
-                            <i class="fa-solid fa-palette"></i>
-                        </a>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <a class="header-logo" href="/">
+                    <div class="logo-icon">
+                        <svg width="80px" height="80px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+                            class="iconify iconify--fxemoji" preserveAspectRatio="xMidYMid meet">
+                            <path fill="var(--text-color)"
+                                d="M50.816 119.114v16.199s-13.707-.831-13.707-16.199h13.707zm6.326 0c0 15.368 13.707 16.199 13.707 16.199v-16.199H57.142z">
+                            </path>
+                            <path fill="var(--accent-color)"
+                                d="M78.389 142.269c-6.637-6.636-26.715-5.761-45.657 13.18a78.26 78.26 0 0 1-4.609 4.265a3.909 3.909 0 0 0-1.453.761c-.503.419-.819.423-1.097.39c-1.906-.221-4.706-2.768-8.321-7.569a33.585 33.585 0 0 0-.821-1.063a3.953 3.953 0 1 0-6.088 5.046c.141.17.339.438.592.773c2.251 2.989 4.808 6.045 7.701 8.13c-6.046 2.994-9.315 2.228-9.369 2.215c.093.024.14.044.14.044l-2.585 7.474c.369.127 1.618.498 3.666.498c4.974 0 14.653-2.189 27.835-15.371c16.398-16.4 31.993-15.661 34.474-13.18a3.954 3.954 0 1 0 5.592-5.593z">
+                            </path>
+                            <path fill="var(--tertiary-color)"
+                                d="M492.435 364.927c-1.25-9.271-3.099-17.283-5.131-24.065c-2.012-6.786-4.055-12.379-5.879-16.824c-1.832-4.442-3.344-7.771-4.4-9.995l-1.63-3.352c-1.891-3.893-6.293-6.095-10.676-5.044c-5.062 1.214-8.181 6.302-6.967 11.364l.067.278l.797 3.32c.521 2.185 1.265 5.43 2.067 9.661c.797 4.229 1.692 9.436 2.285 15.533c.304 3.047.524 6.311.698 9.764c.129 3.456.157 7.106.002 10.918c-.334 7.615-1.314 15.893-3.548 24.322c-2.256 8.4-5.806 16.964-10.991 24.595c-2.595 3.804-5.569 7.38-8.931 10.464c-3.352 3.083-7.066 5.701-10.907 7.564c-3.829 1.882-7.806 2.934-11.33 3.113c-.443.037-.874.025-1.302.031c-.216.013-.422-.019-.632-.021c-.181-.014-.492 0-.516-.038a1.296 1.296 0 0 0-.245-.053l-1.166-.078l-.662-.044c-.255-.008.866-.001.333-.019l-.139-.029l-.553-.105a21.437 21.437 0 0 1-2.179-.63a24.396 24.396 0 0 1-2.143-.926c-2.837-1.407-5.663-3.69-8.131-6.836c-2.464-3.135-4.578-7.075-5.956-11.585c-1.39-4.501-2.109-9.527-2.073-14.828c.035-2.656.254-5.378.667-8.146a80.042 80.042 0 0 1 1.819-8.432c1.546-5.698 3.965-11.467 6.989-17.233a107.814 107.814 0 0 1 2.4-4.318c.425-.695.873-1.481 1.273-2.106l1.238-1.942l1.597-2.427l2.022-3.167c1.325-2.138 2.653-4.288 3.913-6.505c5.068-8.838 9.654-18.289 13.419-28.42c3.772-10.122 6.692-20.942 8.312-32.356c1.601-11.411 1.926-23.428.304-35.697c-1.63-12.245-5.191-24.746-11.347-36.652c-6.142-11.868-14.918-23.224-26.931-32.188c-5.992-4.465-12.795-8.3-20.295-11.069c-7.485-2.773-15.682-4.445-24.041-4.652c-8.353-.226-16.816 1.042-24.636 3.587c-7.83 2.535-15.015 6.278-21.239 10.679c-6.242 4.401-11.615 9.407-16.21 14.636c-4.621 5.233-8.474 10.693-11.834 16.201c-6.66 11.038-11.273 22.249-14.799 33.315c-3.514 11.079-5.91 22.051-7.648 32.89c-1.741 10.843-2.761 21.546-3.359 32.135c-.276 5.288-.484 10.56-.541 15.787c-.05 2.57-.04 5.439-.043 7.998l.032 3.614l.01 3.4c-.03 7.901-.737 15.503-2.112 22.565c-1.398 7.043-3.486 13.535-6.212 19.094c-2.721 5.562-6.034 10.188-9.647 13.669c-3.614 3.474-7.506 5.808-11.236 7.045c-3.733 1.247-7.267 1.388-10.16.786c-2.92-.61-5.158-1.863-7.071-3.716c-1.907-1.854-3.651-4.497-4.895-8.383c-1.251-3.846-1.908-8.835-1.729-14.423c.151-5.583 1.127-11.732 2.715-17.993a124.903 124.903 0 0 1 2.847-9.486c.545-1.59 1.127-3.181 1.728-4.771l.932-2.385l.878-2.136l2.383-5.533l2.597-6.16a467.92 467.92 0 0 0 4.859-12.25a488.85 488.85 0 0 0 8.494-24.225c5.146-16.027 9.338-31.799 12.549-47.301c3.183-15.506 5.417-30.729 6.516-45.672c1.09-14.941 1.067-29.61-.531-43.981c-1.608-14.346-4.816-28.483-10.44-41.781c-2.808-6.634-6.226-13.029-10.24-18.94c-4.005-5.912-8.606-11.318-13.529-15.986c-4.911-4.688-10.159-8.586-15.307-11.759a96.167 96.167 0 0 0-14.976-7.466c-9.056-3.558-16.813-5.187-23.03-6.167c-8.695-3.326-18.32-5.257-28.478-5.411c-39.33-.594-100.302 25.207-105.198 57.739a13.21 13.21 0 0 0-.108.973c-.741 9.696 7.341 17.818 17.065 17.746l40.555-.3c3.586-.027 5.18 4.489 2.374 6.721c-11.517 9.161-29.362 24.328-21.267 24.328c18.271 0 52.545-.13 64.971-.081c16.665.066 32.016-2.443 44.226-7.835c1.399 4.583 2.543 10.014 3.245 16.17c1.051 9.052 1.198 19.563.397 30.983c-.794 11.426-2.527 23.772-5.132 36.683c-2.583 12.916-6.019 26.421-10.321 40.2a418.21 418.21 0 0 1-7.102 20.823a398.928 398.928 0 0 1-4.047 10.464l-2.149 5.223l-2.466 5.9l-1.453 3.654l-1.305 3.465a232.471 232.471 0 0 0-2.469 7.096a193.745 193.745 0 0 0-4.258 14.911c-2.459 10.29-4.208 21.293-4.395 33.165c-.177 11.83 1.188 24.629 5.623 37.685c2.221 6.506 5.212 13.044 9.154 19.289c3.927 6.24 8.782 12.182 14.491 17.386a81.95 81.95 0 0 0 19.262 13.092c7.026 3.438 14.537 5.825 22.146 7.137c15.247 2.65 30.782.915 44.604-4.119c13.87-5.015 26.026-13.259 35.77-23.082c9.757-9.849 17.175-21.197 22.523-32.858c5.363-11.684 8.743-23.666 10.807-35.461c2.025-11.803 2.755-23.453 2.557-34.807l-.147-7.437c-.015-2.26-.049-4.213-.029-6.465c-.001-4.42.133-8.798.312-13.156c.4-8.699 1.14-17.278 2.383-25.541c1.231-8.262 2.928-16.242 5.181-23.604c2.239-7.356 5.064-14.098 8.309-19.596c3.228-5.488 6.9-9.622 10.057-11.876c1.577-1.162 2.995-1.851 4.242-2.292c1.255-.431 2.354-.609 3.515-.612c1.157.003 2.402.197 3.811.685c1.403.486 2.954 1.28 4.539 2.424c3.181 2.271 6.404 5.974 8.876 10.617c2.497 4.639 4.275 10.184 5.145 16.163c.468 2.982.669 6.096.711 9.26a80.513 80.513 0 0 1-.58 9.689c-.826 6.552-2.426 13.232-4.681 19.86c-2.264 6.627-5.212 13.187-8.66 19.572a182.042 182.042 0 0 1-2.654 4.771l-3.189 5.454l-2.027 3.633c-.677 1.236-1.235 2.348-1.852 3.527a164.769 164.769 0 0 0-3.41 7.115c-4.322 9.615-7.6 19.815-9.622 30.35a114.77 114.77 0 0 0-1.658 32.239a106.577 106.577 0 0 0 2.732 16.072c1.371 5.281 3.132 10.463 5.382 15.459c4.461 9.983 10.695 19.288 18.741 26.992c8.005 7.698 17.844 13.826 28.719 17.187a65.654 65.654 0 0 0 16.683 2.856l2.1.04l1.519.012l.662-.035l1.477-.077l2.389-.152c.853-.054 1.414-.141 2.106-.218c.661-.085 1.329-.150 1.977-.263c1.304-.206 2.601-.421 3.865-.7c10.18-2.129 18.958-6.377 26.371-11.405c7.44-5.043 13.537-10.974 18.558-17.185a96.612 96.612 0 0 0 12.11-19.215c6.265-13.01 9.154-25.88 10.355-37.538a132.802 132.802 0 0 0-.557-31.521z">
+                            </path>
+                            <path fill="var(--border-color)"
+                                d="M118.602 70.08c6.423 0 11.63 5.207 11.63 11.63v14.296c0 6.423-5.207 11.63-11.63 11.63c-6.423 0-11.63-5.207-11.63-11.63V81.71c0-6.423 5.207-11.63 11.63-11.63z">
+                            </path>
+                            <circle fill="var(--border-color)" cx="43.962" cy="106.054" r="3.427"></circle>
+                        </svg>
                     </div>
-                </div>
+                    <h1 class="logo-text">
+                        HissHasta
+                    </h1>
+                </a>
 
-                <nav class="header-nav">
-                    <!-- <div class="nav-links">
+                <div class="logo-adjacent-icons">
+                    <a class="settings-link" href="/setting">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                    <a class="theme-link" href="/theme">
+                        <i class="fa-solid fa-palette"></i>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="header-nav">
+
+                <div class="nav-links">
+                    <a class="nav-link" href="/leaderboard">
+                        <div class="nav-icon">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+                        <span class="nav-tooltip">Leaderboard</span>
+                    </a>
+                    <a class="nav-link" href="/history">
+                        <div class="nav-icon">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        <span class="nav-tooltip">History</span>
+                    </a>
                     <a class="nav-link" href="#">
                         <div class="nav-icon">
-                            <i class="fas fa-keyboard"></i>
+                            <i class="fa-solid fa-gamepad"></i>
                         </div>
-                        <span class="nav-tooltip">Keyboard</span>
+                        <span class="nav-tooltip">Mode</span>
                     </a>
-                    <a class="nav-link" href="#">
-                        <div class="nav-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <span class="nav-tooltip">Code</span>
-                    </a>
-                    <a class="nav-link" href="/profile" id="profileLink">
-                <div class="nav-icon">
-                    <i class="fas fa-user"></i>
-                </div>
-                <span class="nav-tooltip">Profile</span>
-            </a>
-
-            
-                </div> -->
-                    <div class="nav-links">
-                        <a class="nav-link" href="/leaderboard">
-                            <div class="nav-icon">
-                                <i class="fa-solid fa-crown"></i>
-                            </div>
-                            <span class="nav-tooltip">Leaderboard</span>
-                        </a>
-                        <a class="nav-link" href="/history">
-                            <div class="nav-icon">
-                                <i class="fa-solid fa-clock-rotate-left"></i>
-                            </div>
-                            <span class="nav-tooltip">History</span>
-                        </a>
-                        <a class="nav-link" href="#">
-                            <div class="nav-icon">
-                                <i class="fa-solid fa-gamepad"></i>
-                            </div>
-                            <span class="nav-tooltip">Mode</span>
-                        </a>
-                        <div class="profile-container">
-                            {% if 'user' in session %}
-                            <!-- Logged in state -->
-                            <div class="profile-btn" id="profileBtn">
-                                <i class="fas fa-user"></i>
-                                <span class="username">{{ session['user']['username'] }}</span>
-                            </div>
-                            <div class="profile-window hidden" id="profileWindow">
-                                <div class="profile-content">
-                                    {% if 'user' in session %}
-                                    <p>Welcome, {{ session['user']['username'] }}!</p>
-                                    <p>Email: {{ session['user']['email'] }}</p>
-                                    {% endif %}
-                                    <button class="logout-btn" id="logoutBtn">
-                                        <i class="fas fa-sign-out-alt"></i> Logout
-                                    </button>
-                                </div>
-                            </div>
-                            {% else %}
-                            <!-- Logged out state -->
-                            <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink">
-                                <i class="fas fa-user"></i>
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-
                     <div class="nav-actions">
                         <button class="notification-btn">
                             <div class="notification-icon">
                                 <i class="fas fa-bell"></i>
-                                <span class="notification-badge">3</span>
                             </div>
                         </button>
                     </div>
-                </nav>
+                    <div class="profile-container">
+                        {% if 'user' in session %}
+                        <!-- Logged in state -->
+                        <div class="profile-btn" id="profileBtn">
+                            <i class="fas fa-user"></i>
+                            <span class="username" style="cursor: default;">{{ session['user']['username'] }}</span>
+                        </div>
+                        <div class="profile-window hidden" id="profileWindow">
+                            <div class="profile-content">
+                                {% if 'user' in session %}
+                                <p>Welcome, {{ session['user']['username'] }}!</p>
+                                <p>Email: {{ session['user']['email'] }}</p>
+                                {% endif %}
+                                <button class="logout-btn" id="logoutBtn">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </button>
+                            </div>
+                        </div>
+                        {% else %}
+                        <!-- Logged out state -->
+                        <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink" style="cursor: default;">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
 
-                <button class="mobile-menu-btn" aria-label="Toggle menu">
-                    <i class="fas fa-bars menu-icon"></i>
-                </button>
-            </div>
-        </header>
 
-<div class="container">
+            </nav>
+
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <i class="fas fa-bars menu-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
         <div class="mode-selector">
             <h2>Mode</h2>
             <button class="mode-btn active" data-mode="keyboard">
@@ -301,13 +391,15 @@
                 <i class="fas fa-hand-paper"></i> Gesture Mode
             </button>
         </div>
-        
+
         <div class="leaderboard-container">
             <div>
-            <h1 class="leader_heading"><i class="fas fa-trophy"></i> Snake Game Leaderboard</h1>
+                <h1 class="leader_heading"><i class="fas fa-trophy"></i> Snake Game Leaderboard</h1>
             </div>
-            <div class="note_box"><p>This leaderboard refresh at every 1 minute</p></div>
-            <div class="leaderboard active" id="keyboard-leaderboard">
+            <div class="note_box">
+                <p>The leaderboard updates automatically every 30 seconds.</p>
+            </div>
+            <div class="leaderboard_page active" id="keyboard-leaderboard">
                 <div class="leaderboard-header">
                     <h2><i class="fas fa-keyboard"></i> Keyboard Mode Leaderboard</h2>
                 </div>
@@ -325,8 +417,8 @@
                     Showing top 50 players
                 </div>
             </div>
-            
-            <div class="leaderboard" id="gesture-leaderboard">
+
+            <div class="leaderboard_page" id="gesture-leaderboard">
                 <div class="leaderboard-header">
                     <h2><i class="fas fa-hand-paper"></i> Gesture Mode Leaderboard</h2>
                 </div>
@@ -341,7 +433,7 @@
                     </ol>
                 </div>
                 <div class="leaderboard-footer" id="gesture-leaderboard-footer">
-                   
+
                 </div>
             </div>
         </div>
@@ -349,73 +441,110 @@
 
 
 
-         <footer>
+    <footer>
 
-            <div class="leftright">
-                <div class="left">
-                    <a class="textButton" id="contactPopupButton" href="/contact">
-                        <i class="fas fa-fw fa-envelope"></i>
-                        <div class="text">Contact</div>
-                    </a>
-                    <a id="supportMeButton" class="textButton" href="/feedback">
-                        <i class="fa-solid fa-comment"></i>
-                        <div class="text">Feedback</div>
-                    </a>
-                    <a href="https://github.com/lokesh8577" class="textButton" target="_blank"
-                        rel="noreferrer noopener">
-                        <i class="fas fa-fw fa-code"></i>
-                        <div class="text">Github</div>
-                    </a>
-                    <a href="https://www.linkedin.com/in/lokesh-prajapat-354756279/" class="textButton" target="_blank"
-                        rel="noreferrer noopener">
-                        <i class="fa-brands fa-linkedin"></i>
-                        <div class="text">Linkedin</div>
-                    </a>
-                    <a href="https://x.com/Lokesh85772" class="textButton" target="_blank" rel="noreferrer noopener">
-                       <i class="fa-brands fa-twitter"></i>
-                        <div class="text">Twitter</div>
-                    </a>
-                    <a href="https://www.instagram.com/lokesh_prajapat_m5_cs/" class="textButton" target="_blank" rel="noreferrer noopener">
-                        <i class="fa-brands fa-instagram"></i>
-                        <div class="text">Instagram</div>
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=61575659804732" class="textButton" target="_blank"
-                        rel="noreferrer noopener">
-                        <i class="fa-brands fa-facebook"></i>
-                        <div class="text">Facebook</div>
-                    </a>
-                    <a href="/terms" class="textButton" target="_blank" rel="noreferrer noopener">
-                        <i class="fas fa-fw fa-file-contract"></i>
-                        <div class="text">Terms</div>
-                    </a>
-                    <a href="/security" class="textButton" target="_blank" rel="noreferrer noopener">
-                        <i class="fas fa-fw fa-shield-alt"></i>
-                        <div class="text">Security</div>
-                    </a>
-                    <a href="/privacy" class="textButton" target="_blank" rel="noreferrer noopener">
-                        <i class="fas fa-fw fa-lock"></i>
-                        <div class="text">Privacy</div>
-                    </a>
-                </div>
-                <div class="right">
-                    <button class="current-theme textButton" aria-label="Shift-click to toggle custom theme">
-                        <div class="icon">
-                            <i class="fas fa-star favIndicator"></i>
-                            <i class="fas fa-fw fa-palette"></i>
-                        </div>
-                    </button>
-                    <button class="currentVersion textButton">
-                        <i class="fas fa-fw fa-code-branch"></i>
-                        <div class="text">v1.0.1</div>
-                        <key id="newVersionIndicator" class="hidden">new</key>
-                    </button>
-                </div>
+        <div class="leftright">
+            <div class="left">
+                <a class="textButton" id="contactPopupButton" href="/contact">
+                    <i class="fas fa-fw fa-envelope"></i>
+                    <div class="text">Contact</div>
+                </a>
+                <a id="supportMeButton" class="textButton" href="/feedback">
+                    <i class="fa-solid fa-comment"></i>
+                    <div class="text">Feedback</div>
+                </a>
+                <a href="https://github.com/lokesh8577" class="textButton" target="_blank" rel="noreferrer noopener">
+                    <i class="fas fa-fw fa-code"></i>
+                    <div class="text">Github</div>
+                </a>
+                <a href="https://www.linkedin.com/in/lokesh-prajapat-354756279/" class="textButton" target="_blank"
+                    rel="noreferrer noopener">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <div class="text">Linkedin</div>
+                </a>
+                <a href="https://x.com/Lokesh85772" class="textButton" target="_blank" rel="noreferrer noopener">
+                    <i class="fa-brands fa-twitter"></i>
+                    <div class="text">Twitter</div>
+                </a>
+                <a href="https://www.instagram.com/lokesh_prajapat_m5_cs/" class="textButton" target="_blank"
+                    rel="noreferrer noopener">
+                    <i class="fa-brands fa-instagram"></i>
+                    <div class="text">Instagram</div>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61575659804732" class="textButton" target="_blank"
+                    rel="noreferrer noopener">
+                    <i class="fa-brands fa-facebook"></i>
+                    <div class="text">Facebook</div>
+                </a>
+                <a href="/terms" class="textButton" target="_blank" rel="noreferrer noopener">
+                    <i class="fas fa-fw fa-file-contract"></i>
+                    <div class="text">Terms</div>
+                </a>
+                <a href="/security" class="textButton" target="_blank" rel="noreferrer noopener">
+                    <i class="fas fa-fw fa-shield-alt"></i>
+                    <div class="text">Security</div>
+                </a>
+                <a href="/privacy" class="textButton" target="_blank" rel="noreferrer noopener">
+                    <i class="fas fa-fw fa-lock"></i>
+                    <div class="text">Privacy</div>
+                </a>
             </div>
-        </footer>
-         <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
-<script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+            <div class="right">
+
+                <button class="currentVersion textButton">
+                    <i class="fas fa-fw fa-code-branch"></i>
+                    <div class="text">v1.0.1</div>
+                    <key id="newVersionIndicator" class="hidden">new</key>
+                </button>
+            </div>
+        </div>
+    </footer>
+    <div class="notification-popup">
+        <div class="popup-header">
+            <h3>Notification</h3>
+            <button class="close-popup">&times;</button>
+        </div>
+
+        <div class="improvement-list">
+            <div class="improvement">
+                <div class="improvement-title">Gesture Recognition Engine
+                    <span class="version-badge">v2.3.1</span>
+                </div>
+                <div class="improvement-details">
+                    Improved hand tracking accuracy by 22% through better keypoint detection. Reduced false positives
+                    during rapid movements by implementing temporal smoothing.
+                </div>
+                <div class="improvement-date">July 12, 2025</div>
+            </div>
+
+            <div class="improvement">
+                <div class="improvement-title">Input Latency Optimization</div>
+                <div class="improvement-details">
+                    Reduced end-to-end latency by 40ms (from 85ms to 45ms) by optimizing the render pipeline and
+                    implementing predictive motion modeling.
+                </div>
+                <div class="improvement-date">July 10, 2025</div>
+            </div>
+
+            <div class="improvement">
+                <div class="improvement-title">Collision Detection System</div>
+                <div class="improvement-details">
+                    Fixed edge cases in self-collision detection that occurred during quick 180° turns. New algorithm
+                    uses continuous collision detection for more accurate results.
+                </div>
+                <div class="improvement-date">July 8, 2025</div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="popup-overlay"></div>
+    <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Firebase configuration
             const firebaseConfig = {
                 apiKey: "AIzaSyDmeALZ7huDbG2ya3Mh9gZ-04wOG-0wRbI",
@@ -426,16 +555,16 @@
                 messagingSenderId: "113807589798155426981",
                 appId: "1:633783160028:web:e55b0788d0348e89eeb819"
             };
-            
+
             // Initialize Firebase if not already initialized
             if (!firebase.apps.length) {
                 firebase.initializeApp(firebaseConfig);
             }
-            
+
             // Check if user is authenticated
             let currentUserId = null;
             let isAuthenticated = false;
-            
+
             firebase.auth().onAuthStateChanged((user) => {
                 if (user) {
                     currentUserId = user.uid;
@@ -444,51 +573,51 @@
                     currentUserId = null;
                     isAuthenticated = false;
                 }
-                
+
                 // Load initial leaderboard (keyboard by default)
                 fetchLeaderboard('keyboard');
             });
-            
+
             // Mode selector functionality
             const modeButtons = document.querySelectorAll('.mode-btn');
-            const leaderboards = document.querySelectorAll('.leaderboard');
-            
+            const leaderboards = document.querySelectorAll('.leaderboard_page');
+
             modeButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     const mode = this.dataset.mode;
-                    
+
                     // Update active button
                     modeButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
-                    
+
                     // Show the selected leaderboard
                     leaderboards.forEach(board => board.classList.remove('active'));
                     document.getElementById(`${mode}-leaderboard`).classList.add('active');
-                    
+
                     // Fetch data for the selected mode
                     fetchLeaderboard(mode);
                 });
             });
-            
+
             // Function to render leaderboard entry
             function renderLeaderboardEntry(entry, mode) {
                 const li = document.createElement('li');
                 li.className = 'leaderboard-entry';
                 li.dataset.userId = entry.userId;
-                
+
                 // Highlight current user
                 if (currentUserId && entry.userId === currentUserId) {
                     li.classList.add('current-user');
                 }
-                
+
                 // Highlight active session
                 if (entry.in_session) {
                     li.classList.add('highlighted');
                 }
-                
+
                 // Create avatar from first letter of username
                 const firstLetter = entry.username ? entry.username.charAt(0).toUpperCase() : '?';
-                
+
                 li.innerHTML = `
                     <span class="rank">${entry.rank}.</span>
                     <span class="username">
@@ -496,34 +625,34 @@
                     </span>
                     <span class="score">${entry.score || 0}</span>
                 `;
-                
+
                 return li;
             }
-            
+
             // Function to fetch leaderboard data
             async function fetchLeaderboard(mode) {
                 const leaderboardList = document.getElementById(`${mode}-leaderboard-list`);
                 const footer = document.getElementById(`${mode}-leaderboard-footer`);
-                
+
                 if (!leaderboardList) return;
-                
+
                 try {
                     leaderboardList.innerHTML = '<li class="loading">Loading leaderboard...</li>';
-                    
+
                     const response = await fetch(`/api/leaderboard?mode=${mode}&limit=50`);
-                    
+
                     if (!response.ok) {
                         throw new Error(`Server returned ${response.status}`);
                     }
-                    
+
                     const data = await response.json();
-                    
+
                     if (!Array.isArray(data)) {
                         throw new Error('Invalid leaderboard data');
                     }
-                    
+
                     leaderboardList.innerHTML = '';
-                    
+
                     if (data.length === 0) {
                         const noScoresItem = document.createElement('li');
                         noScoresItem.className = 'no-scores';
@@ -531,12 +660,12 @@
                         leaderboardList.appendChild(noScoresItem);
                         return;
                     }
-                    
+
                     data.forEach((entry) => {
                         const li = renderLeaderboardEntry(entry, mode);
                         leaderboardList.appendChild(li);
                     });
-                    
+
                     // Update status message
                     if (footer) {
                         footer.textContent = `Showing top ${data.length} players`;
@@ -561,10 +690,10 @@
                     `;
                 }
             }
-            
+
             // Make the function available globally
             window.fetchLeaderboard = fetchLeaderboard;
-            
+
             // Refresh leaderboards every 30 seconds
             setInterval(() => {
                 const activeMode = document.querySelector('.mode-btn.active').dataset.mode;
@@ -573,4 +702,5 @@
         });
     </script>
 </body>
+
 </html>

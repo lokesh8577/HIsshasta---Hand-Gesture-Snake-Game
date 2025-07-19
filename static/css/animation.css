@@ -553,3 +553,95 @@
 
 
         
+
+
+        /* --- Media Queries for Responsive Design --- */
+
+/* For Tablets and smaller devices (<= 768px) */
+@media (max-width: 768px) {
+    /* Adjust content padding */
+    .content, .over-content {
+        padding: 20px;
+    }
+
+    /* Reduce heading size */
+    .over-content h2 {
+        font-size: 2.2rem;
+        margin-bottom: 25px;
+    }
+    
+    .snake-selection-title {
+        font-size: 2.5rem;
+    }
+
+    /* Center the start/restart buttons */
+    #start-btn, #restart-btn {
+        margin: 20px auto 0; /* Center horizontally, add top margin */
+        padding: 12px 32px;
+        font-size: 1.1rem;
+    }
+    
+    /* Snake Selection Screen Adjustments */
+    .snake-selection-box {
+        padding: 2rem 1.5rem;
+    }
+    
+    .snake-selection-options {
+        flex-direction: column; /* Stack options vertically */
+        gap: 1.5rem;
+    }
+}
+
+/* For Mobile devices (<= 480px) */
+@media (max-width: 480px) {
+    /* Adjust main screen font size */
+    .game-start, .game-over {
+        font-size: 20px;
+    }
+
+    /* Further reduce padding and heading sizes */
+    .content, .over-content {
+        padding: 15px;
+    }
+
+    .over-content h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    /* Adjust button styles for small screens */
+    #start-btn, #restart-btn {
+        padding: 10px 28px;
+        font-size: 1rem;
+    }
+
+    /* Snake Selection Screen Adjustments for Mobile */
+    .snake-selection-container {
+        padding: 1rem;
+    }
+
+    .snake-selection-box {
+        padding: 1.5rem 1rem;
+    }
+
+    .snake-selection-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .snake-selection-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .snake-selection-button {
+        padding: 1.2rem 1.5rem;
+        font-size: 1rem;
+        min-width: unset; /* Remove minimum width */
+        width: 100%; /* Make buttons full width of their container */
+    }
+
+    .snake-selection-button__icon {
+        font-size: 2.5rem;
+    }
+}

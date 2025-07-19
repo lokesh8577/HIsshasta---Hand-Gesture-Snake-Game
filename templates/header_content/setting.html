@@ -23,7 +23,7 @@
     </svg>
 </div>
                         <h1 class="logo-text">
-                            Snake
+                            HissHasta
                         </h1>
                     </a>
 
@@ -38,28 +38,7 @@
                 </div>
 
                 <nav class="header-nav">
-                    <!-- <div class="nav-links">
-                    <a class="nav-link" href="#">
-                        <div class="nav-icon">
-                            <i class="fas fa-keyboard"></i>
-                        </div>
-                        <span class="nav-tooltip">Keyboard</span>
-                    </a>
-                    <a class="nav-link" href="#">
-                        <div class="nav-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <span class="nav-tooltip">Code</span>
-                    </a>
-                    <a class="nav-link" href="/profile" id="profileLink">
-                <div class="nav-icon">
-                    <i class="fas fa-user"></i>
-                </div>
-                <span class="nav-tooltip">Profile</span>
-            </a>
-
-            
-                </div> -->
+               
                     <div class="nav-links">
                         <a class="nav-link" href="/leaderboard">
                             <div class="nav-icon">
@@ -79,12 +58,19 @@
                             </div>
                             <span class="nav-tooltip">Mode</span>
                         </a>
+                        <div class="nav-actions">
+                       <button class="notification-btn">
+    <div class="notification-icon">
+        <i class="fas fa-bell"></i>
+    </div>
+</button>
+                    </div>
                         <div class="profile-container">
                             {% if 'user' in session %}
                             <!-- Logged in state -->
                             <div class="profile-btn" id="profileBtn">
                                 <i class="fas fa-user"></i>
-                                <span class="username">{{ session['user']['username'] }}</span>
+                                <span class="username" style="cursor: default;">{{ session['user']['username'] }}</span>
                             </div>
                             <div class="profile-window hidden" id="profileWindow">
                                 <div class="profile-content">
@@ -99,21 +85,14 @@
                             </div>
                             {% else %}
                             <!-- Logged out state -->
-                            <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink">
+                            <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink" style="cursor: default;">
                                 <i class="fas fa-user"></i>
                             </a>
                             {% endif %}
                         </div>
                     </div>
 
-                    <div class="nav-actions">
-                        <button class="notification-btn">
-                            <div class="notification-icon">
-                                <i class="fas fa-bell"></i>
-                                <span class="notification-badge">3</span>
-                            </div>
-                        </button>
-                    </div>
+                    
                 </nav>
 
                 <button class="mobile-menu-btn" aria-label="Toggle menu">
@@ -126,108 +105,66 @@
         
         <form id="settings-form">
             <!-- Game Board Settings -->
-            <div class="settings-section">
-                <h2><i class="fas fa-border-all"></i> Board Settings</h2>
-                
-                <div class="setting-group">
-                    <label for="grid-size">Grid Size:</label>
-                    <select id="grid-size" name="grid-size">
-                        <option value="small">Small (10x10)</option>
-                        <option value="medium" selected>Medium (15x15)</option>
-                        <option value="large">Large (20x20)</option>
-                        <option value="custom">Custom</option>
-                    </select>
-                </div>
-                
-                <div class="custom-size hidden" id="custom-size-group">
-                    <div class="setting-group">
-                        <label for="custom-rows">Rows:</label>
-                        <input type="number" id="custom-rows" name="custom-rows" min="5" max="30" value="15">
-                    </div>
-                    <div class="setting-group">
-                        <label for="custom-cols">Columns:</label>
-                        <input type="number" id="custom-cols" name="custom-cols" min="5" max="30" value="15">
-                    </div>
-                </div>
-                
-                <div class="setting-group">
-                    <label for="grid-color1">Grid Color 1:</label>
-                    <input type="color" id="grid-color1" name="grid-color1" value="#e8f5e9">
-                </div>
-                
-                <div class="setting-group">
-                    <label for="grid-color2">Grid Color 2:</label>
-                    <input type="color" id="grid-color2" name="grid-color2" value="#c8e6c9">
-                </div>
-                
-                <div class="setting-group">
-                    <label for="grid-border-color">Grid Border Color:</label>
-                    <input type="color" id="grid-border-color" name="grid-border-color" value="#ff0000">
-                </div>
-            </div>
-            
-            <!-- Snake Settings -->
-            <div class="settings-section">
-                <h2><i class="fas fa-snake"></i> Snake Settings</h2>
-                
-                <div class="setting-group">
-                    <label for="snake-speed">Snake Speed:</label>
-                    <select id="snake-speed" name="snake-speed">
-                        <option value="slow">Slow</option>
-                        <option value="medium" selected>Medium</option>
-                        <option value="fast">Fast</option>
-                        <option value="very-fast">Very Fast</option>
-                    </select>
-                </div>
-                
-                <div class="setting-group">
-                    <label for="snake-body-color">Body Color:</label>
-                    <input type="color" id="snake-body-color" name="snake-body-color" value="#4CAF50">
-                </div>
-                
-                <div class="setting-group">
-                    <label for="snake-body-border">Body Border:</label>
-                    <input type="color" id="snake-body-border" name="snake-body-border" value="#000000">
-                </div>
-                
-                <div class="setting-group">
-                    <label for="snake-head-color">Head Color:</label>
-                    <input type="color" id="snake-head-color" name="snake-head-color" value="#4CAF50">
-                </div>
-                
-                <div class="setting-group">
-                    <label for="snake-head-border">Head Border:</label>
-                    <input type="color" id="snake-head-border" name="snake-head-border" value="#000000">
-                </div>
-                
-                <div class="setting-group">
-                    <label for="snake-tail-color">Tail Color:</label>
-                    <input type="color" id="snake-tail-color" name="snake-tail-color" value="#66bb6a">
-                </div>
-                
-                <div class="setting-group">
-                    <label for="snake-tail-border">Tail Border:</label>
-                    <input type="color" id="snake-tail-border" name="snake-tail-border" value="#000000">
-                </div>
-            </div>
+           <!-- Replace the entire Board Settings section with this: -->
+<div class="settings-section">
+    <h2><i class="fas fa-border-all"></i> Board Settings</h2>
+    
+    <div class="setting-group">
+        <label for="grid-size">Grid Size:</label>
+        <select id="grid-size" name="grid-size">
+            <option value="small">Small (10x10)</option>
+            <option value="medium" selected>Medium (15x15)</option>
+            <option value="large">Large (20x20)</option>
+            <option value="custom">Custom</option>
+        </select>
+    </div>
+    
+    <div class="custom-size hidden" id="custom-size-group">
+        <div class="setting-group">
+            <label for="custom-rows">Rows:</label>
+            <input type="number" id="custom-rows" name="custom-rows" min="5" max="30" value="15">
+        </div>
+        <div class="setting-group">
+            <label for="custom-cols">Columns:</label>
+            <input type="number" id="custom-cols" name="custom-cols" min="5" max="30" value="15">
+        </div>
+    </div>
+</div>
+
+<!-- Replace the entire Snake Settings section with this: -->
+<div class="settings-section">
+    <h2><i class="fas fa-snake"></i> Snake Settings</h2>
+    
+    <div class="setting-group">
+        <label for="snake-speed">Snake Speed:</label>
+        <select id="snake-speed" name="snake-speed">
+            <option value="slow">Slow</option>
+            <option value="medium" selected>Medium</option>
+            <option value="fast">Fast</option>
+            <option value="very-fast">Very Fast</option>
+        </select>
+    </div>
+</div>
             
             <!-- Food Settings -->
-            <div class="settings-section">
-                <h2><i class="fas fa-apple-alt"></i> Food Settings</h2>
-                
-                <div class="setting-group">
-                    <label for="food-type">Food Appearance:</label>
-                    <select id="food-type" name="food-type">
-                        <option value="image" selected>Apple Image</option>
-                        <option value="color">Colored Square</option>
-                    </select>
-                </div>
-                
-                <div class="setting-group" id="food-color-group">
-                    <label for="food-color">Food Color:</label>
-                    <input type="color" id="food-color" name="food-color" value="#ff0000">
-                </div>
-            </div>
+           <!-- In settings.html, replace the Food Settings section with this: -->
+<div class="settings-section">
+    <h2><i class="fas fa-apple-alt"></i> Food Settings</h2>
+    
+    <div class="setting-group">
+        <label for="food-type">Food Selection:</label>
+        <select id="food-type" name="food-type">
+            <option value="apple" selected>Apple</option>
+            <option value="banana">Banana</option>
+            <option value="cherry">Cherry</option>
+            <option value="grape">Grape</option>
+            <option value="orange">Orange</option>
+            <option value="strawberry">Strawberry</option>
+            <option value="watermelon">Watermelon</option>
+            <option value="random">Random (Changes each time)</option>
+        </select>
+    </div>
+</div>
             
             <div class="form-actions">
                 <button type="button" id="apply-btn" class="btn btn-primary">Apply Settings</button>
@@ -302,9 +239,46 @@
                 </div>
             </div>
         </footer>
-
+ <div class="notification-popup">
+    <div class="popup-header">
+        <h3>Notification</h3>
+        <button class="close-popup">&times;</button>
+    </div>
+    
+    <div class="improvement-list">
+            <div class="improvement">
+                <div class="improvement-title">Gesture Recognition Engine
+                    <span class="version-badge">v2.3.1</span>
+                </div>
+                <div class="improvement-details">
+                    Improved hand tracking accuracy by 22% through better keypoint detection. Reduced false positives during rapid movements by implementing temporal smoothing.
+                </div>
+                <div class="improvement-date">July 12, 2025</div>
+            </div>
+            
+            <div class="improvement">
+                <div class="improvement-title">Input Latency Optimization</div>
+                <div class="improvement-details">
+                    Reduced end-to-end latency by 40ms (from 85ms to 45ms) by optimizing the render pipeline and implementing predictive motion modeling.
+                </div>
+                <div class="improvement-date">July 10, 2025</div>
+            </div>
+            
+            <div class="improvement">
+                <div class="improvement-title">Collision Detection System</div>
+                <div class="improvement-details">
+                    Fixed edge cases in self-collision detection that occurred during quick 180° turns. New algorithm uses continuous collision detection for more accurate results.
+                </div>
+                <div class="improvement-date">July 8, 2025</div>
+            </div>
+            
+          
+        </div>
+</div>
+<div class="popup-overlay"></div>
            <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
 <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+<script src="{{ url_for('static', filename='js/nav.js') }}"></script>
 
     <script src="{{ url_for('static', filename='js/setting.js') }}"></script>
 </body>

@@ -22,12 +22,10 @@
 //     const gestureBtn = document.getElementById('gesture-btn');
 //     const cameraSection = document.getElementById('camera-section');
 //     const statsHistorySection = document.getElementById('stats-history-section');
-//     // Add these with your other DOM element selections at the top
-// const gameModeBtn = document.querySelector('.nav-link .fa-gamepad') ? 
-//                    document.querySelector('.nav-link .fa-gamepad').closest('.nav-link') : null;
-// const paletteIcon = document.querySelector('.game-link .fa-palette') ? 
-//                    document.querySelector('.game-link .fa-palette').closest('.game-link') : null;
-    
+//     const gameModeBtn = document.querySelector('.nav-link .fa-gamepad') ? 
+//                        document.querySelector('.nav-link .fa-gamepad').closest('.nav-link') : null;
+//     const paletteIcon = document.querySelector('.game-link .fa-palette') ? 
+//                        document.querySelector('.game-link .fa-palette').closest('.game-link') : null;
     
 //     // Auth elements
 //     const loginBtn = document.getElementById('loginBtn');
@@ -40,7 +38,6 @@
 //     const showSignup = document.getElementById('show-signup');
 //     const showLogin = document.getElementById('show-login');
     
-    
 //     // Game state
 //     let gameInitialized = false;
 //     let currentControlMode = null;
@@ -50,6 +47,51 @@
 //     let currentUserId = null;
 //     let currentUsername = 'Guest';
 //     let isAuthenticated = false;
+
+//     // Check if mode selection has already been made
+//     const hasSelectedMode = localStorage.getItem('hasSelectedMode');
+//      const storedMode = localStorage.getItem('selectedMode') || 'keyboard';
+//     if (storedMode === 'gesture') {
+//         document.body.classList.add('gesture-mode');
+//     } else {
+//         document.body.classList.remove('gesture-mode');
+//     }
+
+//     // If mode is already selected, skip the selection screen
+//     if (hasSelectedMode) {
+//         selectionScreen.classList.add('hidden');
+//         gameContent.classList.remove('hidden');
+       
+//         const storedMode = localStorage.getItem('selectedMode') || 'keyboard';
+//         currentControlMode = storedMode;
+//         currentLeaderboardMode = storedMode;
+        
+//         // Default to keyboard controls if no specific mode is stored
+//         currentControlMode = localStorage.getItem('selectedMode') || 'keyboard';
+//         currentLeaderboardMode = currentControlMode;
+        
+//         // Show/hide appropriate sections based on mode
+//         if (currentControlMode === 'gesture') {
+//             cameraSection.classList.remove('hidden');
+//             statsHistorySection.classList.add('hidden');
+//             if (window.initGestureControls) {
+//                 initGestureControls();
+//             }
+//         } else {
+//             cameraSection.classList.add('hidden');
+//             statsHistorySection.classList.remove('hidden');
+//         }
+        
+//         // Initialize game if not already done
+//         if (!gameInitialized) {
+//             initializeGame();
+//             gameInitialized = true;
+//         }
+        
+//         // Set up leaderboard for the current mode
+//         switchLeaderboardMode(currentControlMode);
+//           updateControlGuide(storedMode);
+//     }
     
 //     // Initialize modal handlers
 //     function initModal() {
@@ -95,36 +137,35 @@
 //         }
 //     }
     
-    
 //     // Handle authentication
 //     async function handleLogin(email, password) {
-//     try {
-//         const response = await fetch('/login', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/x-www-form-urlencoded',
-//             },
-//             body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
-//         });
-        
-//         if (response.ok) {
-//             // Get Firebase token after successful login
-//             const tokenResponse = await fetch('/get_firebase_token');
-//             const { token } = await tokenResponse.json();
+//         try {
+//             const response = await fetch('/login', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/x-www-form-urlencoded',
+//                 },
+//                 body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+//             });
             
-//             // Sign in to Firebase
-//             await firebase.auth().signInWithCustomToken(token);
-            
-//             // Now check auth state to update UI
-//             await checkAuthState();
-//             return true;
+//             if (response.ok) {
+//                 // Get Firebase token after successful login
+//                 const tokenResponse = await fetch('/get_firebase_token');
+//                 const { token } = await tokenResponse.json();
+                
+//                 // Sign in to Firebase
+//                 await firebase.auth().signInWithCustomToken(token);
+                
+//                 // Now check auth state to update UI
+//                 await checkAuthState();
+//                 return true;
+//             }
+//             return false;
+//         } catch (error) {
+//             console.error('Login error:', error);
+//             return false;
 //         }
-//         return false;
-//     } catch (error) {
-//         console.error('Login error:', error);
-//         return false;
 //     }
-// }
 
 //     async function updateUserHighScore(score, mode, idToken) {
 //         try {
@@ -158,9 +199,6 @@
 //         }
 //     }
 
-
-
-    
 //     async function handleSignup(username, email, password) {
 //         try {
 //             const response = await fetch('/signup', {
@@ -227,44 +265,44 @@
 //     }
     
 //     // Check auth state on page load
-//    async function checkAuthState() {
-//     try {
-//         // Check Flask session first
-//         const response = await fetch('/check-auth');
-//         const data = await response.json();
-        
-//         if (data.authenticated) {
-//             currentUserId = data.user.uid;
-//             currentUsername = data.user.display_name;
-//             isAuthenticated = true;
+//     async function checkAuthState() {
+//         try {
+//             // Check Flask session first
+//             const response = await fetch('/check-auth');
+//             const data = await response.json();
             
-//             // Now sync with Firebase
-//             try {
-//                 const user = firebase.auth().currentUser;
-//                 if (!user) {
-//                     // If no Firebase user but Flask session exists
-//                     const customTokenResponse = await fetch('/get_firebase_token');
-//                     const { token } = await customTokenResponse.json();
-//                     await firebase.auth().signInWithCustomToken(token);
+//             if (data.authenticated) {
+//                 currentUserId = data.user.uid;
+//                 currentUsername = data.user.display_name;
+//                 isAuthenticated = true;
+                
+//                 // Now sync with Firebase
+//                 try {
+//                     const user = firebase.auth().currentUser;
+//                     if (!user) {
+//                         // If no Firebase user but Flask session exists
+//                         const customTokenResponse = await fetch('/get_firebase_token');
+//                         const { token } = await customTokenResponse.json();
+//                         await firebase.auth().signInWithCustomToken(token);
+//                     }
+//                 } catch (firebaseError) {
+//                     console.error("Firebase sync error:", firebaseError);
 //                 }
-//             } catch (firebaseError) {
-//                 console.error("Firebase sync error:", firebaseError);
+//             } else {
+//                 currentUserId = null;
+//                 currentUsername = 'Guest';
+//                 isAuthenticated = false;
 //             }
-//         } else {
+            
+//             updateProfileDisplay();
+//         } catch (error) {
+//             console.error('Error checking auth state:', error);
 //             currentUserId = null;
 //             currentUsername = 'Guest';
 //             isAuthenticated = false;
+//             updateProfileDisplay();
 //         }
-        
-//         updateProfileDisplay();
-//     } catch (error) {
-//         console.error('Error checking auth state:', error);
-//         currentUserId = null;
-//         currentUsername = 'Guest';
-//         isAuthenticated = false;
-//         updateProfileDisplay();
 //     }
-// }
     
 //     // Leaderboard functions
 //     function renderLeaderboardEntry(entry, mode) {
@@ -286,167 +324,165 @@
 //             <span class="rank">${entry.rank}.</span>
 //             <span class="username">${entry.username || 'Anonymous'}</span>
 //             <span class="score">${entry.score || 0}</span>
-             
 //         `;
         
 //         return li;
 //     }
 
-// async function fetchLeaderboard(mode) {
-//     const leaderboardList = document.getElementById('leaderboard-list');
-//     if (!leaderboardList) return;
-    
-//     try {
-//         leaderboardList.innerHTML = '<li class="loading">Loading leaderboard...</li>';
+//     async function fetchLeaderboard(mode) {
+//         const leaderboardList = document.getElementById('leaderboard-list');
+//         if (!leaderboardList) return;
         
-//         const response = await fetch(`/api/leaderboard?mode=${mode}`);
-        
-//         if (!response.ok) {
-//             throw new Error(`Server returned ${response.status}`);
-//         }
-        
-//         const data = await response.json();
-        
-//         if (!Array.isArray(data)) {
-//             throw new Error('Invalid leaderboard data');
-//         }
-        
-//         leaderboardList.innerHTML = '';
-        
-//         if (data.length === 0) {
-//             const noScoresItem = document.createElement('li');
-//             noScoresItem.className = 'no-scores';
-//             noScoresItem.textContent = 'No scores yet';
-//             leaderboardList.appendChild(noScoresItem);
-//             return;
-//         }
-        
-//         data.forEach((entry) => {
-//             const li = renderLeaderboardEntry(entry, mode);
-//             leaderboardList.appendChild(li);
-//         });
-        
-//         // Update status message
-//         const statusElement = document.getElementById('leaderboard-status');
-//         if (statusElement) {
-//             statusElement.textContent = `Showing ${data.length} top players`;
-//         }
-//     } catch (error) {
-//         console.error('Error fetching leaderboard:', error);
-//         leaderboardList.innerHTML = `
-//             <li class="error">
-//                 Failed to load leaderboard: ${error.message}
-//                 <button onclick="window.fetchLeaderboard('${mode}')">Retry</button>
-//             </li>
-//         `;
-//     }
-// }
-
-// // Make the function available globally
-// window.fetchLeaderboard = fetchLeaderboard;
-
-
-
-// async function updateLeaderboard(score, mode) {
-//     try {
-//         // Get the current Firebase user
-//         const user = firebase.auth().currentUser;
-        
-//         if (!user) {
-//             console.error("No authenticated user found");
-//             const auth = await fetch('/check-auth');
-//             const authData = await auth.json();
-//             if (authData.authenticated) {
-//                 console.log("Session exists but Firebase not synced");
-//                 // Try to refresh Firebase auth
-//                 await firebase.auth().signOut();
-//                 const token = await user.getIdToken(true); // Force token refresh
-//                 return updateLeaderboard(score, mode); // Retry
+//         try {
+//             leaderboardList.innerHTML = '<li class="loading">Loading leaderboard...</li>';
+            
+//             const response = await fetch(`/api/leaderboard?mode=${mode}`);
+            
+//             if (!response.ok) {
+//                 throw new Error(`Server returned ${response.status}`);
 //             }
-//             return false;
+            
+//             const data = await response.json();
+            
+//             if (!Array.isArray(data)) {
+//                 throw new Error('Invalid leaderboard data');
+//             }
+            
+//             leaderboardList.innerHTML = '';
+            
+//             if (data.length === 0) {
+//                 const noScoresItem = document.createElement('li');
+//                 noScoresItem.className = 'no-scores';
+//                 noScoresItem.textContent = 'No scores yet';
+//                 leaderboardList.appendChild(noScoresItem);
+//                 return;
+//             }
+            
+//             data.forEach((entry) => {
+//                 const li = renderLeaderboardEntry(entry, mode);
+//                 leaderboardList.appendChild(li);
+//             });
+            
+//             // Update status message
+//             const statusElement = document.getElementById('leaderboard-status');
+//             if (statusElement) {
+//                 statusElement.textContent = `Showing ${data.length} top players`;
+//             }
+//         } catch (error) {
+//             console.error('Error fetching leaderboard:', error);
+//             leaderboardList.innerHTML = `
+//                 <li class="error">
+//                     Failed to load leaderboard: ${error.message}
+//                     <button onclick="window.fetchLeaderboard('${mode}')">Retry</button>
+//                 </li>
+//             `;
 //         }
-
-//         const idToken = await user.getIdToken();
-//         console.log("Updating score for user:", user.uid, "Score:", score);
-
-//         // Update user's personal high score
-//         const userResponse = await fetch('/api/update_user_score', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': `Bearer ${idToken}`
-//             },
-//             body: JSON.stringify({
-//                 mode: mode,
-//                 score: score
-//             })
-//         });
-
-//         const userData = await userResponse.json();
-//         if (!userData.success) {
-//             console.error("Failed to update user score:", userData.message);
-//             return false;
-//         }
-
-//         // Update leaderboard
-//         const lbResponse = await fetch('/api/update_leaderboard', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': `Bearer ${idToken}`
-//             },
-//             body: JSON.stringify({
-//                 mode: mode,
-//                 username: currentUsername,
-//                 score: score
-//             })
-//         });
-
-//         const lbData = await lbResponse.json();
-//         if (lbData.status === 'success') {
-//             console.log("Leaderboard updated successfully");
-//             return true;
-//         } else {
-//             console.log("Leaderboard not updated:", lbData.message);
-//             return false;
-//         }
-//     } catch (error) {
-//         console.error("Error in updateLeaderboard:", error);
-//         return false;
 //     }
-// }
-// // After successful login
-// async function handleLoginSuccess(userData) {
-//     try {
-//         // Sign in to Firebase with the custom token
-//         const credential = await firebase.auth().signInWithCustomToken(userData.token);
-//         currentUserId = credential.user.uid;
-//         currentUsername = userData.username;
-//         isAuthenticated = true;
+
+//     // Make the function available globally
+//     window.fetchLeaderboard = fetchLeaderboard;
+
+//     async function updateLeaderboard(score, mode) {
+//         try {
+//             // Get the current Firebase user
+//             const user = firebase.auth().currentUser;
+            
+//             if (!user) {
+//                 console.error("No authenticated user found");
+//                 const auth = await fetch('/check-auth');
+//                 const authData = await auth.json();
+//                 if (authData.authenticated) {
+//                     console.log("Session exists but Firebase not synced");
+//                     // Try to refresh Firebase auth
+//                     await firebase.auth().signOut();
+//                     const token = await user.getIdToken(true); // Force token refresh
+//                     return updateLeaderboard(score, mode); // Retry
+//                 }
+//                 return false;
+//             }
+
+//             const idToken = await user.getIdToken();
+//             console.log("Updating score for user:", user.uid, "Score:", score);
+
+//             // Update user's personal high score
+//             const userResponse = await fetch('/api/update_user_score', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'Authorization': `Bearer ${idToken}`
+//                 },
+//                 body: JSON.stringify({
+//                     mode: mode,
+//                     score: score
+//                 })
+//             });
+
+//             const userData = await userResponse.json();
+//             if (!userData.success) {
+//                 console.error("Failed to update user score:", userData.message);
+//                 return false;
+//             }
+
+//             // Update leaderboard
+//             const lbResponse = await fetch('/api/update_leaderboard', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'Authorization': `Bearer ${idToken}`
+//                 },
+//                 body: JSON.stringify({
+//                     mode: mode,
+//                     username: currentUsername,
+//                     score: score
+//                 })
+//             });
+
+//             const lbData = await lbResponse.json();
+//             if (lbData.status === 'success') {
+//                 console.log("Leaderboard updated successfully");
+//                 return true;
+//             } else {
+//                 console.log("Leaderboard not updated:", lbData.message);
+//                 return false;
+//             }
+//         } catch (error) {
+//             console.error("Error in updateLeaderboard:", error);
+//             return false;
+//         }
+//     }
+
+//     // After successful login
+//     async function handleLoginSuccess(userData) {
+//         try {
+//             // Sign in to Firebase with the custom token
+//             const credential = await firebase.auth().signInWithCustomToken(userData.token);
+//             currentUserId = credential.user.uid;
+//             currentUsername = userData.username;
+//             isAuthenticated = true;
+            
+//             console.log("Firebase auth successful:", currentUserId);
+//             updateProfileDisplay();
+//         } catch (error) {
+//             console.error("Firebase auth failed:", error);
+//         }
+//     }
+
+//     function showSelectionScreen(e) {
+//         e.preventDefault();
+//         gameContent.classList.add('hidden');
+//         selectionScreen.classList.remove('hidden');
         
-//         console.log("Firebase auth successful:", currentUserId);
-//         updateProfileDisplay();
-//     } catch (error) {
-//         console.error("Firebase auth failed:", error);
+//         // Stop any running game
+//         if (window.gameInterval) {
+//             clearInterval(window.gameInterval);
+//             window.isGameRunning = false;
+//         }
+        
+//         // Stop camera if active
+//         if (currentControlMode === 'gesture' && typeof stopCamera === 'function') {
+//             stopCamera();
+//         }
 //     }
-// }
-
-// function showSelectionScreen(e) {
-//     e.preventDefault();
-//     gameContent.classList.add('hidden');
-//     selectionScreen.classList.remove('hidden');
-    
-//     // Stop any running game
-//     if (window.gameInterval) {
-//         clearInterval(window.gameInterval);
-//         window.isGameRunning = false;
-//     }
-    
-//     // Stop camera if active
-//     if (currentControlMode === 'gesture' && typeof stopCamera === 'function') {
-//         stopCamera();
-//     }
-// }
 
 //     function highlightUserEntry(userId, expiryTime) {
 //         // Find all elements for this user in the leaderboard
@@ -496,116 +532,219 @@
 //             fetchLeaderboard(currentLeaderboardMode);
 //         }, 30000);
 //     }
+//     function updateControlGuide(mode) {
+//     // Hide all guides first
+//     document.querySelectorAll('.control-guide').forEach(guide => {
+//         guide.style.display = 'none';
+//     });
+    
+//     // Show the appropriate guide
+//     if (mode === 'keyboard') {
+//         document.getElementById('keyboard-guide').style.display = 'block';
+//         document.querySelector('.gesture-display').style.display = 'none';
+//     } else if (mode === 'gesture') {
+//         document.getElementById('gesture-guide').style.display = 'block';
+//         document.querySelector('.gesture-display').style.display = 'block';
+//     }
+// }
 
 //     // Game control handlers
-//     keyboardBtn.addEventListener('click', function() {
-//          if (currentControlMode === 'gesture' && typeof stopCamera === 'function') {
+// keyboardBtn.addEventListener('click', function() {
+//     if (currentControlMode === 'gesture' && typeof stopCamera === 'function') {
 //         stopCamera();
 //     }
-//         currentControlMode = 'keyboard';
-//         currentLeaderboardMode = 'keyboard';
-//         selectionScreen.classList.add('hidden');
-//         gameContent.classList.remove('hidden');
-//         statsHistorySection.classList.remove('hidden');
-//         cameraSection.classList.add('hidden');
-        
-//         if (!gameInitialized) {
-//             initializeGame();
-//             gameInitialized = true;
-//         }
-        
-//         document.getElementById('game-start').style.display = 'flex';
-//         switchLeaderboardMode('keyboard');
-//     });
+//     updateControlGuide('keyboard');
+//     document.body.classList.remove('gesture-mode');
     
-//     gestureBtn.addEventListener('click', function() {
-//         if (currentControlMode === 'gesture' && typeof stopCamera === 'function') {
-//         stopCamera();
+//     // Store the selection
+//     localStorage.setItem('hasSelectedMode', 'true');
+//     localStorage.setItem('selectedMode', 'keyboard');
+    
+//     currentControlMode = 'keyboard';
+//     currentLeaderboardMode = 'keyboard';
+//     selectionScreen.classList.add('hidden');
+//     gameContent.classList.remove('hidden');
+//     statsHistorySection.classList.remove('hidden');
+//     cameraSection.classList.add('hidden');
+    
+//     if (!gameInitialized) {
+//         initializeGame();
+//         gameInitialized = true;
 //     }
-//         currentControlMode = 'gesture';
-//         currentLeaderboardMode = 'gesture';
-//         selectionScreen.classList.add('hidden');
-//         gameContent.classList.remove('hidden');
-//         cameraSection.classList.remove('hidden');
-//         statsHistorySection.classList.add('hidden');
-        
-//         if (!gameInitialized) {
-//             initializeGame();
-//             gameInitialized = true;
-//         }
-        
-//         document.getElementById('game-start').style.display = 'flex';
-        
-//         if (window.initGestureControls) {
-//             initGestureControls();
-//         }
-        
-//         switchLeaderboardMode('gesture');
-//     });
-//     // Add this with your other event listeners
-// if (gameModeBtn) {
-//     gameModeBtn.addEventListener('click', function(e) {
-//         e.preventDefault();
-        
-//         // Hide game content and show selection screen
-//         gameContent.classList.add('hidden');
-//         selectionScreen.classList.remove('hidden');
-        
-//         // Pause the game if it's running
-//         if (window.gameInterval) {
-//             clearInterval(window.gameInterval);
-//             window.isGameRunning = false;
-//         }
-        
-//         // If using gesture controls, stop the camera
-//         if (currentControlMode === 'gesture' && window.stopCamera) {
-//             stopCamera();
-//         }
-//     });
-// }
+    
+//     document.getElementById('game-start').style.display = 'flex';
+//     switchLeaderboardMode('keyboard');
+    
+//     // Enable swipe controls when keyboard mode is selected
+//     setupSwipeControls();
+// });
 
-// if (paletteIcon) {
-//     paletteIcon.addEventListener('click', function(e) {
-//         e.preventDefault();
-//         gameContent.classList.add('hidden');
-//         selectionScreen.classList.remove('hidden');
-        
-//         if (window.gameInterval) {
-//             clearInterval(window.gameInterval);
-//             window.isGameRunning = false;
-//         }
-        
-//         if (currentControlMode === 'gesture' && window.stopCamera) {
-//             stopCamera();
-//         }
-//     });
-// }
+// gestureBtn.addEventListener('click', function() {
+//     if (currentControlMode === 'gesture' && typeof stopCamera === 'function') {
+//         stopCamera();
+//     }
+//     updateControlGuide('gesture');
+//     document.body.classList.add('gesture-mode');
+
+//     // Store the selection
+//     localStorage.setItem('hasSelectedMode', 'true');
+//     localStorage.setItem('selectedMode', 'gesture');
     
+//     currentControlMode = 'gesture';
+//     currentLeaderboardMode = 'gesture';
+//     selectionScreen.classList.add('hidden');
+//     gameContent.classList.remove('hidden');
+//     cameraSection.classList.remove('hidden');
+//     statsHistorySection.classList.add('hidden');
+    
+//     if (!gameInitialized) {
+//         initializeGame();
+//         gameInitialized = true;
+//     }
+    
+//     document.getElementById('game-start').style.display = 'flex';
+    
+//     if (window.initGestureControls) {
+//         initGestureControls();
+//     }
+    
+//     switchLeaderboardMode('gesture');
+    
+//     // No need to explicitly disable swipe controls since they check currentControlMode
+// });
+//     if (gameModeBtn) {
+//         gameModeBtn.addEventListener('click', function(e) {
+//             e.preventDefault();
+            
+//             // Clear the stored selection to show the mode selection screen again
+//             localStorage.removeItem('hasSelectedMode');
+            
+//             // Hide game content and show selection screen
+//             gameContent.classList.add('hidden');
+//             selectionScreen.classList.remove('hidden');
+            
+//             // Pause the game if it's running
+//             if (window.gameInterval) {
+//                 clearInterval(window.gameInterval);
+//                 window.isGameRunning = false;
+//             }
+            
+//             // If using gesture controls, stop the camera
+//             if (currentControlMode === 'gesture' && window.stopCamera) {
+//                 stopCamera();
+//             }
+//         });
+//     }
+
+//     if (paletteIcon) {
+//         paletteIcon.addEventListener('click', function(e) {
+//             e.preventDefault();
+//             gameContent.classList.add('hidden');
+//             selectionScreen.classList.remove('hidden');
+            
+//             if (window.gameInterval) {
+//                 clearInterval(window.gameInterval);
+//                 window.isGameRunning = false;
+//             }
+            
+//             if (currentControlMode === 'gesture' && window.stopCamera) {
+//                 stopCamera();
+//             }
+//         });
+//     }
+//     function setupSwipeControls(gameState) {
+//     if (currentControlMode !== 'keyboard') return;
+    
+//     const gameBoard = document.querySelector('.game-board');
+//     if (!gameBoard) return;
+    
+//     let touchStartX = 0;
+//     let touchStartY = 0;
+//     let touchEndX = 0;
+//     let touchEndY = 0;
+//     let lastTap = 0;
+    
+//     gameBoard.addEventListener('touchstart', function(e) {
+//         if (!gameState.isGameRunning) return;
+        
+//         touchStartX = e.changedTouches[0].screenX;
+//         touchStartY = e.changedTouches[0].screenY;
+        
+//         // Double tap detection
+//         const currentTime = new Date().getTime();
+//         const tapLength = currentTime - lastTap;
+//         if (tapLength < 300 && tapLength > 0) {
+//             // Double tap detected - toggle pause
+//             gameState.isPaused = !gameState.isPaused;
+//             e.preventDefault();
+//         }
+//         lastTap = currentTime;
+//     }, false);
+    
+//     gameBoard.addEventListener('touchend', function(e) {
+//         if (currentControlMode !== 'keyboard' || !gameState.isGameRunning || gameState.isPaused) return;
+        
+//         touchEndX = e.changedTouches[0].screenX;
+//         touchEndY = e.changedTouches[0].screenY;
+        
+//         handleSwipe();
+//     }, false);
+    
+//     function handleSwipe() {
+//         const dx = touchEndX - touchStartX;
+//         const dy = touchEndY - touchStartY;
+        
+//         // Minimum swipe distance (in pixels)
+//         const minSwipeDistance = 30;
+        
+//         // Determine primary direction
+//         if (Math.abs(dx) > Math.abs(dy)) {
+//             // Horizontal swipe
+//             if (Math.abs(dx) < minSwipeDistance) return;
+            
+//             if (dx > 0) {
+//                 // Right swipe
+//                 if (gameState.direction !== 'left') gameState.nextDirection = 'right';
+//             } else {
+//                 // Left swipe
+//                 if (gameState.direction !== 'right') gameState.nextDirection = 'left';
+//             }
+//         } else {
+//             // Vertical swipe
+//             if (Math.abs(dy) < minSwipeDistance) return;
+            
+//             if (dy > 0) {
+//                 // Down swipe
+//                 if (gameState.direction !== 'up') gameState.nextDirection = 'down';
+//             } else {
+//                 // Up swipe
+//                 if (gameState.direction !== 'down') gameState.nextDirection = 'up';
+//             }
+//         }
+//     }
+// }
 //     // Initialize game
 //     function initializeGame() {
-
 //         const settings = JSON.parse(localStorage.getItem('snakeGameSettings')) || {};
-//        const GRID_SIZE = 30;
-//     const ROWS = settings.rows || 15;
-//     const COLS = settings.cols || 15;
-//     const GAME_SPEED = settings.snakeSpeedValue || 100;
-//     const MAX_HISTORY_ITEMS = 10;
-//     const HISTORY_STORAGE_KEY = 'snakeGameHistory';
+//         const GRID_SIZE = 30;
+//         const ROWS = settings.rows || 15;
+//         const COLS = settings.cols || 15;
+//         const GAME_SPEED = settings.snakeSpeedValue || 100;
+//         const MAX_HISTORY_ITEMS = 10;
+//         const HISTORY_STORAGE_KEY = 'snakeGameHistory';
 
-
-//      const GRID_COLOR1 = settings.gridColor1 || '#e8f5e9';
-//     const GRID_COLOR2 = settings.gridColor2 || '#c8e6c9';
-//     const GRID_BORDER_COLOR = settings.gridBorderColor || '#FF0000';
-//     const SNAKE_BODY_COLOR = settings.snakeBodyColor || '#4CAF50';
-//     const SNAKE_BODY_BORDER = settings.snakeBodyBorder || '#000000';
-//     const SNAKE_HEAD_COLOR = settings.snakeHeadColor || '#4CAF50';
-//     const SNAKE_HEAD_BORDER = settings.snakeHeadBorder || '#000000';
-//     const SNAKE_TAIL_COLOR = settings.snakeTailColor || '#66bb6a';
-//     const SNAKE_TAIL_BORDER = settings.snakeTailBorder || '#000000';
-//     const FOOD_COLOR = settings.foodColor || '#ff0000';
-//     const USE_FOOD_IMAGE = !settings.foodType || settings.foodType === 'image';
-    
-
+//         const GRID_COLOR1 = settings.gridColor1 || '#e8f5e9';
+//         const GRID_COLOR2 = settings.gridColor2 || '#c8e6c9';
+//         const GRID_BORDER_COLOR = settings.gridBorderColor || '#FF0000';
+//         const SNAKE_BODY_COLOR = settings.snakeBodyColor || '#4CAF50';
+//         const SNAKE_BODY_BORDER = settings.snakeBodyBorder || '#000000';
+//         const SNAKE_HEAD_COLOR = settings.snakeHeadColor || '#4CAF50';
+//         const SNAKE_HEAD_BORDER = settings.snakeHeadBorder || '#000000';
+//         const SNAKE_TAIL_COLOR = settings.snakeTailColor || '#66bb6a';
+//         const SNAKE_TAIL_BORDER = settings.snakeTailBorder || '#000000';
+//         const FOOD_COLOR = settings.foodColor || '#ff0000';
+//         const USE_FOOD_IMAGE = !settings.foodType || settings.foodType === 'image';
+        
 //         const canvas = document.getElementById('game-canvas');
 //         if (!canvas) {
 //             console.error('Canvas element not found!');
@@ -621,19 +760,23 @@
 //         const startBtn = document.getElementById('start-btn');
 //         const gestureDisplay = document.getElementById('current-gesture');
         
-
-//         let snake = [];
-//         let food = {};
-//         let direction = 'right';
-//         let nextDirection = 'right';
+        
 //         let gameInterval;
-//         let score = 0;
-//         let highScore = localStorage.getItem('snakeHighScore') || 0;
-//         let isPaused = false;
-//         let isGameRunning = false;
 //         let lastGesture = '';
 //         let eventSource = null;
 //         let scoreHistory = JSON.parse(localStorage.getItem(HISTORY_STORAGE_KEY)) || [];
+
+//          const gameState = {
+//         direction: 'right',
+//         nextDirection: 'right',
+//         isPaused: false,
+//         isGameRunning: false,
+//         snake: [],
+//         food: {},
+//         score: 0,
+//         highScore: localStorage.getItem('snakeHighScore') || 0,
+//         gameInterval: null
+//     };
 
 //         const foodImg = new Image();
 //         foodImg.src = 'https://cdn-icons-png.flaticon.com/512/3082/3082035.png';
@@ -694,47 +837,46 @@
 //         }
 
 //         async function moveSnake() {
-//         direction = nextDirection;
+//             direction = nextDirection;
 
-//         for (let i = snake.length - 1; i > 0; i--) {
-//             snake[i].x = snake[i - 1].x;
-//             snake[i].y = snake[i - 1].y;
-//         }
-
-//         const head = snake[0];
-//         switch (direction) {
-//             case 'up': head.y -= GRID_SIZE; break;
-//             case 'down': head.y += GRID_SIZE; break;
-//             case 'left': head.x -= GRID_SIZE; break;
-//             case 'right': head.x += GRID_SIZE; break;
-//         }
-
-//         if (head.x === food.x && head.y === food.y) {
-//             const tail = snake[snake.length - 1];
-//             snake.push({ x: tail.x, y: tail.y });
-
-//             score += 10;
-//             if (scoreDisplay) scoreDisplay.textContent = score;
-            
-//             const isNewHighScore = score > highScore;
-//             if (isNewHighScore) {
-//                 highScore = score;
-//                 if (highScoreDisplay) highScoreDisplay.textContent = highScore;
-//                 localStorage.setItem('snakeHighScore', highScore);
-                
-//                 if (isAuthenticated) {
-//                     try {
-//                         await updateLeaderboard(highScore, currentControlMode);
-//                     } catch (error) {
-//                         console.error('Failed to update scores:', error);
-//                     }
-//                 }
+//             for (let i = snake.length - 1; i > 0; i--) {
+//                 snake[i].x = snake[i - 1].x;
+//                 snake[i].y = snake[i - 1].y;
 //             }
 
-//             generateFood();
-//         }
-//     }
+//             const head = snake[0];
+//             switch (direction) {
+//                 case 'up': head.y -= GRID_SIZE; break;
+//                 case 'down': head.y += GRID_SIZE; break;
+//                 case 'left': head.x -= GRID_SIZE; break;
+//                 case 'right': head.x += GRID_SIZE; break;
+//             }
 
+//             if (head.x === food.x && head.y === food.y) {
+//                 const tail = snake[snake.length - 1];
+//                 snake.push({ x: tail.x, y: tail.y });
+
+//                 score += 10;
+//                 if (scoreDisplay) scoreDisplay.textContent = score;
+                
+//                 const isNewHighScore = score > highScore;
+//                 if (isNewHighScore) {
+//                     highScore = score;
+//                     if (highScoreDisplay) highScoreDisplay.textContent = highScore;
+//                     localStorage.setItem('snakeHighScore', highScore);
+                    
+//                     if (isAuthenticated) {
+//                         try {
+//                             await updateLeaderboard(highScore, currentControlMode);
+//                         } catch (error) {
+//                             console.error('Failed to update scores:', error);
+//                         }
+//                     }
+//                 }
+
+//                 generateFood();
+//             }
+//         }
 
 //         function generateFood() {
 //             let foodX, foodY;
@@ -835,24 +977,24 @@
 //             });
 //         }
 
-//             function drawHead(x, y, dir) {
-//         ctx.save();
-//         ctx.translate(x + GRID_SIZE / 2, y + GRID_SIZE / 2);
+//         function drawHead(x, y, dir) {
+//             ctx.save();
+//             ctx.translate(x + GRID_SIZE / 2, y + GRID_SIZE / 2);
 
-//         switch (dir) {
-//             case 'up': ctx.rotate(-Math.PI / 2); break;
-//             case 'down': ctx.rotate(Math.PI / 2); break;
-//             case 'left': ctx.rotate(Math.PI); break;
-//             case 'right': break;
-//         }
+//             switch (dir) {
+//                 case 'up': ctx.rotate(-Math.PI / 2); break;
+//                 case 'down': ctx.rotate(Math.PI / 2); break;
+//                 case 'left': ctx.rotate(Math.PI); break;
+//                 case 'right': break;
+//             }
 
-//         ctx.beginPath();
-//         ctx.roundRect(-GRID_SIZE / 2, -GRID_SIZE / 2, GRID_SIZE, GRID_SIZE, 10);
-//         ctx.fillStyle = SNAKE_HEAD_COLOR;
-//         ctx.fill();
-//         ctx.strokeStyle = SNAKE_HEAD_BORDER;
-//         ctx.lineWidth = 1;
-//         ctx.stroke();
+//             ctx.beginPath();
+//             ctx.roundRect(-GRID_SIZE / 2, -GRID_SIZE / 2, GRID_SIZE, GRID_SIZE, 10);
+//             ctx.fillStyle = SNAKE_HEAD_COLOR;
+//             ctx.fill();
+//             ctx.strokeStyle = SNAKE_HEAD_BORDER;
+//             ctx.lineWidth = 1;
+//             ctx.stroke();
 
 //             ctx.beginPath();
 //             ctx.arc(GRID_SIZE / 4, -GRID_SIZE / 4, GRID_SIZE / 8, 0, Math.PI * 2);
@@ -879,22 +1021,22 @@
 //             ctx.restore();
 //         }
 
-//      function drawTail(x, y, dir) {
-//         ctx.save();
-//         ctx.translate(x + GRID_SIZE / 2, y + GRID_SIZE / 2);
+//         function drawTail(x, y, dir) {
+//             ctx.save();
+//             ctx.translate(x + GRID_SIZE / 2, y + GRID_SIZE / 2);
 
-//         switch (dir) {
-//             case 'up': ctx.rotate(0); break;
-//             case 'right': ctx.rotate(Math.PI / 2); break;
-//             case 'down': ctx.rotate(Math.PI); break;
-//             case 'left': ctx.rotate(-Math.PI / 2); break;
-//         }
+//             switch (dir) {
+//                 case 'up': ctx.rotate(0); break;
+//                 case 'right': ctx.rotate(Math.PI / 2); break;
+//                 case 'down': ctx.rotate(Math.PI); break;
+//                 case 'left': ctx.rotate(-Math.PI / 2); break;
+//             }
 
-//         ctx.beginPath();
-//         ctx.rect(-GRID_SIZE / 2, -GRID_SIZE / 2, GRID_SIZE, GRID_SIZE / 2);
-//         ctx.fillStyle = SNAKE_TAIL_COLOR;
-//         ctx.fill();
-            
+//             ctx.beginPath();
+//             ctx.rect(-GRID_SIZE / 2, -GRID_SIZE / 2, GRID_SIZE, GRID_SIZE / 2);
+//             ctx.fillStyle = SNAKE_TAIL_COLOR;
+//             ctx.fill();
+                
 //             ctx.beginPath();
 //             ctx.moveTo(-GRID_SIZE / 2, -GRID_SIZE / 2);
 //             ctx.lineTo(GRID_SIZE / 2, -GRID_SIZE / 2);
@@ -919,58 +1061,59 @@
 //             ctx.restore();
 //         }
 
-//        function drawGame() {
-//         ctx.clearRect(0, 0, canvas.width, canvas.height);
+//         function drawGame() {
+//             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-//         for (let row = 0; row < ROWS; row++) {
-//             for (let col = 0; col < COLS; col++) {
-//                 ctx.fillStyle = (row + col) % 2 === 0 ? GRID_COLOR1 : GRID_COLOR2;
-//                 ctx.fillRect(
-//                     col * GRID_SIZE,
-//                     row * GRID_SIZE,
-//                     GRID_SIZE,
-//                     GRID_SIZE
-//                 );
-//                 ctx.strokeStyle = GRID_BORDER_COLOR;
-//                 ctx.lineWidth = .2;
-//                 ctx.strokeRect(
-//                     col * GRID_SIZE,
-//                     row * GRID_SIZE,
-//                     GRID_SIZE,
-//                     GRID_SIZE
-//                 );
+//             for (let row = 0; row < ROWS; row++) {
+//                 for (let col = 0; col < COLS; col++) {
+//                     ctx.fillStyle = (row + col) % 2 === 0 ? GRID_COLOR1 : GRID_COLOR2;
+//                     ctx.fillRect(
+//                         col * GRID_SIZE,
+//                         row * GRID_SIZE,
+//                         GRID_SIZE,
+//                         GRID_SIZE
+//                     );
+//                     ctx.strokeStyle = GRID_BORDER_COLOR;
+//                     ctx.lineWidth = .2;
+//                     ctx.strokeRect(
+//                         col * GRID_SIZE,
+//                         row * GRID_SIZE,
+//                         GRID_SIZE,
+//                         GRID_SIZE
+//                     );
+//                 }
+//             }
+
+//             if (USE_FOOD_IMAGE && foodImg.complete) {
+//                 ctx.drawImage(foodImg, food.x, food.y, GRID_SIZE, GRID_SIZE);
+//             } else {
+//                 ctx.fillStyle = FOOD_COLOR;
+//                 ctx.fillRect(food.x, food.y, GRID_SIZE, GRID_SIZE);
+//             }
+
+//             for (let i = 1; i < snake.length - 1; i++) {
+//                 const segment = snake[i];
+//                 ctx.fillStyle = SNAKE_BODY_COLOR;
+//                 ctx.beginPath();
+//                 ctx.roundRect(segment.x, segment.y, GRID_SIZE, GRID_SIZE, 5);
+//                 ctx.fill();
+//                 ctx.strokeStyle = SNAKE_BODY_BORDER;
+//                 ctx.lineWidth = 1;
+//                 ctx.stroke();
+//             }
+
+//             if (snake.length > 1) {
+//                 const tail = snake[snake.length - 1];
+//                 const tailDir = getSegmentDirection(snake.length - 1);
+//                 drawTail(tail.x, tail.y, tailDir);
+//             }
+
+//             if (snake.length > 0) {
+//                 const head = snake[0];
+//                 drawHead(head.x, head.y, direction);
 //             }
 //         }
 
-//         if (USE_FOOD_IMAGE && foodImg.complete) {
-//             ctx.drawImage(foodImg, food.x, food.y, GRID_SIZE, GRID_SIZE);
-//         } else {
-//             ctx.fillStyle = FOOD_COLOR;
-//             ctx.fillRect(food.x, food.y, GRID_SIZE, GRID_SIZE);
-//         }
-
-//         for (let i = 1; i < snake.length - 1; i++) {
-//             const segment = snake[i];
-//             ctx.fillStyle = SNAKE_BODY_COLOR;
-//             ctx.beginPath();
-//             ctx.roundRect(segment.x, segment.y, GRID_SIZE, GRID_SIZE, 5);
-//             ctx.fill();
-//             ctx.strokeStyle = SNAKE_BODY_BORDER;
-//             ctx.lineWidth = 1;
-//             ctx.stroke();
-//         }
-
-//         if (snake.length > 1) {
-//             const tail = snake[snake.length - 1];
-//             const tailDir = getSegmentDirection(snake.length - 1);
-//             drawTail(tail.x, tail.y, tailDir);
-//         }
-
-//         if (snake.length > 0) {
-//             const head = snake[0];
-//             drawHead(head.x, head.y, direction);
-//         }
-//     }
 //         function getSegmentDirection(index) {
 //             if (index <= 0 || index >= snake.length) return direction;
 
@@ -1019,27 +1162,26 @@
 //         }
 
 //         function handleKeyDown(e) {
-//             if (!isGameRunning || currentControlMode !== 'keyboard') return;
+//     if (!gameState.isGameRunning || currentControlMode !== 'keyboard') return;
 
-//             switch (e.key) {
-//                 case 'ArrowUp':
-//                     if (direction !== 'down') nextDirection = 'up';
-//                     break;
-//                 case 'ArrowDown':
-//                     if (direction !== 'up') nextDirection = 'down';
-//                     break;
-//                 case 'ArrowLeft':
-//                     if (direction !== 'right') nextDirection = 'left';
-//                     break;
-//                 case 'ArrowRight':
-//                     if (direction !== 'left') nextDirection = 'right';
-//                     break;
-//                 case ' ':
-//                     isPaused = !isPaused;
-//                     break;
-//             }
-//         }
-
+//     switch (e.key) {
+//         case 'ArrowUp':
+//             if (gameState.direction !== 'down') gameState.nextDirection = 'up';
+//             break;
+//         case 'ArrowDown':
+//             if (gameState.direction !== 'up') gameState.nextDirection = 'down';
+//             break;
+//         case 'ArrowLeft':
+//             if (gameState.direction !== 'right') gameState.nextDirection = 'left';
+//             break;
+//         case 'ArrowRight':
+//             if (gameState.direction !== 'left') gameState.nextDirection = 'right';
+//             break;
+//         case ' ':
+//             gameState.isPaused = !gameState.isPaused;
+//             break;
+//     }
+// }
 //         if (startBtn) startBtn.addEventListener('click', initGame);
 //         if (restartBtn) restartBtn.addEventListener('click', initGame);
 
@@ -1056,7 +1198,36 @@
 //     initModal();
 //     checkAuthState();
 //     initializeLeaderboard();
+//     setupSwipeControls(gameState);
 // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1114,17 +1285,38 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentUsername = 'Guest';
     let isAuthenticated = false;
 
+        const FOOD_IMAGES = {
+    apple: '/static/img/apple.png',
+    banana: '/static/img/banana.png',
+    cherry: '/static/img/cherries.png',
+    grape: '/static/img/grapes.png',
+    orange: '/static/img/orange.png',
+    strawberry: '/static/img/strawberry.png',
+    watermelon: '/static/img/watermelon.png'
+};
+
+let foodImages = {}; // Will store loaded images
+let currentFoodImg = null; // Currently displayed food image
+let foodLoaded = false; 
+
+
+
     // Check if mode selection has already been made
     const hasSelectedMode = localStorage.getItem('hasSelectedMode');
+    const storedMode = localStorage.getItem('selectedMode') || 'keyboard';
+    if (storedMode === 'gesture') {
+        document.body.classList.add('gesture-mode');
+    } else {
+        document.body.classList.remove('gesture-mode');
+    }
 
     // If mode is already selected, skip the selection screen
     if (hasSelectedMode) {
         selectionScreen.classList.add('hidden');
         gameContent.classList.remove('hidden');
         
-        // Default to keyboard controls if no specific mode is stored
-        currentControlMode = localStorage.getItem('selectedMode') || 'keyboard';
-        currentLeaderboardMode = currentControlMode;
+        currentControlMode = storedMode;
+        currentLeaderboardMode = storedMode;
         
         // Show/hide appropriate sections based on mode
         if (currentControlMode === 'gesture') {
@@ -1146,8 +1338,33 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Set up leaderboard for the current mode
         switchLeaderboardMode(currentControlMode);
+        updateControlGuide(storedMode);
     }
+    function preloadFoodImages() {
+    foodLoaded = false;
+    let loadedCount = 0;
+    const totalImages = Object.keys(FOOD_IMAGES).length;
     
+    for (const [key, url] of Object.entries(FOOD_IMAGES)) {
+        foodImages[key] = new Image();
+        foodImages[key].onload = () => {
+            loadedCount++;
+            if (loadedCount === totalImages) {
+                foodLoaded = true;
+                currentFoodImg = foodImages.apple; // Default to apple
+                generateFood();
+            }
+        };
+        foodImages[key].onerror = () => {
+            console.error(`Failed to load food image: ${key}`);
+            loadedCount++;
+            // Fallback to apple if image fails to load
+            if (!foodImages.apple) foodImages.apple = new Image();
+            foodImages.apple.src = FOOD_IMAGES.apple;
+        };
+        foodImages[key].src = url;
+    }
+}
     // Initialize modal handlers
     function initModal() {
         if (loginBtn) {
@@ -1185,6 +1402,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         function showSignupForm() {
+           Supervisor
             if (loginForm && signupForm) {
                 loginForm.style.display = 'none';
                 signupForm.style.display = 'block';
@@ -1268,7 +1486,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return true;
             }
             return false;
-        } catch (error) {
+        } catch {
             console.error('Signup error:', error);
             return false;
         }
@@ -1588,11 +1806,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 30000);
     }
 
+    function updateControlGuide(mode) {
+        // Hide all guides first
+        document.querySelectorAll('.control-guide').forEach(guide => {
+            guide.style.display = 'none';
+        });
+        
+        // Show the appropriate guide
+        if (mode === 'keyboard') {
+            document.getElementById('keyboard-guide').style.display = 'block';
+            document.querySelector('.gesture-display').style.display = 'none';
+        } else if (mode === 'gesture') {
+            document.getElementById('gesture-guide').style.display = 'block';
+            document.querySelector('.gesture-display').style.display = 'block';
+        }
+    }
+
     // Game control handlers
     keyboardBtn.addEventListener('click', function() {
         if (currentControlMode === 'gesture' && typeof stopCamera === 'function') {
             stopCamera();
         }
+        updateControlGuide('keyboard');
+        document.body.classList.remove('gesture-mode');
         
         // Store the selection
         localStorage.setItem('hasSelectedMode', 'true');
@@ -1618,7 +1854,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentControlMode === 'gesture' && typeof stopCamera === 'function') {
             stopCamera();
         }
-        
+        updateControlGuide('gesture');
+        document.body.classList.add('gesture-mode');
+
         // Store the selection
         localStorage.setItem('hasSelectedMode', 'true');
         localStorage.setItem('selectedMode', 'gesture');
@@ -1695,15 +1933,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const MAX_HISTORY_ITEMS = 10;
         const HISTORY_STORAGE_KEY = 'snakeGameHistory';
 
-        const GRID_COLOR1 = settings.gridColor1 || '#e8f5e9';
-        const GRID_COLOR2 = settings.gridColor2 || '#c8e6c9';
-        const GRID_BORDER_COLOR = settings.gridBorderColor || '#FF0000';
-        const SNAKE_BODY_COLOR = settings.snakeBodyColor || '#4CAF50';
-        const SNAKE_BODY_BORDER = settings.snakeBodyBorder || '#000000';
-        const SNAKE_HEAD_COLOR = settings.snakeHeadColor || '#4CAF50';
-        const SNAKE_HEAD_BORDER = settings.snakeHeadBorder || '#000000';
-        const SNAKE_TAIL_COLOR = settings.snakeTailColor || '#66bb6a';
-        const SNAKE_TAIL_BORDER = settings.snakeTailBorder || '#000000';
+
+
+        const GRID_COLOR1 = getComputedStyle(document.documentElement).getPropertyValue('--grid1').trim() || '#e8f5e9';
+const GRID_COLOR2 = getComputedStyle(document.documentElement).getPropertyValue('--grid2').trim() || '#c8e6c9';
+const SNAKE_BODY_COLOR = getComputedStyle(document.documentElement).getPropertyValue('--snake-body').trim() || '#4CAF50';
+const SNAKE_BODY_BORDER = '#000000';
+const SNAKE_HEAD_COLOR = getComputedStyle(document.documentElement).getPropertyValue('--snake-body').trim() || '#4CAF50';
+const SNAKE_HEAD_BORDER = '#000000';
+const SNAKE_TAIL_COLOR = getComputedStyle(document.documentElement).getPropertyValue('--snake-body').trim() || '#66bb6a';
+const SNAKE_TAIL_BORDER = '#000000';
+
         const FOOD_COLOR = settings.foodColor || '#ff0000';
         const USE_FOOD_IMAGE = !settings.foodType || settings.foodType === 'image';
         
@@ -1735,8 +1975,36 @@ document.addEventListener('DOMContentLoaded', function() {
         let eventSource = null;
         let scoreHistory = JSON.parse(localStorage.getItem(HISTORY_STORAGE_KEY)) || [];
 
-        const foodImg = new Image();
-        foodImg.src = 'https://cdn-icons-png.flaticon.com/512/3082/3082035.png';
+    
+// In the initializeGame function, replace the foodImg code with:
+let currentFoodType = settings.foodType || 'apple';
+let foodImg = new Image();
+foodImg.src = FOOD_IMAGES[currentFoodType];
+function preloadFoodImages() {
+    foodLoaded = false;
+    let loadedCount = 0;
+    const totalImages = Object.keys(FOOD_IMAGES).length;
+    
+    for (const [key, url] of Object.entries(FOOD_IMAGES)) {
+        foodImages[key] = new Image();
+        foodImages[key].onload = () => {
+            loadedCount++;
+            if (loadedCount === totalImages) {
+                foodLoaded = true;
+                currentFoodImg = foodImages.apple; // Default to apple
+                generateFood();
+            }
+        };
+        foodImages[key].onerror = () => {
+            console.error(`Failed to load food image: ${key}`);
+            loadedCount++;
+            // Fallback to apple if image fails to load
+            if (!foodImages.apple) foodImages.apple = new Image();
+            foodImages.apple.src = FOOD_IMAGES.apple;
+        };
+        foodImages[key].src = url;
+    }
+}
 
         function initCanvas() {
             const container = document.querySelector('.game-board');
@@ -1785,6 +2053,15 @@ document.addEventListener('DOMContentLoaded', function() {
             clearInterval(gameInterval);
             gameInterval = setInterval(gameLoop, GAME_SPEED);
         }
+
+        function getRandomFoodImage() {
+    const foodKeys = Object.keys(FOOD_IMAGES).filter(key => key !== 'random');
+    const randomKey = foodKeys[Math.floor(Math.random() * foodKeys.length)];
+    const img = new Image();
+    img.src = FOOD_IMAGES[randomKey];
+    return img;
+}
+
 
         function gameLoop() {
             if (isPaused || !isGameRunning) return;
@@ -1835,25 +2112,49 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        function generateFood() {
-            let foodX, foodY;
-            let validPosition = false;
+      function generateFood() {
+    if (!foodLoaded) return; // Don't generate food until images are loaded
+    
+    let foodX, foodY;
+    let validPosition = false;
+    let attempts = 0;
+    const maxAttempts = 100; // Prevent infinite loops
 
-            while (!validPosition) {
-                foodX = Math.floor(Math.random() * COLS) * GRID_SIZE;
-                foodY = Math.floor(Math.random() * ROWS) * GRID_SIZE;
-                validPosition = true;
+    while (!validPosition && attempts < maxAttempts) {
+        attempts++;
+        foodX = Math.floor(Math.random() * COLS) * GRID_SIZE;
+        foodY = Math.floor(Math.random() * ROWS) * GRID_SIZE;
+        validPosition = true;
 
-                for (const segment of snake) {
-                    if (segment.x === foodX && segment.y === foodY) {
-                        validPosition = false;
-                        break;
-                    }
-                }
+        // Check if position is occupied by snake
+        for (const segment of snake) {
+            if (segment.x === foodX && segment.y === foodY) {
+                validPosition = false;
+                break;
             }
-
-            food = { x: foodX, y: foodY };
         }
+    }
+
+    if (validPosition) {
+        food = { x: foodX, y: foodY };
+        
+        // Set current food image
+        if (currentFoodType === 'random') {
+            const foodKeys = Object.keys(FOOD_IMAGES).filter(key => key !== 'random');
+            const randomKey = foodKeys[Math.floor(Math.random() * foodKeys.length)];
+            currentFoodImg = foodImages[randomKey];
+        } else {
+            currentFoodImg = foodImages[currentFoodType] || foodImages.apple;
+        }
+    } else {
+        console.warn('Failed to find valid food position');
+        // Place food at a safe default position
+        food = {
+            x: Math.floor(COLS/2) * GRID_SIZE,
+            y: Math.floor(ROWS/4) * GRID_SIZE
+        };
+    }
+}
 
         function checkCollision() {
             const head = snake[0];
@@ -1872,67 +2173,97 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        function gameOver() {
-            clearInterval(gameInterval);
-            if (eventSource) eventSource.close();
-            isGameRunning = false;
-            if (gameOverScreen) gameOverScreen.style.display = 'flex';
-            
-            if (score > 0) {
-                updateHistory(score, currentControlMode);
-                
-                if (isAuthenticated && score <= highScore) {
-                    console.log('Game over, updating leaderboard with current score');
-                    updateLeaderboard(score, currentControlMode);
-                }
-            }
+     function gameOver() {
+    clearInterval(gameInterval);
+    if (eventSource) eventSource.close();
+    isGameRunning = false;
+    if (gameOverScreen) gameOverScreen.style.display = 'flex';
+    
+    if (score > 0) {
+        updateHistory(score, currentControlMode);
+        
+        if (isAuthenticated && score <= highScore) {
+            updateLeaderboard(score, currentControlMode);
         }
+    }
+    
+    // Force update other tabs
+    const history = JSON.parse(localStorage.getItem(HISTORY_STORAGE_KEY)) || [];
+    localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(history));
+}
 
-        function updateHistory(newScore, mode) {
-            const historyItem = {
-                score: newScore,
-                date: new Date().toLocaleString(),
-                mode: mode || 'keyboard'
-            };
-            
-            scoreHistory.unshift(historyItem);
-            
-            if (scoreHistory.length > MAX_HISTORY_ITEMS) {
-                scoreHistory = scoreHistory.slice(0, MAX_HISTORY_ITEMS);
-            }
-            
-            localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(scoreHistory));
-            renderHistory();
-        }
 
-        function renderHistory() {
-            const tableBody = document.getElementById('history-table-body');
-            if (!tableBody) return;
-            
-            tableBody.innerHTML = '';
-            
-            if (scoreHistory.length === 0) {
-                const row = document.createElement('tr');
-                row.innerHTML = `<td colspan="4" class="no-history">No history yet</td>`;
-                tableBody.appendChild(row);
-                return;
-            }
-            
-            scoreHistory.forEach((item, index) => {
-                const row = document.createElement('tr');
-                const modeIcon = item.mode === 'gesture' ? 
-                    '<i class="fas fa-hand-paper" title="Hand Gesture"></i>' : 
-                    '<i class="fas fa-keyboard" title="Keyboard"></i>';
-                
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${item.score}</td>
-                    <td>${item.date}</td>
-                    <td>${modeIcon}</td>
-                `;
-                tableBody.appendChild(row);
+function updateHistory(newScore, mode) {
+    const historyItem = {
+        score: newScore,
+        date: new Date().toISOString(),
+        mode: mode || 'keyboard'
+    };
+
+    // Get existing history
+    let history = JSON.parse(localStorage.getItem(HISTORY_STORAGE_KEY)) || [];
+    
+    // Add new item
+    history.unshift(historyItem);
+
+    // Store all history
+    localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(history));
+
+    // Broadcast update to other tabs
+    const updateEvent = new CustomEvent('historyUpdated', {
+        detail: { history }
+    });
+    window.dispatchEvent(updateEvent);
+
+    renderHistory();
+}
+  function renderHistory() {
+    const tableBody = document.getElementById('history-table-body');
+    if (!tableBody) return;
+    
+    // Get all history but only show last 10 for index.html
+    let history = JSON.parse(localStorage.getItem(HISTORY_STORAGE_KEY)) || [];
+    const displayHistory = window.location.pathname.includes('history.html') ? 
+        history : history.slice(0, 10);
+    
+    tableBody.innerHTML = '';
+    
+    if (displayHistory.length === 0) {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td colspan="4" class="no-history">No history yet</td>`;
+        tableBody.appendChild(row);
+        return;
+    }
+    
+    displayHistory.forEach((item, index) => {
+        const row = document.createElement('tr');
+        const modeIcon = item.mode === 'gesture' ? 
+            '<i class="fas fa-hand-paper" title="Hand Gesture"></i>' : 
+            '<i class="fas fa-keyboard" title="Keyboard"></i>';
+        
+        // Format date properly
+        let formattedDate;
+        try {
+            const dateObj = new Date(item.date);
+            formattedDate = dateObj.toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
             });
+        } catch (e) {
+            formattedDate = 'Unknown date';
         }
+        
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${item.score}</td>
+            <td>${formattedDate}</td>
+            <td>${modeIcon}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
 
         function drawHead(x, y, dir) {
             ctx.save();
@@ -2030,7 +2361,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         GRID_SIZE,
                         GRID_SIZE
                     );
-                    ctx.strokeStyle = GRID_BORDER_COLOR;
                     ctx.lineWidth = .2;
                     ctx.strokeRect(
                         col * GRID_SIZE,
@@ -2041,12 +2371,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            if (USE_FOOD_IMAGE && foodImg.complete) {
-                ctx.drawImage(foodImg, food.x, food.y, GRID_SIZE, GRID_SIZE);
-            } else {
-                ctx.fillStyle = FOOD_COLOR;
-                ctx.fillRect(food.x, food.y, GRID_SIZE, GRID_SIZE);
-            }
+            if (foodLoaded && currentFoodImg) {
+        try {
+            ctx.drawImage(currentFoodImg, food.x, food.y, GRID_SIZE, GRID_SIZE);
+        } catch (e) {
+            console.error('Error drawing food:', e);
+            // Fallback to simple square if image drawing fails
+            ctx.fillStyle = '#ff0000';
+            ctx.fillRect(food.x, food.y, GRID_SIZE, GRID_SIZE);
+        }
+    }
 
             for (let i = 1; i < snake.length - 1; i++) {
                 const segment = snake[i];
@@ -2140,6 +2474,74 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        // Swipe and double-tap controls for mobile and tablet
+        function setupSwipeControls() {
+            const gameBoard = document.querySelector('.game-board');
+            if (!gameBoard) return;
+
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let touchEndX = 0;
+            let touchEndY = 0;
+            const minSwipeDistance = 30; // Minimum distance for a swipe to register
+
+            gameBoard.addEventListener('touchstart', (e) => {
+                const touch = e.touches[0];
+                touchStartX = touch.clientX;
+                touchStartY = touch.clientY;
+            });
+
+            gameBoard.addEventListener('touchend', (e) => {
+                if (!isGameRunning || currentControlMode !== 'keyboard') return;
+
+                const touch = e.changedTouches[0];
+                touchEndX = touch.clientX;
+                touchEndY = touch.clientY;
+
+                const deltaX = touchEndX - touchStartX;
+                const deltaY = touchEndY - touchStartY;
+                const absDeltaX = Math.abs(deltaX);
+                const absDeltaY = Math.abs(deltaY);
+
+                // Only register swipe if the distance is sufficient
+                if (Math.max(absDeltaX, absDeltaY) < minSwipeDistance) return;
+
+                // Determine swipe direction based on the larger movement
+                if (absDeltaX > absDeltaY) {
+                    // Horizontal swipe
+                    if (deltaX > 0 && direction !== 'left') {
+                        nextDirection = 'right';
+                    } else if (deltaX < 0 && direction !== 'right') {
+                        nextDirection = 'left';
+                    }
+                } else {
+                    // Vertical swipe
+                    if (deltaY > 0 && direction !== 'up') {
+                        nextDirection = 'down';
+                    } else if (deltaY < 0 && direction !== 'down') {
+                        nextDirection = 'up';
+                    }
+                }
+            });
+
+            // Double-tap to pause/resume
+            let lastTapTime = 0;
+            const doubleTapDelay = 300; // Max time between taps for double-tap (ms)
+
+            gameBoard.addEventListener('touchend', (e) => {
+                if (!isGameRunning) return;
+
+                const currentTime = new Date().getTime();
+                const tapTimeDiff = currentTime - lastTapTime;
+
+                if (tapTimeDiff < doubleTapDelay && tapTimeDiff > 0) {
+                    isPaused = !isPaused;
+                }
+
+                lastTapTime = currentTime;
+            });
+        }
+
         if (startBtn) startBtn.addEventListener('click', initGame);
         if (restartBtn) restartBtn.addEventListener('click', initGame);
 
@@ -2147,6 +2549,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('resize', initCanvas);
         showStartScreen();
         renderHistory();
+        setupSwipeControls(); // Initialize swipe controls
         
         window.initGestureControls = initGestureControls;
         document.addEventListener('keydown', handleKeyDown);
@@ -2156,4 +2559,5 @@ document.addEventListener('DOMContentLoaded', function() {
     initModal();
     checkAuthState();
     initializeLeaderboard();
+    preloadFoodImages();
 });

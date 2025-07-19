@@ -3,7 +3,6 @@ let processingActive = false;
 const startBtn = document.getElementById('startBtn');
 const stopBtn = document.getElementById('stopBtn');
 const processBtn = document.getElementById('processBtn');
-const statusText = document.getElementById('statusText');
 const videoFeed = document.getElementById('videoFeed');
 const placeholder = document.getElementById('cameraPlaceholder');
 
@@ -20,9 +19,6 @@ function toggleCamera() {
                 startBtn.disabled = true;
                 stopBtn.disabled = false;
                 processBtn.disabled = false;
-                statusText.textContent = "Camera: On | Processing: Off";
-                statusText.style.color = "#2ecc71"; // Green to match start button
-                statusText.style.display = "block";
             });
     } else {
         // Stop camera
@@ -38,8 +34,6 @@ function toggleCamera() {
                 stopBtn.disabled = true;
                 processBtn.disabled = true;
                 processBtn.textContent = "Enable Processing";
-                statusText.textContent = "Camera: Off | Processing: Off";
-                statusText.style.color = "#e74c3c"; // Red to match stop button
             });
     }
 }
@@ -52,8 +46,6 @@ function toggleProcessing() {
             .then(data => {
                 processingActive = true;
                 processBtn.textContent = "Disable Processing";
-                statusText.textContent = "Camera: On | Processing: On";
-                statusText.style.color = "#3498db"; // Blue to match process button
             });
     } else {
         // Disable processing
@@ -62,8 +54,6 @@ function toggleProcessing() {
             .then(data => {
                 processingActive = false;
                 processBtn.textContent = "Enable Processing";
-                statusText.textContent = "Camera: On | Processing: Off";
-                statusText.style.color = "#2ecc71"; // Green (camera is still on)
             });
     }
 }
@@ -81,8 +71,6 @@ function stopCamera() {
                 stopBtn.disabled = true;
                 processBtn.disabled = true;
                 processBtn.textContent = "Enable Processing";
-                statusText.textContent = "Camera: Off | Processing: Off";
-                statusText.style.color = "#e74c3c";
             });
     }
 }
