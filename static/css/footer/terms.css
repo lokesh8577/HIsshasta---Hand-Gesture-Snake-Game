@@ -1,138 +1,220 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-        }
-        .terms-header{
-            padding-top: 30px;
-            height: 60px;
-        }
-        .terms-header span{
-            font-size: 30px;
-            padding-left: 40px;
-        }
-        .container{
-            width: 90%;
-            margin: 0 auto;
-        }
-        a{
-            color: var(--tertiary-color);
-            text-decoration: none;
-        }
-        
-        
-        .last-updated {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .terms-content {
-            border-radius: 10px;
-            padding: 2.5rem;
-        }
-        
-        .section {
-            margin-bottom: 2.5rem;
-        }
-        
-        .section:last-child {
-            margin-bottom: 0;
-        }
-        
-        .section h2 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            padding-bottom: 0.5rem;
-        }
-        
-        .section h3 {
-            font-size: 0.8rem;
-            margin: 1.5rem 0 0.8rem;
-            color: var(--text-color);
-        }
-        
-        .section p {
-            margin-bottom: 1rem;
-            color: var(--text-color);
-            font-size: 0.9rem;
-        }
-        
-        .section ul {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-        }
-        
-        .section li {
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .highlight {
-            background-color: var(--bg-color);
-            padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-        }
-        
-        .warning-box {
-            padding: 1rem;
-            margin: 1.5rem 0;
-            border-radius: 20px;
-            border: 2px solid var(--border-color);
-        }
-        
-        .warning-box p {
-            color: var(--tertiary-color);
-            margin-bottom: 0;
-        }
-        
-        .contact-info {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-        }
-        
-        .contact-info h3 {
-            margin-bottom: 1rem;
-        }
-        
-        .contact-method {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        
-        .contact-method i {
-            margin-right: 0.8rem;
-            width: 20px;
-            text-align: center;
-        }
-        
-        .footer-note {
-            margin-top: 3rem;
-            text-align: center;
-            color: var(--text-light);
-            font-size: 0.7rem;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .terms-content {
-                padding: 1.5rem;
-            }
-            
-            .terms-header h1 {
-                font-size: 1.2rem;
-            }
-        }
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+.terms-header {
+  padding-top: 30px;
+  height: 60px;
+}
+
+.terms-header span {
+  font-size: 30px;
+  padding-left: 40px;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+a {
+  color: var(--tertiary-color);
+  text-decoration: none;
+  cursor: default;
+}
+
+
+.last-updated {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.terms-content {
+  border-radius: 10px;
+  padding: 2.5rem;
+}
+
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.section h3 {
+  font-size: 0.8rem;
+  margin: 1.5rem 0 0.8rem;
+  color: var(--text-color);
+}
+
+.section p {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.section ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.section li {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.highlight {
+  background-color: var(--bg-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+}
+
+.warning-box {
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 20px;
+  border: 2px solid var(--border-color);
+}
+
+.warning-box p {
+  color: var(--tertiary-color);
+  margin-bottom: 0;
+}
+
+.contact-info {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+}
+
+.contact-info h3 {
+  margin-bottom: 1rem;
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.contact-method i {
+  margin-right: 0.8rem;
+  width: 20px;
+  text-align: center;
+}
+
+.footer-note {
+  margin-top: 3rem;
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.7rem;
+}
+
+/* Tablets (601px - 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+
+  .terms-content {
+    padding: 2rem;
+  }
+
+  .terms-header span {
+    font-size: 1.6rem;
+  }
+
+  .section h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Mobile (up to 600px) */
+@media (max-width: 600px) {
+  .container {
+    padding: 0 1.25rem;
+    width: 100%;
+  }
+
+  .terms-header {
+    padding: 1rem 0;
+  }
+
+  .terms-header span {
+    font-size: 1.4rem;
+    padding-left: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .terms-content {
+    padding: 1.5rem;
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+  }
+
+  .section {
+    margin-bottom: 2rem;
+  }
+
+  .section h2 {
+    font-size: 1.25rem;
+  }
+
+  .section h2::after {
+    width: 50px;
+  }
+
+  .warning-box {
+    padding: 1.25rem;
+  }
+
+  .footer-note {
+    margin-top: 2rem;
+  }
+}
+
+/* Small Mobile (up to 400px) */
+@media (max-width: 400px) {
+  .terms-header span {
+    font-size: 1.3rem;
+  }
+
+  .terms-content {
+    padding: 1.25rem;
+  }
+
+  .section h2 {
+    font-size: 1.2rem;
+  }
+
+  .section h2::after {
+    width: 40px;
+  }
+
+  .contact-method {
+    flex-wrap: wrap;
+  }
+
+  .section ul {
+    padding-left: 1.25rem;
+  }
+}

@@ -14,7 +14,7 @@ from firebase_admin import credentials, auth, db, firestore
 from functools import wraps
 from flask_cors import CORS
 from firebase_admin import auth, exceptions as firebase_exceptions
-
+from collections import deque
 
 # Custom DepthwiseConv2D class to handle legacy models
 class CompatibleDepthwiseConv2D(DepthwiseConv2D):
@@ -38,8 +38,9 @@ app.secret_key = 'a48e14a0d5d3233f18ac4c46547685c9fd39e21af5c072d0'
 # Configuration
 IMG_SIZE = 300
 OFFSET = 20
-LABELS = ["Up", "Down", "Right", "Left"]
-TARGET_FPS = 30
+TARGET_FPS = 60
+MIN_CONFIDENCE = 0.7
+SMOOTHING_WINDOW = 5
 
 # Global variables
 camera_on = False
@@ -52,6 +53,8 @@ input_details = None
 output_details = None
 camera_lock = Lock()
 current_gesture = "None"
+prediction_history = deque(maxlen=SMOOTHING_WINDOW)
+LABELS = []
 
 # Authentication decorator
 def auth_required(f):
@@ -107,11 +110,23 @@ def load_model():
         except Exception as e:
             print(f"Model loading failed completely: {str(e)}")
             raise
+    load_labels()
+
+def load_labels():
+    global LABELS
+    try:
+        with open("Model/labels.txt", "r") as f:
+            LABELS = [line.strip().split()[-1] for line in f.readlines()]
+        print(f"Loaded {len(LABELS)} labels")
+    except Exception as e:
+        print(f"Error loading labels: {str(e)}")
+        LABELS = ["Up", "Down", "Right", "Left", "Stop"]  # Fallback
 
 def safe_predict(img):
     """Handle prediction with either Keras or TFLite model"""
-    global current_gesture
+    global current_gesture, prediction_history
     try:
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert to RGB for model compatibility
         img = cv2.resize(img, (224, 224))
         
         if model is not None:
@@ -132,9 +147,17 @@ def safe_predict(img):
         index = np.argmax(predictions[0])
         confidence = predictions[0][index]
         
-        # Only update gesture if confidence is high enough
-        if confidence > 0.7:  # 70% confidence threshold
-            current_gesture = LABELS[index] if index < len(LABELS) else "Unknown"
+        # Smoothing logic
+        if confidence >= MIN_CONFIDENCE:
+            prediction_history.append(index)
+            if len(prediction_history) < SMOOTHING_WINDOW:
+                smoothed_index = index
+            else:
+                counts = np.bincount(prediction_history)
+                smoothed_index = np.argmax(counts)
+                if counts[smoothed_index] <= len(prediction_history) * 0.6:
+                    smoothed_index = index
+            current_gesture = LABELS[smoothed_index] if smoothed_index < len(LABELS) else "Unknown"
         else:
             current_gesture = "None"
             
@@ -147,7 +170,41 @@ def safe_predict(img):
 def process_frame(frame):
     global current_gesture
     try:
-        hands, _ = detector.findHands(frame, draw=False)
+        hands, frame = detector.findHands(frame, draw=False)  # Disable default drawing
+        
+        CIRCLE_COLOR = (0, 0, 255)      # Red circles
+        LINE_COLOR = (0, 140, 255)        # Deep gold lines
+        RECTANGLE_COLOR = (0, 0, 0)       # Black rectangle
+        TEXT_COLOR = (0, 0, 0)      # White text
+
+
+        
+        if hands:
+            hand = hands[0]
+            lmList = hand.get('lmList', [])  # Get landmark list
+            
+            # Draw landmark points (circles)
+            if lmList:
+                for lm in lmList:
+                    x, y = lm[0], lm[1]
+                    cv2.circle(frame, (x, y), 5, CIRCLE_COLOR, cv2.FILLED)
+            
+            # Draw landmark connections (lines)
+            connections = [
+                (0, 1), (1, 2), (2, 3), (3, 4),  # Thumb
+                (0, 5), (5, 6), (6, 7), (7, 8),  # Index
+                (5, 9), (9, 10), (10, 11), (11, 12),  # Middle
+                (9, 13), (13, 14), (14, 15), (15, 16),  # Ring
+                (13, 17), (17, 18), (18, 19), (19, 20),  # Pinky
+                (0, 17), (5, 17)  # Palm connections
+            ]
+            
+            for start, end in connections:
+                if len(lmList) > max(start, end):
+                    x1, y1 = lmList[start][0], lmList[start][1]
+                    x2, y2 = lmList[end][0], lmList[end][1]
+                    cv2.line(frame, (x1, y1), (x2, y2), LINE_COLOR, 2)
+        
         if not hands:
             current_gesture = "None"
             return frame
@@ -182,17 +239,19 @@ def process_frame(frame):
 
         # Get prediction
         _, index = safe_predict(imgWhite)
-        label = LABELS[index] if index < len(LABELS) else "Unknown"
+        label = current_gesture  # Use smoothed gesture
 
-        # Draw results on the frame
-        cv2.putText(frame, label, (x, y - 26), cv2.FONT_HERSHEY_COMPLEX, 1.7, (255, 0, 255), 2)
-        cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 255), 4)
+        # Draw results on the frame with custom colors
+        cv2.putText(frame, label, (x, y - 26), cv2.FONT_HERSHEY_COMPLEX, 1.7, TEXT_COLOR, 2)
+        cv2.rectangle(frame, (x1, y1), (x2, y2), RECTANGLE_COLOR, 4)
 
     except Exception as e:
         print(f"Frame processing error: {str(e)}")
         current_gesture = "Error"
     
     return frame
+
+
 
 def gen_frames():
     global camera_on, processing_on
@@ -637,10 +696,6 @@ def theme_page():
     return render_template('header_content/theme.html')
 
 
-@app.route('/contact')
-def contact_page():
-    return render_template('footer_content/contact.html')
-    
 
 @app.route('/feedback')
 def feedback_page():
@@ -660,7 +715,9 @@ def security_page():
 def privacy_page():
     return render_template('footer_content/privacy.html')
 
-
+@app.route('/permission')
+def permission():
+    return render_template('permission.html')
 
 @app.route('/video_feed')
 def video_feed():

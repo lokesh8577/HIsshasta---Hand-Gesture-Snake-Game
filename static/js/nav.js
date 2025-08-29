@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuIcon = document.querySelector('.menu-icon');
     const body = document.body;
     const navLinks = document.querySelectorAll('.nav-link');
-const notificationBtn = document.querySelector('.notification-btn');
+    const notificationBtn = document.querySelector('.notification-btn');
     const notificationPopup = document.querySelector('.notification-popup');
     const closePopup = document.querySelector('.close-popup');
     const popupOverlay = document.querySelector('.popup-overlay');
@@ -22,7 +22,7 @@ const notificationBtn = document.querySelector('.notification-btn');
 
     // Open popup when notification button is clicked
     if (notificationBtn) {
-        notificationBtn.addEventListener('click', function(e) {
+        notificationBtn.addEventListener('click', function (e) {
             e.stopPropagation();
             togglePopup();
         });
@@ -39,13 +39,13 @@ const notificationBtn = document.querySelector('.notification-btn');
 
     // Tab switching functionality
     tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
+        tab.addEventListener('click', function () {
             const tabId = this.getAttribute('data-tab');
-            
+
             // Update active tab
             tabs.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
-            
+
             // Update active content
             tabContents.forEach(content => {
                 content.classList.remove('active');
@@ -57,18 +57,18 @@ const notificationBtn = document.querySelector('.notification-btn');
     });
 
     // Close when clicking outside
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (!notificationPopup.contains(e.target) && e.target !== notificationBtn) {
             if (notificationPopup.classList.contains('active')) {
                 togglePopup();
             }
         }
-    });    
+    });
 
     // Toggle menu function
     function toggleMenu() {
         if (!headerNav || !menuIcon) return;
-        
+
         headerNav.classList.toggle('active');
         body.classList.toggle('menu-open');
         mobileMenuBtn.classList.toggle('active');
@@ -135,9 +135,9 @@ const notificationBtn = document.querySelector('.notification-btn');
         });
     }
 
- 
+
     // Footer button handlers
-  
+
 
     // Mobile command line button
     const commandLineMobileButton = document.getElementById('commandLineMobileButton');
@@ -149,38 +149,38 @@ const notificationBtn = document.querySelector('.notification-btn');
 
     // Profile dropdown functionality
     function setupProfileDropdown() {
-     const profileBtn = document.getElementById('profileBtn');
-    const profileWindow = document.getElementById('profileWindow');
-    const logoutBtn = document.getElementById('logoutBtn');
+        const profileBtn = document.getElementById('profileBtn');
+        const profileWindow = document.getElementById('profileWindow');
+        const logoutBtn = document.getElementById('logoutBtn');
 
-    if (profileBtn && profileWindow) {
-        // Toggle profile window
-        profileBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            profileWindow.classList.toggle('hidden');
-        });
+        if (profileBtn && profileWindow) {
+            // Toggle profile window
+            profileBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                profileWindow.classList.toggle('hidden');
+            });
 
-        // Close when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.profile-container')) {
-                profileWindow.classList.add('hidden');
-            }
-        });
-    }
+            // Close when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('.profile-container')) {
+                    profileWindow.classList.add('hidden');
+                }
+            });
+        }
 
-    // Logout functionality
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            fetch('/logout', { method: 'POST' })
-                .then(response => {
-                    if (response.redirected) {
-                        window.location.href = response.url;
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        });
-    }
+        // Logout functionality
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                fetch('/logout', { method: 'POST' })
+                    .then(response => {
+                        if (response.redirected) {
+                            window.location.href = response.url;
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        }
 
     }
 
@@ -192,7 +192,7 @@ const notificationBtn = document.querySelector('.notification-btn');
 
 function handleResize() {
     initCanvas();
-    
+
     // Adjust mobile controls position if needed
     if (window.innerWidth <= 768) {
         const mobileControls = document.getElementById('mobile-controls');

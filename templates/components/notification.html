@@ -1,0 +1,43 @@
+<div class="notification-popup">
+    <div class="popup-header">
+        <h3>Notification</h3>
+        <button class="close-popup">&times;</button>
+    </div>
+
+    <div class="improvement-list">
+        <div class="improvement">
+            <div class="improvement-title">Gesture Recognition Engine
+                <span class="version-badge">v1.0.1</span>
+            </div>
+            <div class="improvement-details">
+                Improved hand tracking accuracy by 22% through better keypoint detection. Reduced false positives
+                during rapid movements by implementing temporal smoothing.
+            </div>
+            <div class="improvement-date">July 12, 2025</div>
+        </div>
+
+        <div class="improvement">
+            <div class="improvement-title">Input Latency Optimization</div>
+            <div class="improvement-details">
+                Reduced end-to-end latency by 40ms (from 85ms to 45ms) by optimizing the render pipeline and
+                implementing predictive motion modeling.
+            </div>
+            <div class="improvement-date">July 10, 2025</div>
+        </div>
+
+        <div class="improvement">
+            <div class="improvement-title">Collision Detection System</div>
+            <div class="improvement-details">
+                Fixed edge cases in self-collision detection that occurred during quick 180° turns. New algorithm
+                uses continuous collision detection for more accurate results.
+            </div>
+            <div class="improvement-date">July 8, 2025</div>
+        </div>
+
+
+    </div>
+</div>
+<div class="popup-overlay"></div>
+
+
+<script src="{{ url_for('static', filename='js/soundManager.js') }}"></script>

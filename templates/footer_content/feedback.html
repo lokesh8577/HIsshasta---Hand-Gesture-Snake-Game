@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback - Snake Game</title>
+    <title>Feedback - HissHasta</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%234CAF50' d='M50.816 119.114v16.199s-13.707-.831-13.707-16.199h13.707zm6.326 0c0 15.368 13.707 16.199 13.707 16.199v-16.199H57.142z'/><path fill='%2366bb6a' d='M78.389 142.269c-6.637-6.636-26.715-5.761-45.657 13.18a78.26 78.26 0 0 1-4.609 4.265a3.909 3.909 0 0 0-1.453.761c-.503.419-.819.423-1.097.39c-1.906-.221-4.706-2.768-8.321-7.569a33.585 33.585 0 0 0-.821-1.063a3.953 3.953 0 1 0-6.088 5.046c.141.17.339.438.592.773c2.251 2.989 4.808 6.045 7.701 8.13c-6.046 2.994-9.315 2.228-9.369 2.215c.093.024.14.044.14.044l-2.585 7.474c.369.127 1.618.498 3.666.498c4.974 0 14.653-2.189 27.835-15.371c16.398-16.4 31.993-15.661 34.474-13.18a3.954 3.954 0 1 0 5.592-5.593z'/><path fill='%23e8f5e9' d='M492.435 364.927c-1.25-9.271-3.099-17.283-5.131-24.065c-2.012-6.786-4.055-12.379-5.879-16.824c-1.832-4.442-3.344-7.771-4.4-9.995l-1.63-3.352c-1.891-3.893-6.293-6.095-10.676-5.044c-5.062 1.214-8.181 6.302-6.967 11.364l.067.278l.797 3.32c.521 2.185 1.265 5.43 2.067 9.661c.797 4.229 1.692 9.436 2.285 15.533c.304 3.047.524 6.311.698 9.764c.129 3.456.157 7.106.002 10.918c-.334 7.615-1.314 15.893-3.548 24.322c-2.256 8.4-5.806 16.964-10.991 24.595c-2.595 3.804-5.569 7.38-8.931 10.464c-3.352 3.083-7.066 5.701-10.907 7.564c-3.829 1.882-7.806 2.934-11.33 3.113c-.443.037-.874.025-1.302.031c-.216.013-.422-.019-.632-.021c-.181-.014-.492 0-.516-.038a1.296 1.296 0 0 0-.245-.053l-1.166-.078l-.662-.044c-.255-.008.866-.001.333-.019l-.139-.029l-.553-.105a21.437 21.437 0 0 1-2.179-.63a24.396 24.396 0 0 1-2.143-.926c-2.837-1.407-5.663-3.69-8.131-6.836c-2.464-3.135-4.578-7.075-5.956-11.585c-1.39-4.501-2.109-9.527-2.073-14.828c.035-2.656.254-5.378.667-8.146a80.042 80.042 0 0 1 1.819-8.432c1.546-5.698 3.965-11.467 6.989-17.233a107.814 107.814 0 0 1 2.4-4.318c.425-.695.873-1.481 1.273-2.106l1.238-1.942l1.597-2.427l2.022-3.167c1.325-2.138 2.653-4.288 3.913-6.505c5.068-8.838 9.654-18.289 13.419-28.42c3.772-10.122 6.692-20.942 8.312-32.356c1.601-11.411 1.926-23.428.304-35.697c-1.63-12.245-5.191-24.746-11.347-36.652c-6.142-11.868-14.918-23.224-26.931-32.188c-5.992-4.465-12.795-8.3-20.295-11.069c-7.485-2.773-15.682-4.445-24.041-4.652c-8.353-.226-16.816 1.042-24.636 3.587c-7.83 2.535-15.015 6.278-21.239 10.679c-6.242 4.401-11.615 9.407-16.21 14.636c-4.621 5.233-8.474 10.693-11.834 16.201c-6.66 11.038-11.273 22.249-14.799 33.315c-3.514 11.079-5.91 22.051-7.648 32.89c-1.741 10.843-2.761 21.546-3.359 32.135c-.276 5.288-.484 10.56-.541 15.787c-.05 2.57-.04 5.439-.043 7.998l.032 3.614l.01 3.4c-.03 7.901-.737 15.503-2.112 22.565c-1.398 7.043-3.486 13.535-6.212 19.094c-2.721 5.562-6.034 10.188-9.647 13.669c-3.614 3.474-7.506 5.808-11.236 7.045c-3.733 1.247-7.267 1.388-10.16.786c-2.92-.61-5.158-1.863-7.071-3.716c-1.907-1.854-3.651-4.497-4.895-8.383c-1.251-3.846-1.908-8.835-1.729-14.423c.151-5.583 1.127-11.732 2.715-17.993a124.903 124.903 0 0 1 2.847-9.486c.545-1.59 1.127-3.181 1.728-4.771l.932-2.385l.878-2.136l2.383-5.533l2.597-6.16a467.92 467.92 0 0 0 4.859-12.25a488.85 488.85 0 0 0 8.494-24.225c5.146-16.027 9.338-31.799 12.549-47.301c3.183-15.506 5.417-30.729 6.516-45.672c1.09-14.941 1.067-29.61-.531-43.981c-1.608-14.346-4.816-28.483-10.44-41.781c-2.808-6.634-6.226-13.029-10.24-18.94c-4.005-5.912-8.606-11.318-13.529-15.986c-4.911-4.688-10.159-8.586-15.307-11.759a96.167 96.167 0 0 0-14.976-7.466c-9.056-3.558-16.813-5.187-23.03-6.167c-8.695-3.326-18.32-5.257-28.478-5.411c-39.33-.594-100.302 25.207-105.198 57.739a13.21 13.21 0 0 0-.108.973c-.741 9.696 7.341 17.818 17.065 17.746l40.555-.3c3.586-.027 5.18 4.489 2.374 6.721c-11.517 9.161-29.362 24.328-21.267 24.328c18.271 0 52.545-.13 64.971-.081c16.665.066 32.016-2.443 44.226-7.835c1.399 4.583 2.543 10.014 3.245 16.17c1.051 9.052 1.198 19.563.397 30.983c-.794 11.426-2.527 23.772-5.132 36.683c-2.583 12.916-6.019 26.421-10.321 40.2a418.21 418.21 0 0 1-7.102 20.823a398.928 398.928 0 0 1-4.047 10.464l-2.149 5.223l-2.466 5.9l-1.453 3.654l-1.305 3.465a232.471 232.471 0 0 0-2.469 7.096a193.745 193.745 0 0 0-4.258 14.911c-2.459 10.29-4.208 21.293-4.395 33.165c-.177 11.83 1.188 24.629 5.623 37.685c2.221 6.506 5.212 13.044 9.154 19.289c3.927 6.24 8.782 12.182 14.491 17.386a81.95 81.95 0 0 0 19.262 13.092c7.026 3.438 14.537 5.825 22.146 7.137c15.247 2.65 30.782.915 44.604-4.119c13.87-5.015 26.026-13.259 35.77-23.082c9.757-9.849 17.175-21.197 22.523-32.858c5.363-11.684 8.743-23.666 10.807-35.461c2.025-11.803 2.755-23.453 2.557-34.807l-.147-7.437c-.015-2.26-.049-4.213-.029-6.465c-.001-4.42.133-8.798.312-13.156c.4-8.699 1.14-17.278 2.383-25.541c1.231-8.262 2.928-16.242 5.181-23.604c2.239-7.356 5.064-14.098 8.309-19.596c3.228-5.488 6.9-9.622 10.057-11.876c1.577-1.162 2.995-1.851 4.242-2.292c1.255-.431 2.354-.609 3.515-.612c1.157.003 2.402.197 3.811.685c1.403.486 2.954 1.28 4.539 2.424c3.181 2.271 6.404 5.974 8.876 10.617c2.497 4.639 4.275 10.184 5.145 16.163c.468 2.982.669 6.096.711 9.26a80.513 80.513 0 0 1-.58 9.689c-.826 6.552-2.426 13.232-4.681 19.86c-2.264 6.627-5.212 13.187-8.66 19.572a182.042 182.042 0 0 1-2.654 4.771l-3.189 5.454l-2.027 3.633c-.677 1.236-1.235 2.348-1.852 3.527a164.769 164.769 0 0 0-3.41 7.115c-4.322 9.615-7.6 19.815-9.622 30.35a114.77 114.77 0 0 0-1.658 32.239a106.577 106.577 0 0 0 2.732 16.072c1.371 5.281 3.132 10.463 5.382 15.459c4.461 9.983 10.695 19.288 18.741 26.992c8.005 7.698 17.844 13.826 28.719 17.187a65.654 65.654 0 0 0 16.683 2.856l2.1.04l1.519.012l.662-.035l1.477-.077l2.389-.152c.853-.054 1.414-.141 2.106-.218c.661-.085 1.329-.150 1.977-.263c1.304-.206 2.601-.421 3.865-.7c10.18-2.129 18.958-6.377 26.371-11.405c7.44-5.043 13.537-10.974 18.558-17.185a96.612 96.612 0 0 0 12.11-19.215c6.265-13.01 9.154-25.88 10.355-37.538a132.802 132.802 0 0 0-.557-31.521z'/><path fill='%23c8e6c9' d='M118.602 70.08c6.423 0 11.63 5.207 11.63 11.63v14.296c0 6.423-5.207 11.63-11.63 11.63c-6.423 0-11.63-5.207-11.63-11.63V81.71c0-6.423 5.207-11.63 11.63-11.63z'/><circle fill='%23c8e6c9' cx='43.962' cy='106.054' r='3.427'/></svg>">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <style>
-        body{
+        body {
             background-color: var(--bg-color);
         }
-        input{
+
+        input {
             background-color: var(--bg-color);
             border: 2px solid var(--border-color);
             border-radius: 20px;
             padding: 10px;
+            color: var(--accent-color);
         }
-        select{
+
+
+        select {
             background-color: var(--bg-color);
             border: 2px solid var(--border-color);
             border-radius: 20px;
             padding: 10px;
             color: var(--text-color);
         }
+
         .feedback-container {
             max-width: 1000px;
-            margin:80px auto;
+            margin: 80px auto;
             /* padding-top: 100px; */
             background-color: var(--bg-color);
             border-radius: 15px;
@@ -35,7 +44,7 @@
             display: flex;
             min-height: 700px;
         }
-        
+
         .feedback-illustration {
             flex: 1;
             background: linear-gradient(135deg, var(--primary-color), var(--tertiary-color));
@@ -48,7 +57,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .feedback-illustration::before {
             content: "";
             position: absolute;
@@ -59,7 +68,7 @@
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
         }
-        
+
         .feedback-illustration::after {
             content: "";
             position: absolute;
@@ -70,40 +79,40 @@
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
         }
-        
+
         .illustration-icon {
             font-size: 5rem;
             margin-bottom: 1.5rem;
             z-index: 1;
         }
-        
+
         .illustration-title {
             font-size: 1.8rem;
             margin-bottom: 1rem;
             text-align: center;
             z-index: 1;
         }
-        
+
         .illustration-text {
             text-align: center;
             opacity: 0.9;
             max-width: 80%;
             z-index: 1;
         }
-        
+
         .feedback-form-container {
             flex: 1.5;
             padding: 3rem;
             position: relative;
         }
-        
+
         .form-progress {
             display: flex;
             justify-content: space-between;
             margin-bottom: 2rem;
             position: relative;
         }
-        
+
         .form-progress::before {
             content: "";
             position: absolute;
@@ -115,7 +124,7 @@
             transform: translateY(-50%);
             z-index: 0;
         }
-        
+
         .progress-step {
             width: 30px;
             height: 30px;
@@ -129,31 +138,38 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .progress-step.active {
             background: var(--primary-color);
             color: var(--text-color);
         }
-        
+
         .progress-step.completed {
             background: var(--tertiary-color);
             color: var(--text-color);
         }
-        
+
         .form-section {
             display: none;
             animation: fadeIn 0.5s ease;
         }
-        
+
         .form-section.active {
             display: block;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         .section-title {
             font-size: 1.5rem;
             color: var(--primary-color);
@@ -161,7 +177,7 @@
             position: relative;
             padding-bottom: 0.5rem;
         }
-        
+
         .section-title::after {
             content: "";
             position: absolute;
@@ -171,18 +187,18 @@
             height: 3px;
             background: var(--primary-color);
         }
-        
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
+
         .form-label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
             color: var(--text-color);
         }
-        
+
         .form-control {
             width: 100%;
             padding: 0.75rem 1rem;
@@ -191,13 +207,17 @@
             font-size: 1rem;
             transition: all 0.3s;
         }
-        
+
         .form-control:focus {
             border-color: var(--primary-color);
             outline: none;
             box-shadow: 0 0 0 3px var(--shadow);
         }
-        
+
+        textarea {
+            color: var(--accent-color);
+        }
+
         textarea.form-control {
             min-height: 120px;
             resize: vertical;
@@ -205,24 +225,77 @@
             border: 2px solid var(--border-color);
             border-radius: 20px;
         }
-        
+
         .rating-container {
             display: flex;
             justify-content: space-between;
             margin: 1.5rem 0;
         }
-        
+
         .rating-option {
             display: flex;
             flex-direction: column;
             align-items: center;
-            cursor: pointer;
+            cursor: default;
         }
-        
+
         .rating-input {
             display: none;
         }
-        
+
+        /* Custom Popup Styles */
+        .custom-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .custom-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background-color: var(--bg-color);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px var(--shadow);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .popup-message {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+
+        .popup-okay {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .popup-okay:hover {
+            background-color: var(--accent-color);
+        }
+
         .rating-label {
             width: 50px;
             height: 50px;
@@ -236,80 +309,80 @@
             transition: all 0.3s;
             margin-bottom: 0.5rem;
         }
-        
-        .rating-input:checked + .rating-label {
+
+        .rating-input:checked+.rating-label {
             background: var(--primary-color);
             color: var(--text-color);
             transform: scale(1.1);
         }
-        
+
         .rating-text {
             font-size: 0.8rem;
             color: var(--text-color);
         }
-        
+
         .checkbox-group {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 0.75rem;
             margin: 1rem 0;
         }
-        
+
         .checkbox-option {
             display: flex;
             align-items: center;
         }
-        
+
         .checkbox-input {
             margin-right: 0.75rem;
             width: 18px;
             height: 18px;
             accent-color: var(--primary-color);
         }
-        
+
         .form-actions {
             display: flex;
             justify-content: space-between;
             margin-top: 2rem;
         }
-        
+
         .btn {
             padding: 0.75rem 1.5rem;
             border: none;
             border-radius: 8px;
             font-size: 1rem;
             font-weight: 600;
-            cursor: pointer;
+            cursor: default;
             transition: all 0.3s;
             display: inline-flex;
             align-items: center;
             justify-content: center;
         }
-        
+
         .btn-primary {
             background: var(--primary-color);
             color: var(--text-color);
         }
-        
+
         .btn-primary:hover {
             background: var(--tertiary-color);
             transform: translateY(-2px);
         }
-        
+
         .btn-outline {
             background: transparent;
             color: var(--dark-color);
             border: 2px solid var(--border-color);
         }
-        
+
         .btn-outline:hover {
             border-color: var(--accent-color);
         }
-        
+
         .btn-icon {
             margin-right: 0.5rem;
         }
-        
+
         .thank-you-container {
             position: absolute;
             top: 0;
@@ -328,163 +401,75 @@
             transition: opacity 0.5s ease;
             z-index: 10;
         }
-        
+
         .thank-you-container.show {
             opacity: 1;
             pointer-events: all;
         }
-        
+
         .thank-you-icon {
             font-size: 4rem;
             color: var(--tertiary-color);
             margin-bottom: 1.5rem;
         }
-        
+
         .thank-you-title {
             font-size: 2rem;
             color: var(--text-color);
             margin-bottom: 1rem;
         }
-        
+
         .thank-you-text {
             color: var(--text-color);
             max-width: 80%;
             margin-bottom: 2rem;
         }
-        
+
         .emoji-feedback {
             display: flex;
             justify-content: center;
             margin: 1.5rem 0;
         }
-        
+
         .emoji-option {
             font-size: 2rem;
             margin: 0 0.5rem;
-            cursor: pointer;
+            cursor: default;
             opacity: 0.6;
             transition: all 0.3s;
         }
-        
-        .emoji-option:hover, .emoji-option.active {
+
+        .emoji-option:hover,
+        .emoji-option.active {
             opacity: 1;
             transform: scale(1.2);
         }
-        
+
         @media (max-width: 768px) {
             .feedback-container {
                 flex-direction: column;
             }
-            
+
             .feedback-illustration {
                 padding: 1.5rem;
             }
-            
+
             .feedback-form-container {
                 padding: 2rem;
             }
-            
+
             .checkbox-group {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
-     <header class="main-header">
-            <div class="header-container">
-                <div class="logo-section">
-                    <a class="header-logo" href="/">
-                       <div class="logo-icon">
-    <svg width="80px" height="80px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--fxemoji" preserveAspectRatio="xMidYMid meet">
-        <path fill="var(--text-color)" d="M50.816 119.114v16.199s-13.707-.831-13.707-16.199h13.707zm6.326 0c0 15.368 13.707 16.199 13.707 16.199v-16.199H57.142z"></path>
-        <path fill="var(--accent-color)" d="M78.389 142.269c-6.637-6.636-26.715-5.761-45.657 13.18a78.26 78.26 0 0 1-4.609 4.265a3.909 3.909 0 0 0-1.453.761c-.503.419-.819.423-1.097.39c-1.906-.221-4.706-2.768-8.321-7.569a33.585 33.585 0 0 0-.821-1.063a3.953 3.953 0 1 0-6.088 5.046c.141.17.339.438.592.773c2.251 2.989 4.808 6.045 7.701 8.13c-6.046 2.994-9.315 2.228-9.369 2.215c.093.024.14.044.14.044l-2.585 7.474c.369.127 1.618.498 3.666.498c4.974 0 14.653-2.189 27.835-15.371c16.398-16.4 31.993-15.661 34.474-13.18a3.954 3.954 0 1 0 5.592-5.593z"></path>
-        <path fill="var(--tertiary-color)" d="M492.435 364.927c-1.25-9.271-3.099-17.283-5.131-24.065c-2.012-6.786-4.055-12.379-5.879-16.824c-1.832-4.442-3.344-7.771-4.4-9.995l-1.63-3.352c-1.891-3.893-6.293-6.095-10.676-5.044c-5.062 1.214-8.181 6.302-6.967 11.364l.067.278l.797 3.32c.521 2.185 1.265 5.43 2.067 9.661c.797 4.229 1.692 9.436 2.285 15.533c.304 3.047.524 6.311.698 9.764c.129 3.456.157 7.106.002 10.918c-.334 7.615-1.314 15.893-3.548 24.322c-2.256 8.4-5.806 16.964-10.991 24.595c-2.595 3.804-5.569 7.38-8.931 10.464c-3.352 3.083-7.066 5.701-10.907 7.564c-3.829 1.882-7.806 2.934-11.33 3.113c-.443.037-.874.025-1.302.031c-.216.013-.422-.019-.632-.021c-.181-.014-.492 0-.516-.038a1.296 1.296 0 0 0-.245-.053l-1.166-.078l-.662-.044c-.255-.008.866-.001.333-.019l-.139-.029l-.553-.105a21.437 21.437 0 0 1-2.179-.63a24.396 24.396 0 0 1-2.143-.926c-2.837-1.407-5.663-3.69-8.131-6.836c-2.464-3.135-4.578-7.075-5.956-11.585c-1.39-4.501-2.109-9.527-2.073-14.828c.035-2.656.254-5.378.667-8.146a80.042 80.042 0 0 1 1.819-8.432c1.546-5.698 3.965-11.467 6.989-17.233a107.814 107.814 0 0 1 2.4-4.318c.425-.695.873-1.481 1.273-2.106l1.238-1.942l1.597-2.427l2.022-3.167c1.325-2.138 2.653-4.288 3.913-6.505c5.068-8.838 9.654-18.289 13.419-28.42c3.772-10.122 6.692-20.942 8.312-32.356c1.601-11.411 1.926-23.428.304-35.697c-1.63-12.245-5.191-24.746-11.347-36.652c-6.142-11.868-14.918-23.224-26.931-32.188c-5.992-4.465-12.795-8.3-20.295-11.069c-7.485-2.773-15.682-4.445-24.041-4.652c-8.353-.226-16.816 1.042-24.636 3.587c-7.83 2.535-15.015 6.278-21.239 10.679c-6.242 4.401-11.615 9.407-16.21 14.636c-4.621 5.233-8.474 10.693-11.834 16.201c-6.66 11.038-11.273 22.249-14.799 33.315c-3.514 11.079-5.91 22.051-7.648 32.89c-1.741 10.843-2.761 21.546-3.359 32.135c-.276 5.288-.484 10.56-.541 15.787c-.05 2.57-.04 5.439-.043 7.998l.032 3.614l.01 3.4c-.03 7.901-.737 15.503-2.112 22.565c-1.398 7.043-3.486 13.535-6.212 19.094c-2.721 5.562-6.034 10.188-9.647 13.669c-3.614 3.474-7.506 5.808-11.236 7.045c-3.733 1.247-7.267 1.388-10.16.786c-2.92-.61-5.158-1.863-7.071-3.716c-1.907-1.854-3.651-4.497-4.895-8.383c-1.251-3.846-1.908-8.835-1.729-14.423c.151-5.583 1.127-11.732 2.715-17.993a124.903 124.903 0 0 1 2.847-9.486c.545-1.59 1.127-3.181 1.728-4.771l.932-2.385l.878-2.136l2.383-5.533l2.597-6.16a467.92 467.92 0 0 0 4.859-12.25a488.85 488.85 0 0 0 8.494-24.225c5.146-16.027 9.338-31.799 12.549-47.301c3.183-15.506 5.417-30.729 6.516-45.672c1.09-14.941 1.067-29.61-.531-43.981c-1.608-14.346-4.816-28.483-10.44-41.781c-2.808-6.634-6.226-13.029-10.24-18.94c-4.005-5.912-8.606-11.318-13.529-15.986c-4.911-4.688-10.159-8.586-15.307-11.759a96.167 96.167 0 0 0-14.976-7.466c-9.056-3.558-16.813-5.187-23.03-6.167c-8.695-3.326-18.32-5.257-28.478-5.411c-39.33-.594-100.302 25.207-105.198 57.739a13.21 13.21 0 0 0-.108.973c-.741 9.696 7.341 17.818 17.065 17.746l40.555-.3c3.586-.027 5.18 4.489 2.374 6.721c-11.517 9.161-29.362 24.328-21.267 24.328c18.271 0 52.545-.13 64.971-.081c16.665.066 32.016-2.443 44.226-7.835c1.399 4.583 2.543 10.014 3.245 16.17c1.051 9.052 1.198 19.563.397 30.983c-.794 11.426-2.527 23.772-5.132 36.683c-2.583 12.916-6.019 26.421-10.321 40.2a418.21 418.21 0 0 1-7.102 20.823a398.928 398.928 0 0 1-4.047 10.464l-2.149 5.223l-2.466 5.9l-1.453 3.654l-1.305 3.465a232.471 232.471 0 0 0-2.469 7.096a193.745 193.745 0 0 0-4.258 14.911c-2.459 10.29-4.208 21.293-4.395 33.165c-.177 11.83 1.188 24.629 5.623 37.685c2.221 6.506 5.212 13.044 9.154 19.289c3.927 6.24 8.782 12.182 14.491 17.386a81.95 81.95 0 0 0 19.262 13.092c7.026 3.438 14.537 5.825 22.146 7.137c15.247 2.65 30.782.915 44.604-4.119c13.87-5.015 26.026-13.259 35.77-23.082c9.757-9.849 17.175-21.197 22.523-32.858c5.363-11.684 8.743-23.666 10.807-35.461c2.025-11.803 2.755-23.453 2.557-34.807l-.147-7.437c-.015-2.26-.049-4.213-.029-6.465c-.001-4.42.133-8.798.312-13.156c.4-8.699 1.14-17.278 2.383-25.541c1.231-8.262 2.928-16.242 5.181-23.604c2.239-7.356 5.064-14.098 8.309-19.596c3.228-5.488 6.9-9.622 10.057-11.876c1.577-1.162 2.995-1.851 4.242-2.292c1.255-.431 2.354-.609 3.515-.612c1.157.003 2.402.197 3.811.685c1.403.486 2.954 1.28 4.539 2.424c3.181 2.271 6.404 5.974 8.876 10.617c2.497 4.639 4.275 10.184 5.145 16.163c.468 2.982.669 6.096.711 9.26a80.513 80.513 0 0 1-.58 9.689c-.826 6.552-2.426 13.232-4.681 19.86c-2.264 6.627-5.212 13.187-8.66 19.572a182.042 182.042 0 0 1-2.654 4.771l-3.189 5.454l-2.027 3.633c-.677 1.236-1.235 2.348-1.852 3.527a164.769 164.769 0 0 0-3.41 7.115c-4.322 9.615-7.6 19.815-9.622 30.35a114.77 114.77 0 0 0-1.658 32.239a106.577 106.577 0 0 0 2.732 16.072c1.371 5.281 3.132 10.463 5.382 15.459c4.461 9.983 10.695 19.288 18.741 26.992c8.005 7.698 17.844 13.826 28.719 17.187a65.654 65.654 0 0 0 16.683 2.856l2.1.04l1.519.012l.662-.035l1.477-.077l2.389-.152c.853-.054 1.414-.141 2.106-.218c.661-.085 1.329-.150 1.977-.263c1.304-.206 2.601-.421 3.865-.7c10.18-2.129 18.958-6.377 26.371-11.405c7.44-5.043 13.537-10.974 18.558-17.185a96.612 96.612 0 0 0 12.11-19.215c6.265-13.01 9.154-25.88 10.355-37.538a132.802 132.802 0 0 0-.557-31.521z"></path>
-        <path fill="var(--border-color)" d="M118.602 70.08c6.423 0 11.63 5.207 11.63 11.63v14.296c0 6.423-5.207 11.63-11.63 11.63c-6.423 0-11.63-5.207-11.63-11.63V81.71c0-6.423 5.207-11.63 11.63-11.63z"></path>
-        <circle fill="var(--border-color)" cx="43.962" cy="106.054" r="3.427"></circle>
-    </svg>
-</div>
-                        <h1 class="logo-text">
-                            HissHasta
-                        </h1>
-                    </a>
+    {% include 'components/header.html' %}
 
-                    <div class="logo-adjacent-icons">
-                        <a class="settings-link" href="/setting">
-                            <i class="fas fa-cog"></i>
-                        </a>
-                        <a class="theme-link" href="/theme">
-                            <i class="fa-solid fa-palette"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <nav class="header-nav">
-               
-                    <div class="nav-links">
-                        <a class="nav-link" href="/leaderboard">
-                            <div class="nav-icon">
-                                <i class="fa-solid fa-crown"></i>
-                            </div>
-                            <span class="nav-tooltip">Leaderboard</span>
-                        </a>
-                        <a class="nav-link" href="/history">
-                            <div class="nav-icon">
-                                <i class="fa-solid fa-clock-rotate-left"></i>
-                            </div>
-                            <span class="nav-tooltip">History</span>
-                        </a>
-                        <a class="nav-link" href="#">
-                            <div class="nav-icon">
-                                <i class="fa-solid fa-gamepad"></i>
-                            </div>
-                            <span class="nav-tooltip">Mode</span>
-                        </a>
-                        <div class="nav-actions">
-                       <button class="notification-btn">
-    <div class="notification-icon">
-        <i class="fas fa-bell"></i>
-    </div>
-</button>
-                    </div>
-                        <div class="profile-container">
-                            {% if 'user' in session %}
-                            <!-- Logged in state -->
-                            <div class="profile-btn" id="profileBtn">
-                                <i class="fas fa-user"></i>
-                                <span class="username" style="cursor: default;">{{ session['user']['username'] }}</span>
-                            </div>
-                            <div class="profile-window hidden" id="profileWindow">
-                                <div class="profile-content">
-                                    {% if 'user' in session %}
-                                    <p>Welcome, {{ session['user']['username'] }}!</p>
-                                    <p>Email: {{ session['user']['email'] }}</p>
-                                    {% endif %}
-                                    <button class="logout-btn" id="logoutBtn">
-                                        <i class="fas fa-sign-out-alt"></i> Logout
-                                    </button>
-                                </div>
-                            </div>
-                            {% else %}
-                            <!-- Logged out state -->
-                            <a href="{{ url_for('login') }}" class="profile-btn" id="profileLink" style="cursor: default;">
-                                <i class="fas fa-user"></i>
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    
-                </nav>
-
-                <button class="mobile-menu-btn" aria-label="Toggle menu">
-                    <i class="fas fa-bars menu-icon"></i>
-                </button>
-            </div>
-        </header>
-
-        <!-- Enhanced Feedback Form -->
-            <div class="feedback-container">
+    <!-- Enhanced Feedback Form -->
+    <div class="feedback-container">
         <!-- Illustration Side (unchanged) -->
         <div class="feedback-illustration">
             <i class="fas fa-comment-dots illustration-icon"></i>
@@ -498,7 +483,7 @@
                 <span class="emoji-option">😞</span>
             </div>
         </div>
-        
+
         <!-- Form Side with FormSubmit Integration -->
         <div class="feedback-form-container">
             <!-- Progress Steps -->
@@ -508,7 +493,7 @@
                 <div class="progress-step" data-step="3">3</div>
                 <div class="progress-step" data-step="4">4</div>
             </div>
-            
+
             <!-- Form with ALL fields properly named -->
             <form id="enhancedFeedbackForm" action="https://formsubmit.co/luckyprajapatr3377@gmail.com" method="POST">
                 <!-- FormSubmit Configuration -->
@@ -522,17 +507,18 @@
                 <!-- Section 1: Basic Info -->
                 <div class="form-section active" data-section="1">
                     <h3 class="section-title">Tell Us About Yourself</h3>
-                    
+
                     <div class="form-group">
                         <label for="userName" class="form-label">Your Name (Optional)</label>
                         <input type="text" id="userName" name="Name" class="form-control" placeholder="John Doe">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="userEmail" class="form-label">Email (For follow-up)</label>
-                        <input type="email" id="userEmail" name="Email" class="form-control" placeholder="your@email.com">
+                        <input type="email" id="userEmail" name="Email" class="form-control"
+                            placeholder="your@email.com">
                     </div>
-                    
+
                     <div class="form-group">
                         <label class="form-label">How often do you play?</label>
                         <select class="form-control" name="Play Frequency">
@@ -543,18 +529,18 @@
                             <option value="first-time">First time</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-actions">
                         <button type="button" class="btn btn-primary next-section" data-next="2">
                             <i class="fas fa-arrow-right btn-icon"></i> Continue
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Section 2: Game Experience -->
                 <div class="form-section" data-section="2">
                     <h3 class="section-title">Game Experience</h3>
-                    
+
                     <div class="form-group">
                         <label class="form-label">How would you rate the hand gesture controls?</label>
                         <div class="rating-container">
@@ -585,12 +571,14 @@
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="gestureFeedback" class="form-label">What can we improve about the gesture controls?</label>
-                        <textarea id="gestureFeedback" name="Gesture Feedback" class="form-control" placeholder="Your suggestions..."></textarea>
+                        <label for="gestureFeedback" class="form-label">What can we improve about the gesture
+                            controls?</label>
+                        <textarea id="gestureFeedback" name="Gesture Feedback" class="form-control"
+                            placeholder="Your suggestions..."></textarea>
                     </div>
-                    
+
                     <div class="form-actions">
                         <button type="button" class="btn btn-outline prev-section" data-prev="1">
                             <i class="fas fa-arrow-left btn-icon"></i> Back
@@ -600,11 +588,11 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Section 3: Visual Design -->
                 <div class="form-section" data-section="3">
                     <h3 class="section-title">Visual Design</h3>
-                    
+
                     <div class="form-group">
                         <label class="form-label">Rate the game's visual appeal</label>
                         <div class="rating-container">
@@ -635,42 +623,49 @@
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label class="form-label">Which aspects need improvement?</label>
                         <div class="checkbox-group">
                             <label class="checkbox-option">
-                                <input type="checkbox" name="Improvement Areas[]" value="Color scheme" class="checkbox-input">
+                                <input type="checkbox" name="Improvement Areas[]" value="Color scheme"
+                                    class="checkbox-input">
                                 Color scheme
                             </label>
                             <label class="checkbox-option">
-                                <input type="checkbox" name="Improvement Areas[]" value="Animations" class="checkbox-input">
+                                <input type="checkbox" name="Improvement Areas[]" value="Animations"
+                                    class="checkbox-input">
                                 Animations
                             </label>
                             <label class="checkbox-option">
-                                <input type="checkbox" name="Improvement Areas[]" value="UI Layout" class="checkbox-input">
+                                <input type="checkbox" name="Improvement Areas[]" value="UI Layout"
+                                    class="checkbox-input">
                                 UI Layout
                             </label>
                             <label class="checkbox-option">
-                                <input type="checkbox" name="Improvement Areas[]" value="Snake design" class="checkbox-input">
+                                <input type="checkbox" name="Improvement Areas[]" value="Snake design"
+                                    class="checkbox-input">
                                 Snake design
                             </label>
                             <label class="checkbox-option">
-                                <input type="checkbox" name="Improvement Areas[]" value="Background" class="checkbox-input">
+                                <input type="checkbox" name="Improvement Areas[]" value="Background"
+                                    class="checkbox-input">
                                 Background
                             </label>
                             <label class="checkbox-option">
-                                <input type="checkbox" name="Improvement Areas[]" value="Special effects" class="checkbox-input">
+                                <input type="checkbox" name="Improvement Areas[]" value="Special effects"
+                                    class="checkbox-input">
                                 Special effects
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="designFeedback" class="form-label">Specific design suggestions</label>
-                        <textarea id="designFeedback" name="Design Suggestions" class="form-control" placeholder="What would make the game look better?"></textarea>
+                        <textarea id="designFeedback" name="Design Suggestions" class="form-control"
+                            placeholder="What would make the game look better?"></textarea>
                     </div>
-                    
+
                     <div class="form-actions">
                         <button type="button" class="btn btn-outline prev-section" data-prev="2">
                             <i class="fas fa-arrow-left btn-icon"></i> Back
@@ -680,20 +675,22 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Section 4: Final Thoughts -->
                 <div class="form-section" data-section="4">
                     <h3 class="section-title">Final Thoughts</h3>
-                    
+
                     <div class="form-group">
                         <label class="form-label">Did you encounter any bugs?</label>
                         <div class="checkbox-group">
                             <label class="checkbox-option">
-                                <input type="checkbox" name="Bugs Found[]" value="Gesture recognition" class="checkbox-input">
+                                <input type="checkbox" name="Bugs Found[]" value="Gesture recognition"
+                                    class="checkbox-input">
                                 Gesture recognition issues
                             </label>
                             <label class="checkbox-option">
-                                <input type="checkbox" name="Bugs Found[]" value="Collision detection" class="checkbox-input">
+                                <input type="checkbox" name="Bugs Found[]" value="Collision detection"
+                                    class="checkbox-input">
                                 Collision detection
                             </label>
                             <label class="checkbox-option">
@@ -710,22 +707,26 @@
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="bugDetails" class="form-label">Describe the bugs you encountered</label>
-                        <textarea id="bugDetails" name="Bug Details" class="form-control" placeholder="When did it happen? What were you doing?"></textarea>
+                        <textarea id="bugDetails" name="Bug Details" class="form-control"
+                            placeholder="When did it happen? What were you doing?"></textarea>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="featureRequests" class="form-label">What features would you like to see added?</label>
-                        <textarea id="featureRequests" name="Feature Requests" class="form-control" placeholder="New game modes, power-ups, customization options, etc."></textarea>
+                        <label for="featureRequests" class="form-label">What features would you like to see
+                            added?</label>
+                        <textarea id="featureRequests" name="Feature Requests" class="form-control"
+                            placeholder="New game modes, power-ups, customization options, etc."></textarea>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="finalFeedback" class="form-label">Any other comments?</label>
-                        <textarea id="finalFeedback" name="Additional Comments" class="form-control" placeholder="We'd love to hear your overall thoughts!"></textarea>
+                        <textarea id="finalFeedback" name="Additional Comments" class="form-control"
+                            placeholder="We'd love to hear your overall thoughts!"></textarea>
                     </div>
-                    
+
                     <div class="form-actions">
                         <button type="button" class="btn btn-outline prev-section" data-prev="3">
                             <i class="fas fa-arrow-left btn-icon"></i> Back
@@ -736,7 +737,7 @@
                     </div>
                 </div>
             </form>
-            
+
             <!-- Thank You Message -->
             <div class="thank-you-container" id="thankYouMessage">
                 <i class="fas fa-check-circle thank-you-icon"></i>
@@ -749,115 +750,19 @@
         </div>
     </div>
 
-        <footer>
+    {% include 'components/footer.html' %}
+    {% include 'components/notification.html' %}
 
-            <div class="leftright">
-                <div class="left">
-                    <a class="textButton" id="contactPopupButton" href="/contact">
-                        <i class="fas fa-fw fa-envelope"></i>
-                        <div class="text">Contact</div>
-                    </a>
-                    <a id="supportMeButton" class="textButton" href="/feedback">
-                        <i class="fa-solid fa-comment"></i>
-                        <div class="text">Feedback</div>
-                    </a>
-                    <a href="https://github.com/lokesh8577" class="textButton" target="_blank"
-                        rel="noreferrer noopener">
-                        <i class="fas fa-fw fa-code"></i>
-                        <div class="text">Github</div>
-                    </a>
-                    <a href="https://www.linkedin.com/in/lokesh-prajapat-354756279/" class="textButton" target="_blank"
-                        rel="noreferrer noopener">
-                        <i class="fa-brands fa-linkedin"></i>
-                        <div class="text">Linkedin</div>
-                    </a>
-                    <a href="https://x.com/Lokesh85772" class="textButton" target="_blank" rel="noreferrer noopener">
-                       <i class="fa-brands fa-twitter"></i>
-                        <div class="text">Twitter</div>
-                    </a>
-                    <a href="https://www.instagram.com/lokesh_prajapat_m5_cs/" class="textButton" target="_blank" rel="noreferrer noopener">
-                        <i class="fa-brands fa-instagram"></i>
-                        <div class="text">Instagram</div>
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=61575659804732" class="textButton" target="_blank"
-                        rel="noreferrer noopener">
-                        <i class="fa-brands fa-facebook"></i>
-                        <div class="text">Facebook</div>
-                    </a>
-                    <a href="/terms" class="textButton" target="_blank" rel="noreferrer noopener">
-                        <i class="fas fa-fw fa-file-contract"></i>
-                        <div class="text">Terms</div>
-                    </a>
-                    <a href="/security" class="textButton" target="_blank" rel="noreferrer noopener">
-                        <i class="fas fa-fw fa-shield-alt"></i>
-                        <div class="text">Security</div>
-                    </a>
-                    <a href="/privacy" class="textButton" target="_blank" rel="noreferrer noopener">
-                        <i class="fas fa-fw fa-lock"></i>
-                        <div class="text">Privacy</div>
-                    </a>
-                </div>
-                <div class="right">
-                    <button class="current-theme textButton" aria-label="Shift-click to toggle custom theme">
-                        <div class="icon">
-                            <i class="fas fa-star favIndicator"></i>
-                            <i class="fas fa-fw fa-palette"></i>
-                        </div>
-                    </button>
-                    <button class="currentVersion textButton">
-                        <i class="fas fa-fw fa-code-branch"></i>
-                        <div class="text">v1.0.1</div>
-                        <key id="newVersionIndicator" class="hidden">new</key>
-                    </button>
-                </div>
-            </div>
-        </footer>
+    <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/favicon-manager.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
-         <div class="notification-popup">
-    <div class="popup-header">
-        <h3>Notification</h3>
-        <button class="close-popup">&times;</button>
-    </div>
-    
-    <div class="improvement-list">
-            <div class="improvement">
-                <div class="improvement-title">Gesture Recognition Engine
-                    <span class="version-badge">v2.3.1</span>
-                </div>
-                <div class="improvement-details">
-                    Improved hand tracking accuracy by 22% through better keypoint detection. Reduced false positives during rapid movements by implementing temporal smoothing.
-                </div>
-                <div class="improvement-date">July 12, 2025</div>
-            </div>
-            
-            <div class="improvement">
-                <div class="improvement-title">Input Latency Optimization</div>
-                <div class="improvement-details">
-                    Reduced end-to-end latency by 40ms (from 85ms to 45ms) by optimizing the render pipeline and implementing predictive motion modeling.
-                </div>
-                <div class="improvement-date">July 10, 2025</div>
-            </div>
-            
-            <div class="improvement">
-                <div class="improvement-title">Collision Detection System</div>
-                <div class="improvement-details">
-                    Fixed edge cases in self-collision detection that occurred during quick 180° turns. New algorithm uses continuous collision detection for more accurate results.
-                </div>
-                <div class="improvement-date">July 8, 2025</div>
-            </div>
-            
-          
-        </div>
-</div>
-<div class="popup-overlay"></div>
-
-              <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
-<script src="{{ url_for('static', filename='js/theme.js') }}"></script>
 
 
     <script>
-              document.addEventListener('DOMContentLoaded', function() {
-            // Form navigation (unchanged)
+        document.addEventListener('DOMContentLoaded', function () {
+            // Form elements
             const nextButtons = document.querySelectorAll('.next-section');
             const prevButtons = document.querySelectorAll('.prev-section');
             const formSections = document.querySelectorAll('.form-section');
@@ -865,51 +770,81 @@
             const emojiOptions = document.querySelectorAll('.emoji-option');
             const thankYouMessage = document.getElementById('thankYouMessage');
             const form = document.getElementById('enhancedFeedbackForm');
-            
-            // Emoji feedback selection (unchanged)
+
+            // Email regex for validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Custom popup elements
+            const popup = document.createElement('div');
+            popup.className = 'custom-popup';
+            popup.innerHTML = `
+        <div class="popup-content">
+            <p class="popup-message"></p>
+            <button class="popup-okay">OK</button>
+        </div>
+    `;
+            document.body.appendChild(popup);
+
+            // Show popup function
+            function showPopup(message) {
+                const popupMessage = popup.querySelector('.popup-message');
+                popupMessage.textContent = message;
+                popup.classList.add('active');
+
+                // Close popup when OK button is clicked
+                const okayButton = popup.querySelector('.popup-okay');
+                okayButton.onclick = function () {
+                    popup.classList.remove('active');
+                };
+            }
+
+            // Emoji feedback selection
             emojiOptions.forEach(emoji => {
-                emoji.addEventListener('click', function() {
+                emoji.addEventListener('click', function () {
                     emojiOptions.forEach(e => e.classList.remove('active'));
                     this.classList.add('active');
                 });
             });
-            
-            // Next button click handler (unchanged)
+
+            // Next button click handler
             nextButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     const currentSection = document.querySelector('.form-section.active');
                     const nextSectionNum = this.getAttribute('data-next');
                     const nextSection = document.querySelector(`.form-section[data-section="${nextSectionNum}"]`);
-                    
-                    if (validateSection(currentSection)) {
+
+                    const validationResult = validateSection(currentSection);
+                    if (validationResult.isValid) {
                         currentSection.classList.remove('active');
                         nextSection.classList.add('active');
                         updateProgress(nextSectionNum);
+                    } else {
+                        showPopup(validationResult.message);
                     }
                 });
             });
-            
-            // Previous button click handler (unchanged)
+
+            // Previous button click handler
             prevButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     const currentSection = document.querySelector('.form-section.active');
                     const prevSectionNum = this.getAttribute('data-prev');
                     const prevSection = document.querySelector(`.form-section[data-section="${prevSectionNum}"]`);
-                    
+
                     currentSection.classList.remove('active');
                     prevSection.classList.add('active');
                     updateProgress(prevSectionNum);
                 });
             });
-            
+
             // Form submission handler (modified for FormSubmit)
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', function (e) {
                 e.preventDefault();
-                
+
                 // Show thank you message
                 form.style.display = 'none';
                 thankYouMessage.classList.add('show');
-                
+
                 // Submit form data to FormSubmit
                 const formData = new FormData(form);
                 fetch(form.action, {
@@ -919,36 +854,94 @@
                         'Accept': 'application/json'
                     }
                 })
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    console.log('Form submitted successfully');
-                })
-                .catch(error => {
-                    console.error('Error submitting form:', error);
-                });
+                    .then(response => {
+                        if (!response.ok) throw new Error('Network response was not ok');
+                        console.log('Form submitted successfully');
+                    })
+                    .catch(error => {
+                        console.error('Error submitting form:', error);
+                    });
             });
-            
 
-            
-            // Helper functions (unchanged)
+
+
+            // Enhanced validation function
             function validateSection(section) {
                 let isValid = true;
-                const requiredInputs = section.querySelectorAll('[required]');
-                
-                requiredInputs.forEach(input => {
+                let message = 'Please fill in all fields in this section before continuing.';
+
+                // Check text inputs, email, select, and textarea
+                const textInputs = section.querySelectorAll('input[type="text"], input[type="email"], select, textarea');
+                textInputs.forEach(input => {
                     if (!input.value.trim()) {
-                        input.style.borderColor = 'var(--danger-color)';
+                        input.style.borderColor = 'var(--danger-color, #ff4d4f)';
                         isValid = false;
-                        input.addEventListener('input', function() {
-                            this.style.borderColor = '#ddd';
+                        input.addEventListener('input', function () {
+                            this.style.borderColor = 'var(--border-color, #ddd)';
+                        }, { once: true });
+                    } else if (input.type === 'email' && !emailRegex.test(input.value.trim())) {
+                        input.style.borderColor = 'var(--danger-color, #ff4d4f)';
+                        isValid = false;
+                        message = 'Please enter a valid email address (e.g., example@domain.com).';
+                        input.addEventListener('input', function () {
+                            this.style.borderColor = 'var(--border-color, #ddd)';
+                        }, { once: true });
+                    }
+                });
+
+                // Check radio button groups (ensure at least one is selected)
+                const radioGroups = new Set(
+                    Array.from(section.querySelectorAll('input[type="radio"][name]'))
+                        .map(radio => radio.name)
+                );
+                radioGroups.forEach(groupName => {
+                    const radios = section.querySelectorAll(`input[name="${groupName}"]`);
+                    const isChecked = Array.from(radios).some(radio => radio.checked);
+                    if (!isChecked) {
+                        radios.forEach(radio => {
+                            const label = radio.nextElementSibling;
+                            if (label) label.style.borderColor = 'var(--danger-color, #ff4d4f)';
+                        });
+                        isValid = false;
+                        radios.forEach(radio => {
+                            radio.addEventListener('change', function () {
+                                radios.forEach(r => {
+                                    const label = r.nextElementSibling;
+                                    if (label) label.style.borderColor = 'var(--border-color, #ddd)';
+                                });
+                            }, { once: true });
                         });
                     }
                 });
-                
-                if (!isValid) alert('Please fill in all required fields before continuing.');
-                return isValid;
+
+                // Check checkbox groups (require at least one checked in sections 3 and 4)
+                const checkboxGroups = section.querySelectorAll('.checkbox-group');
+                checkboxGroups.forEach(group => {
+                    if (group.closest('.form-section[data-section="3"]') || group.closest('.form-section[data-section="4"]')) {
+                        const checkboxes = group.querySelectorAll('input[type="checkbox"]');
+                        const isChecked = Array.from(checkboxes).some(cb => cb.checked);
+                        if (!isChecked) {
+                            checkboxes.forEach(cb => {
+                                const label = cb.parentElement;
+                                label.style.color = 'var(--danger-color, #ff4d4f)';
+                            });
+                            isValid = false;
+                            checkboxes.forEach(cb => {
+                                cb.addEventListener('change', function () {
+                                    checkboxes.forEach(c => {
+                                        const label = c.parentElement;
+                                        label.style.color = 'var(--text-color, #333)';
+                                    });
+                                }, { once: true });
+                            });
+                        }
+                    }
+                });
+
+                return { isValid, message };
             }
-            
+
+            // Update progress bar
             function updateProgress(currentStep) {
                 progressSteps.forEach(step => {
                     const stepNum = parseInt(step.getAttribute('data-step'));
@@ -959,7 +952,6 @@
             }
         });
     </script>
-    
     <!-- Include your existing scripts -->
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
@@ -968,4 +960,5 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
 </body>
+
 </html>

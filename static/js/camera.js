@@ -76,7 +76,7 @@ function stopCamera() {
 }
 
 // Auto-reconnect if stream fails
-videoFeed.onerror = function() {
+videoFeed.onerror = function () {
     if (cameraActive) {
         videoFeed.style.display = "block";
         placeholder.style.display = "none";
@@ -84,7 +84,7 @@ videoFeed.onerror = function() {
     }
 };
 window.stopCamera = stopCamera;
-window.addEventListener('beforeunload', function() {
+window.addEventListener('beforeunload', function () {
     if (cameraActive) {
         stopCamera();
     }
