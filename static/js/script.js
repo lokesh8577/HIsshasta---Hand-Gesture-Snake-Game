@@ -2879,14 +2879,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     const firebaseConfig = {
-        apiKey: "AIzaSyDmeALZ7huDbG2ya3Mh9gZ-04wOG-0wRbI",
-        authDomain: "hand-snake-game-f3768.firebaseapp.com",
-        databaseURL: "https://hand-snake-game-f3768.firebaseio.com",
-        projectId: "hand-snake-game-f3768",
-        storageBucket: "hand-snake-game-f3768.appspot.com",
-        messagingSenderId: "113807589798155426981",
-        appId: "1:633783160028:web:e55b0788d0348e89eeb819"
-    };
+    apiKey: "AIzaSyDmeALZ7huDbG2ya3Mh9gZ-04wOG-0wRbI", // This is safe for frontend
+    authDomain: "hand-snake-game-f3768.firebaseapp.com",
+    databaseURL: "https://hand-snake-game-f3768.firebaseio.com",
+    projectId: "hand-snake-game-f3768",
+    storageBucket: "hand-snake-game-f3768.appspot.com",
+    messagingSenderId: "113807589798155426981",
+    appId: "1:633783160028:web:e55b0788d0348e89eeb819"
+};
 
     // Initialize Firebase if not already initialized
     if (!firebase.apps.length) {
@@ -4204,74 +4204,111 @@ Failed to load leaderboard: ${error.message}
             };
         }
 
-        // Handle keyboard input
+       
+
+
         // function handleKeyDown(e) {
         //     if (!isGameRunning || currentControlMode !== 'keyboard') return;
 
         //     const now = performance.now();
+
+        //     // Handle pause key separately from direction changes
+        //     if (e.code === 'Space' || e.key === ' ') {
+        //         e.preventDefault();
+        //         isPaused = !isPaused;
+        //         isPausedByGesture = false; // Make sure gesture pause is cleared
+        //         console.log('Pause toggled:', isPaused); // Debug log
+        //         return;
+        //     }
+
+        //     // Only apply direction change cooldown to movement keys
         //     if (now - lastDirectionChangeTime < directionChangeCooldown) return;
 
-        //     if ([KEY_BINDINGS.up, KEY_BINDINGS.down, KEY_BINDINGS.left, KEY_BINDINGS.right].includes(e.key)) {
+        //     // Prevent default for arrow keys
+        //     if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
         //         e.preventDefault();
         //     }
 
-        //     if (e.key === KEY_BINDINGS.up && direction !== 'down') {
+        //     // Handle direction changes
+        //     if ((e.key === 'ArrowUp' || e.key === KEY_BINDINGS.up) && direction !== 'down') {
         //         nextDirection = 'up';
         //         lastDirectionChangeTime = now;
-        //     } else if (e.key === KEY_BINDINGS.down && direction !== 'up') {
+        //     } else if ((e.key === 'ArrowDown' || e.key === KEY_BINDINGS.down) && direction !== 'up') {
         //         nextDirection = 'down';
         //         lastDirectionChangeTime = now;
-        //     } else if (e.key === KEY_BINDINGS.left && direction !== 'right') {
+        //     } else if ((e.key === 'ArrowLeft' || e.key === KEY_BINDINGS.left) && direction !== 'right') {
         //         nextDirection = 'left';
         //         lastDirectionChangeTime = now;
-        //     } else if (e.key === KEY_BINDINGS.right && direction !== 'left') {
+        //     } else if ((e.key === 'ArrowRight' || e.key === KEY_BINDINGS.right) && direction !== 'left') {
         //         nextDirection = 'right';
         //         lastDirectionChangeTime = now;
-        //     } else if (e.key === KEY_BINDINGS.pause) {
-        //         isPaused = !isPaused;
         //     }
         // }
 
-
-        function handleKeyDown(e) {
-            if (!isGameRunning || currentControlMode !== 'keyboard') return;
-
-            const now = performance.now();
-
-            // Handle pause key separately from direction changes
-            if (e.code === 'Space' || e.key === ' ') {
-                e.preventDefault();
-                isPaused = !isPaused;
-                isPausedByGesture = false; // Make sure gesture pause is cleared
-                console.log('Pause toggled:', isPaused); // Debug log
-                return;
-            }
-
-            // Only apply direction change cooldown to movement keys
-            if (now - lastDirectionChangeTime < directionChangeCooldown) return;
-
-            // Prevent default for arrow keys
-            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
-                e.preventDefault();
-            }
-
-            // Handle direction changes
-            if ((e.key === 'ArrowUp' || e.key === KEY_BINDINGS.up) && direction !== 'down') {
-                nextDirection = 'up';
-                lastDirectionChangeTime = now;
-            } else if ((e.key === 'ArrowDown' || e.key === KEY_BINDINGS.down) && direction !== 'up') {
-                nextDirection = 'down';
-                lastDirectionChangeTime = now;
-            } else if ((e.key === 'ArrowLeft' || e.key === KEY_BINDINGS.left) && direction !== 'right') {
-                nextDirection = 'left';
-                lastDirectionChangeTime = now;
-            } else if ((e.key === 'ArrowRight' || e.key === KEY_BINDINGS.right) && direction !== 'left') {
-                nextDirection = 'right';
-                lastDirectionChangeTime = now;
-            }
-        }
-
         // Setup swipe controls for mobile
+        
+        
+        
+        function handleKeyDown(e) {
+    if (!isGameRunning || currentControlMode !== 'keyboard') return;
+
+    const now = performance.now();
+
+    // Get current key bindings from localStorage
+    const currentSettings = JSON.parse(localStorage.getItem('snakeGameSettings')) || {};
+    const currentKeyBindings = currentSettings.controls?.keyBindings || {
+        up: 'ArrowUp',
+        down: 'ArrowDown',
+        left: 'ArrowLeft',
+        right: 'ArrowRight',
+        pause: 'Space'
+    };
+
+    console.log('Key pressed:', e.key, 'Current bindings:', currentKeyBindings); // Debug log
+
+    // Handle pause key - check both Space and custom pause key
+    if (e.key === 'Space' || e.key === ' ' || e.key === currentKeyBindings.pause) {
+        e.preventDefault();
+        isPaused = !isPaused;
+        isPausedByGesture = false;
+        console.log('Pause toggled:', isPaused);
+        return;
+    }
+
+    // Only apply direction change cooldown to movement keys
+    if (now - lastDirectionChangeTime < directionChangeCooldown) return;
+
+    // Prevent default for movement keys
+    const movementKeys = [
+        currentKeyBindings.up, currentKeyBindings.down, 
+        currentKeyBindings.left, currentKeyBindings.right,
+        'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight' // Always include arrow keys
+    ];
+    
+    if (movementKeys.includes(e.key)) {
+        e.preventDefault();
+    }
+
+    // Handle direction changes
+    if (e.key === currentKeyBindings.up && direction !== 'down') {
+        nextDirection = 'up';
+        lastDirectionChangeTime = now;
+        console.log('Moving up with key:', e.key);
+    } else if (e.key === currentKeyBindings.down && direction !== 'up') {
+        nextDirection = 'down';
+        lastDirectionChangeTime = now;
+        console.log('Moving down with key:', e.key);
+    } else if (e.key === currentKeyBindings.left && direction !== 'right') {
+        nextDirection = 'left';
+        lastDirectionChangeTime = now;
+        console.log('Moving left with key:', e.key);
+    } else if (e.key === currentKeyBindings.right && direction !== 'left') {
+        nextDirection = 'right';
+        lastDirectionChangeTime = now;
+        console.log('Moving right with key:', e.key);
+    }
+}
+
         function setupSwipeControls() {
             const gameBoard = document.querySelector('.game-board');
             if (!gameBoard) return;

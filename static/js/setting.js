@@ -143,22 +143,49 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.addEventListener('keydown', function (e) {
-        if (!isEditingKey) return;
+    if (!isEditingKey) return;
 
-        e.preventDefault();
-        const key = e.key.length === 1 ? e.key.toUpperCase() : e.key;
+    e.preventDefault();
+    
+    // Store the actual key value that will be used in event.key
+    let keyToStore;
+    
+    // Handle special keys
+    if (e.key === ' ') {
+        keyToStore = 'Space';
+    } else if (e.key.startsWith('Arrow')) {
+        keyToStore = e.key; // ArrowUp, ArrowDown, etc.
+    } else if (e.key === 'Enter') {
+        keyToStore = 'Enter';
+    } else if (e.key === 'Escape') {
+        keyToStore = 'Escape';
+    } else if (e.key.length === 1) {
+        keyToStore = e.key.toLowerCase(); // Single character keys
+    } else {
+        keyToStore = e.key; // Other keys like Tab, Shift, etc.
+    }
 
-        currentSettings.controls.keyBindings[currentKeyAction] = key;
+    // Update the settings
+    currentSettings.controls.keyBindings[currentKeyAction] = keyToStore;
 
-        const keyElement = document.querySelector(`.key-input[data-action="${currentKeyAction}"]`);
-        if (keyElement) {
-            keyElement.textContent = key;
-            keyElement.classList.remove('editing');
-        }
+    // Update the display text
+    const keyElement = document.querySelector(`.key-input[data-action="${currentKeyAction}"]`);
+    if (keyElement) {
+        // Display friendly names for special keys
+        let displayText = keyToStore;
+        if (keyToStore === 'Space') displayText = 'Space';
+        else if (keyToStore === 'ArrowUp') displayText = 'Arrow Up';
+        else if (keyToStore === 'ArrowDown') displayText = 'Arrow Down';
+        else if (keyToStore === 'ArrowLeft') displayText = 'Arrow Left';
+        else if (keyToStore === 'ArrowRight') displayText = 'Arrow Right';
+        
+        keyElement.textContent = displayText;
+        keyElement.classList.remove('editing');
+    }
 
-        isEditingKey = false;
-        currentKeyAction = null;
-    });
+    isEditingKey = false;
+    currentKeyAction = null;
+});
 
     // Sound toggle functionality
     function setupSoundToggles() {
@@ -237,6 +264,25 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
+
+    function updateKeyBindingDisplay() {
+    // Key bindings - fix the display
+    Object.entries(currentSettings.controls.keyBindings).forEach(([action, key]) => {
+        const keyElement = document.querySelector(`.key-input[data-action="${action}"]`);
+        if (keyElement) {
+            // Display friendly names
+            let displayText = key;
+            if (key === 'Space') displayText = 'Space';
+            else if (key === 'ArrowUp') displayText = 'Arrow Up';
+            else if (key === 'ArrowDown') displayText = 'Arrow Down';
+            else if (key === 'ArrowLeft') displayText = 'Arrow Left';
+            else if (key === 'ArrowRight') displayText = 'Arrow Right';
+            
+            
+            keyElement.textContent = displayText;
+        }
+    });
+}
 
     // Test sound buttons
     function setupTestButtons() {
@@ -467,3 +513,4 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize
     loadSettings();
 });
+
