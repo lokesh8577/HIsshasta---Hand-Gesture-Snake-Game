@@ -45,4 +45,6 @@ Model/converted_model.tflite
 Thumbs.db
 
 # Logs
-*.log
+*.log.venv_final/
+__pycache__/
+*.pyc
