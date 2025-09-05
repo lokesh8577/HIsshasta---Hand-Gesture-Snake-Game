@@ -1,14 +1,22 @@
+# Add this to your .gitignore file
+echo "# Virtual Environments
+.venv_final/
+.venv/
+venv/
+env/
+.env/
+ENV/
+env.bak/
+venv.bak/
+myenv/
+python_env/
+
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
 
 # IDE
 .vscode/
@@ -21,7 +29,4 @@ venv.bak/
 Thumbs.db
 
 # Logs
-*.log
-
-# Environment variables
-.env
+*.log" >> .gitignore
