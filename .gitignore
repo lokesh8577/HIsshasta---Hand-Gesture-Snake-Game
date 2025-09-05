@@ -47,4 +47,6 @@ serviceAccountKey.json
 # API Keys
 **/config/keys.js
 **/config/dev.js
-**/config/prod.js" >> .gitignore
+**/config/prod.js" >> .gitignore.env
+.env.local
+.env.production
