@@ -30,3 +30,21 @@ Thumbs.db
 
 # Logs
 *.log" >> .gitignore
+
+
+echo "
+# Firebase
+*firebase*adminsdk*.json
+*.json
+firebase-adminsdk*.json
+serviceAccountKey.json
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# API Keys
+**/config/keys.js
+**/config/dev.js
+**/config/prod.js" >> .gitignore
