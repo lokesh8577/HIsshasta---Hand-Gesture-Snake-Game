@@ -1,23 +1,27 @@
 services:
   - type: web
     name: hand-gesture-snake-game
-    env: python
+    runtime: python3
     buildCommand: |
       pip install --upgrade pip
       pip install -r requirements.txt
-      python -c "import flask_cors; print('Flask-CORS installed successfully')"
-      python -c "import cv2; print('OpenCV installed successfully')"
-      python -c "import tensorflow as tf; print('TensorFlow version:', tf.__version__)"
-      python -c "import firebase_admin; print('Firebase Admin installed successfully')"
-    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --preload app:app
+    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app --timeout 120 --workers 1 --threads 2 --max-requests 1000 --max-requests-jitter 50
     plan: free
     envVars:
       - key: PYTHON_VERSION
-        value: 3.10.0
-      - key: FLASK_SECRET_KEY
-        generateValue: true
+        value: "3.10.12"
+      - key: PORT
+        fromService:
+          type: web
+          name: hand-gesture-snake-game
+          property: port
+      - key: FLASK_APP
+        value: app.py
+      - key: FLASK_ENV
+        value: production
+      # Firebase Configuration
       - key: FIREBASE_TYPE
-        sync: false
+        sync: false  # Set these in Railway dashboard
       - key: FIREBASE_PROJECT_ID
         sync: false
       - key: FIREBASE_PRIVATE_KEY_ID
@@ -42,8 +46,9 @@ services:
         sync: false
       - key: FIREBASE_WEB_API_KEY
         sync: false
-    healthCheckPath: /
+      - key: FLASK_SECRET_KEY
+        sync: false
     disk:
-      name: data
-      mountPath: /opt/render/project/src/Data
+      name: app-storage
+      mountPath: /app/storage
       sizeGB: 1

@@ -53,3 +53,6 @@ serviceAccountKey.json
 **/config/prod.js" >> .gitignore.env
 .env.local
 .env.production
+
+
+*.json
