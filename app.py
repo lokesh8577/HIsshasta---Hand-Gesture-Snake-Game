@@ -51,7 +51,7 @@ firebase_admin.initialize_app(cred, {
 # Initialize Firestore
 db_firestore = firestore.client()
 
-app = Flask(__name__, static_folder='static', static_url_path='/static')
+app = Flask(__name__)
 CORS(app)
 app.secret_key = os.getenv('FLASK_SECRET_KEY')
 
@@ -769,5 +769,9 @@ def camera_control(command):
         return jsonify(status=f"Server error: {str(e)}"), 500
     
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    # Render's default PORT is 10000 (can be overridden via environment variable)
+    port = int(os.environ.get('PORT', 10000))
+    
+    # CRITICAL: Must bind to 0.0.0.0 for Render to detect and forward traffic
     app.run(host='0.0.0.0', port=port, debug=False)
+    print(f"App running on host 0.0.0.0 and port {port}")
