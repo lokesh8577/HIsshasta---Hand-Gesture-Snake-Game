@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: hand-gesture-snake-game
+    env: python
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: FIREBASE_TYPE
+        sync: false
+      - key: FIREBASE_PROJECT_ID
+        sync: false
+      - key: FIREBASE_PRIVATE_KEY_ID
+        sync: false
+      - key: FIREBASE_PRIVATE_KEY
+        sync: false
+      - key: FIREBASE_CLIENT_EMAIL
+        sync: false
+      - key: FIREBASE_CLIENT_ID
+        sync: false
+      - key: FIREBASE_AUTH_URI
+        sync: false
+      - key: FIREBASE_TOKEN_URI
+        sync: false
+      - key: FIREBASE_AUTH_PROVIDER_CERT_URL
+        sync: false
+      - key: FIREBASE_CLIENT_CERT_URL
+        sync: false
+      - key: FIREBASE_UNIVERSE_DOMAIN
+        sync: false
+      - key: FIREBASE_DATABASE_URL
+        sync: false
+      - key: FIREBASE_WEB_API_KEY
+        sync: false
+    healthCheckPath: /
+    disk:
+      name: data
+      mountPath: /opt/render/project/src/Data
+      sizeGB: 1
