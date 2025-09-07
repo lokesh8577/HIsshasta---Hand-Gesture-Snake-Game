@@ -769,9 +769,4 @@ def camera_control(command):
         return jsonify(status=f"Server error: {str(e)}"), 500
     
 if __name__ == '__main__':
-    # Render's default PORT is 10000 (can be overridden via environment variable)
-    port = int(os.environ.get('PORT', 10000))
-    
-    # CRITICAL: Must bind to 0.0.0.0 for Render to detect and forward traffic
-    app.run(host='0.0.0.0', port=port, debug=False)
-    print(f"App running on host 0.0.0.0 and port {port}")
+    app.run(debug=True)
