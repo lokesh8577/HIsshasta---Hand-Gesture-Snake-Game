@@ -1,6 +1,17 @@
 services:
   - type: web
-    name: your-app-name
+    name: hand-snake-game
     env: python
+    plan: free
+    region: oregon
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: PIP_VERSION
+        value: 22.3.1
+    disk:
+      name: hand-snake-data
+      mountPath: /opt/render/project/src/Data
+      sizeGB: 1
