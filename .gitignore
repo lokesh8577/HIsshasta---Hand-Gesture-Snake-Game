@@ -10,6 +10,9 @@ env.bak/
 venv.bak/
 myenv/
 python_env/
+myenv
+./myenv/
+
 
 # Python
 __pycache__/
