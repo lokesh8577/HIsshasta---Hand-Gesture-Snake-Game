@@ -51,7 +51,7 @@ firebase_admin.initialize_app(cred, {
 # Initialize Firestore
 db_firestore = firestore.client()
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='/static')
 CORS(app)
 app.secret_key = os.getenv('FLASK_SECRET_KEY')
 
@@ -769,6 +769,5 @@ def camera_control(command):
         return jsonify(status=f"Server error: {str(e)}"), 500
     
 if __name__ == '__main__':
-    port = int(os.getenv('PORT', 8000))
-    debug = os.getenv('FLASK_ENV') == 'development'
-    app.run(debug=debug, threaded=True, host='0.0.0.0', port=port)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)

@@ -1,9 +1,10 @@
 services:
   - type: web
-    name: hand-gesture-snake-game
+    name: your-app-name
     env: python
-    buildCommand: chmod +x build.sh && ./build.sh
-    startCommand: gunicorn app:app
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.12
