@@ -94,10 +94,17 @@ def auth_required(f):
 def init_camera():
     global camera
     if camera is None:
-        camera = cv2.VideoCapture(0)
-        camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-        camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-        camera.set(cv2.CAP_PROP_FPS, TARGET_FPS)
+        try:
+            camera = cv2.VideoCapture(0)
+            if not camera.isOpened():
+                # Fallback for server environments
+                camera = cv2.VideoCapture(1)
+            camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+            camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+            camera.set(cv2.CAP_PROP_FPS, TARGET_FPS)
+        except Exception as e:
+            print(f"Camera initialization failed: {e}")
+            camera = None
 
 @app.route('/gesture_stream')
 def gesture_stream():

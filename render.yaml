@@ -1,54 +1,16 @@
 services:
   - type: web
-    name: hand-gesture-snake-game
-    runtime: python3
+    name: hand-snake-game
+    env: python
+    plan: free
     buildCommand: |
       pip install --upgrade pip
-      pip install -r requirements.txt
-    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app --timeout 120 --workers 1 --threads 2 --max-requests 1000 --max-requests-jitter 50
-    plan: free
+      sudo apt-get update
+      sudo apt-get install -y libglib2.0-0 libsm6 libxrender1 libxext6 libgl1-mesa-glx
+      pip install -r reqirement.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0
     envVars:
-      - key: PYTHON_VERSION
-        value: "3.10.12"
       - key: PORT
-        fromService:
-          type: web
-          name: hand-gesture-snake-game
-          property: port
-      - key: FLASK_APP
-        value: app.py
-      - key: FLASK_ENV
-        value: production
-      # Firebase Configuration
-      - key: FIREBASE_TYPE
-        sync: false  # Set these in Railway dashboard
-      - key: FIREBASE_PROJECT_ID
-        sync: false
-      - key: FIREBASE_PRIVATE_KEY_ID
-        sync: false
-      - key: FIREBASE_PRIVATE_KEY
-        sync: false
-      - key: FIREBASE_CLIENT_EMAIL
-        sync: false
-      - key: FIREBASE_CLIENT_ID
-        sync: false
-      - key: FIREBASE_AUTH_URI
-        sync: false
-      - key: FIREBASE_TOKEN_URI
-        sync: false
-      - key: FIREBASE_AUTH_PROVIDER_CERT_URL
-        sync: false
-      - key: FIREBASE_CLIENT_CERT_URL
-        sync: false
-      - key: FIREBASE_UNIVERSE_DOMAIN
-        sync: false
-      - key: FIREBASE_DATABASE_URL
-        sync: false
-      - key: FIREBASE_WEB_API_KEY
-        sync: false
-      - key: FLASK_SECRET_KEY
-        sync: false
-    disk:
-      name: app-storage
-      mountPath: /app/storage
-      sizeGB: 1
+        value: 8080
+      - key: PYTHON_VERSION
+        value: 3.10.12
