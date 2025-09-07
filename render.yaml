@@ -5,7 +5,11 @@ services:
     buildCommand: |
       pip install --upgrade pip
       pip install -r requirements.txt
-    startCommand: gunicorn app:app
+      python -c "import flask_cors; print('Flask-CORS installed successfully')"
+      python -c "import cv2; print('OpenCV installed successfully')"
+      python -c "import tensorflow as tf; print('TensorFlow version:', tf.__version__)"
+      python -c "import firebase_admin; print('Firebase Admin installed successfully')"
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --preload app:app
     plan: free
     envVars:
       - key: PYTHON_VERSION
